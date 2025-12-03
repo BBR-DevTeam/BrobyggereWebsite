@@ -131,38 +131,7 @@ export default function MobileMenu({
                 </li>
               </ul>
             </li>
-            <li className="has-dropdown">
-              <div className="menu-item-with-toggle">
-                <Link href="#" onClick={(e) => e.preventDefault()}>
-                  Pages
-                </Link>
-                <span
-                  className={`submenu-button${
-                    openSubMenus["pages"] ? " submenu-opened" : ""
-                  }`}
-                  onClick={() => handleToggleSubMenu("pages")}
-                >
-                  <em />
-                </span>
-              </div>
-              <ul
-                className="sub-menu"
-                style={{ display: openSubMenus["pages"] ? "block" : "none" }}
-              >
-                <li>
-                  <Link href="/contact">Contact</Link>
-                </li>
-                <li>
-                  <Link href="/team">Team</Link>
-                </li>
-                <li>
-                  <Link href="/testimonial">Testimonial</Link>
-                </li>
-                <li>
-                  <Link href="/error">404</Link>
-                </li>
-              </ul>
-            </li>
+
             <li className="has-dropdown">
               <div className="menu-item-with-toggle">
                 <Link href="#" onClick={(e) => e.preventDefault()}>
@@ -192,38 +161,6 @@ export default function MobileMenu({
                 </li>
                 <li>
                   <Link href="/blog-details">Blog Details</Link>
-                </li>
-              </ul>
-            </li>
-            <li className="has-dropdown">
-              <div className="menu-item-with-toggle">
-                <Link href="#" onClick={(e) => e.preventDefault()}>
-                  Project
-                </Link>
-                <span
-                  className={`submenu-button${
-                    openSubMenus["project"] ? " submenu-opened" : ""
-                  }`}
-                  onClick={() => handleToggleSubMenu("project")}
-                >
-                  <em />
-                </span>
-              </div>
-              <ul
-                className="sub-menu"
-                style={{ display: openSubMenus["project"] ? "block" : "none" }}
-              >
-                <li>
-                  <Link href="/project">Project</Link>
-                </li>
-                <li>
-                  <Link href="/project-details-left">Project Left</Link>
-                </li>
-                <li>
-                  <Link href="/project-details-right">Project Right</Link>
-                </li>
-                <li>
-                  <Link href="/project-details">Project Details</Link>
                 </li>
               </ul>
             </li>
