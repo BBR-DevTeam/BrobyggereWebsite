@@ -1,104 +1,145 @@
 import Link from "next/link";
 
 export default function Section9() {
-    return (
-        <>
-            {/*=====CONTACT AREA START=======*/}
-            <div className="contact1 sp overflow-hidden" id="contact">
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-6">
-                            <div className="heading1-w">
-                                <span className="span" data-aos="zoom-in-left" data-aos-duration={700}>
-                                    Contact Us
-                                </span>
-                                <h2 className="text-anime-style-3">Get in Touch Let's Start the Conversation</h2>
-                                <div className="space16" />
-                                <p data-aos="fade-right" data-aos-duration={900}>
-                                    We're here to help you find the right staffing solutions for your needs. Whether you're a company looking to hire top talent or a candidate seeking your next career opportunity,
-                                </p>
-                                <div className="" data-aos="fade-right" data-aos-duration={800}>
-                                    <div className="contact1-box">
-                                        <div className="icon">
-                                            <img src="assets/img/icons/contact-icon1.png" alt="" />
-                                        </div>
-                                        <div className="heading">
-                                            <p>Gives us a Call</p>
-                                            <Link href="tel:123-456-7890">123-456-7890</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="" data-aos="fade-right" data-aos-duration={1100}>
-                                    <div className="contact1-box">
-                                        <div className="icon">
-                                            <img src="assets/img/icons/contact-icon2.png" alt="" />
-                                        </div>
-                                        <div className="heading">
-                                            <p>Send me Mail</p>
-                                            <Link href="mailto:recrute@hotmail.com">recrute@hotmail.com</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6">
-                            <div className="contact1-form" data-aos="zoom-out" data-aos-duration={900}>
-                                <div className="heading1">
-                                    <h3>Send us a Message</h3>
-                                    <div className="space16" />
-                                    <p>Feel free to reach out to us with any questions, inquiries, or staffing requirements you may have. Our experienced</p>
-                                </div>
-                                <div className="space10" />
-                                <form action="#">
-                                    <div className="row">
-                                        <div className="col-md-6">
-                                            <div className="single-input">
-                                                <input type="text" placeholder="First Name" />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="single-input">
-                                                <input type="text" placeholder="Last Name" />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="single-input">
-                                                <input type="email" placeholder="Email" />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-6">
-                                            <div className="single-input">
-                                                <input type="number" placeholder="Phone" />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-12">
-                                            <div className="single-input">
-                                                <input type="text" placeholder="Subject" />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-12">
-                                            <div className="single-input">
-                                                <textarea rows={4} placeholder="Message" defaultValue={""} />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-12">
-                                            <div className="button">
-                                                <button className="theme-btn1">
-                                                    Submit Now
-                                                    <span>
-                                                        <i className="fa-solid fa-arrow-right" />
-                                                    </span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <>
+      {/*=====BLOG AREA START=======*/}
+      <div className="blog1 sp overflow-hidden" id="blog">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-8 m-auto text-center">
+              <div className="heading1">
+                <span
+                  className="span"
+                  data-aos="zoom-in-left"
+                  data-aos-duration={800}
+                >
+                  Nyheter
+                </span>
+                <h2 className="text-anime-style-3">
+                  Oppdatert innsikt innen bemanning og rekruttering
+                </h2>
+                <div className="space16" />
+                <p data-aos="fade-up" data-aos-duration={800}>
+                  I bloggen deler vi nyttig innhold for både arbeidsgivere og
+                  jobbsøkere, med artikler om bemanning i barnehage og skole,
+                  bransjetrender og faglige tips.
+                </p>
+              </div>
             </div>
-            {/*=====CONTACT AREA END=======*/}
-        </>
-    );
+          </div>
+
+          <div className="space30" />
+
+          <div className="row">
+            {/* Blog card 1 */}
+            <div className="col-lg-6">
+              <div
+                className="blog1-box overlay-anim"
+                data-aos="zoom-in-up"
+                data-aos-duration={800}
+              >
+                <div className="image">
+                  <img src="assets/img/blog/blog1-img1.png" alt="" />
+                </div>
+                <div className="heading-area">
+                  <div className="tags">
+                    <Link href="/blog-details/1">
+                      <img src="assets/img/icons/date.png" alt="" /> Apl 25,2025
+                    </Link>
+                    <Link href="/blog-details/1">
+                      <img src="assets/img/icons/user.png" alt="" /> Celine
+                      April Rosnes Ramberg
+                    </Link>
+                  </div>
+                  <div className="heading1">
+                    <h4>
+                      <Link href="/blog-details/1">
+                        Brobyggere er nå sertifisert for kvalitet, trygghet og
+                        miljø
+                      </Link>
+                    </h4>
+                    <div className="space16" />
+                    <p>
+                      En internasjonal standard som dokumenterer at vi jobber
+                      systematisk med kvalitet i alle ledd.
+                    </p>
+                    <div className="blog1-border" />
+                    <Link href="/blog-details/1" className="learn">
+                      Les mer
+                      <span>
+                        <i className="fa-solid fa-arrow-right" />
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Blog card 2 */}
+            <div className="col-lg-6">
+              <div
+                className="blog1-box overlay-anim"
+                data-aos="zoom-in-up"
+                data-aos-duration={900}
+              >
+                <div className="image">
+                  <img src="assets/img/blog/blog1-img2.png" alt="" />
+                </div>
+                <div className="heading-area">
+                  <div className="tags">
+                    <Link href="/blog-details/4">
+                      <img src="assets/img/icons/date.png" alt="" /> Apl 25,2025
+                    </Link>
+                    <Link href="/blog-details/4">
+                      <img src="assets/img/icons/user.png" alt="" /> Eline Håstø
+                      Borgenvik
+                    </Link>
+                  </div>
+                  <div className="heading1">
+                    <h4>
+                      <Link href="/blog-details/4">
+                        Karrieredagen 2025 bød på inspirerende studentmøter
+                      </Link>
+                    </h4>
+                    <div className="space16" />
+                    <p>
+                      Vi var så heldige at vi fikk holde stand på Høyskolen
+                      Kristiania i forbindelse med deres Karrieredag!
+                    </p>
+                    <div className="blog1-border" />
+                    <Link href="/blog-details/4" className="learn">
+                      Les mer
+                      <span>
+                        <i className="fa-solid fa-arrow-right" />
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ===== View more news button ===== */}
+          <div className="space40" />
+
+          <div className="row justify-content-center">
+            <div
+              className="col-lg-4 text-center"
+              data-aos="fade-up"
+              data-aos-duration={1100}
+            >
+              <Link href="/blog" className="theme-btn1">
+                Se flere nyheter
+                <span>
+                  <i className="fa-solid fa-arrow-right" />
+                </span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/*=====BLOG AREA END=======*/}
+    </>
+  );
 }

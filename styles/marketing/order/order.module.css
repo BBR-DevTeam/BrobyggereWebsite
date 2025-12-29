@@ -1,0 +1,357 @@
+.section {
+  padding: 150px 0;
+  background: var(--vtc-bg-common-bg2);
+}
+
+/* LEFT */
+.left {
+  height: 100%;
+  padding: 10px 6px 0 0;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--f-fs-font-fs52);
+  line-height: var(--f-fs-font-fs56);
+  font-weight: var(--f-fw-ex-bold);
+  font-family: var(--f-ff-font-1);
+  color: var(--vtc-text-heading-text-1);
+}
+
+.subtitle {
+  margin: 14px 0 0;
+  font-size: var(--f-fs-font-fs18);
+  line-height: 1.55;
+  color: var(--vtc-text-pera-text-1);
+  font-family: var(--f-ff-font-1);
+  max-width: 44ch;
+}
+
+.quickContact {
+  margin-top: 22px;
+  display: grid;
+  gap: 12px;
+}
+
+.quickRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--vtc-bg-bg-white);
+  border: 1px solid var(--vtc-border-border-1);
+  box-shadow: 0 10px 22px rgba(8, 17, 32, 0.06);
+}
+
+.quickIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  box-shadow: 0 12px 22px rgba(58, 141, 255, 0.18);
+  flex: 0 0 44px;
+  font-size: 18px;
+}
+
+.quickText {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.quickLabel {
+  font-size: 13px;
+  color: var(--vtc-text-pera-text-3);
+  font-family: var(--f-ff-font-1);
+}
+
+.quickLink {
+  font-weight: var(--f-fw-bold);
+  color: var(--vtc-text-heading-text-1);
+  text-decoration: none;
+  font-family: var(--f-ff-font-1);
+}
+
+.quickLink:hover {
+  text-decoration: underline;
+}
+
+.quickHint {
+  font-weight: var(--f-fw-semibold);
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+}
+
+.contactBtn {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+
+  background: var(--vtc-text-heading-text-1);
+  color: #fff;
+  font-weight: var(--f-fw-ex-bold);
+  font-family: var(--f-ff-font-1);
+  transition: transform 0.16s ease, opacity 0.16s ease;
+}
+
+.contactBtn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.btnIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image placeholder */
+.imageWrap {
+  margin-top: 22px;
+  position: relative;
+  width: 100%;
+  height: 800px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #e9ebea;
+  border: 1px solid var(--vtc-border-border-1);
+  box-shadow: 0 14px 30px rgba(8, 17, 32, 0.08);
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* RIGHT */
+.formCard {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: var(--vtc-bg-bg-white);
+  border: 1px solid var(--vtc-border-border-1);
+  box-shadow: 0 14px 34px rgba(8, 17, 32, 0.08);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formHeader {
+  margin-bottom: 18px;
+}
+
+.formTitle {
+  margin: 0;
+  font-size: var(--f-fs-font-fs28);
+  line-height: var(--f-fs-font-fs32);
+  font-weight: var(--f-fw-ex-bold);
+  font-family: var(--f-ff-font-1);
+  color: var(--vtc-text-heading-text-1);
+}
+
+.formSub {
+  margin: 8px 0 0;
+  font-size: var(--f-fs-font-fs16);
+  color: var(--vtc-text-pera-text-1);
+  font-family: var(--f-ff-font-1);
+}
+
+.form :global(.row) {
+  row-gap: 14px;
+}
+
+/* Labels */
+.label {
+  display: block;
+  margin: 10px 0 8px;
+  font-size: 13px;
+  font-weight: var(--f-fw-semibold);
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+}
+
+/* Field wrapper with icon */
+.field {
+  position: relative;
+}
+
+.fieldIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  border: 1px solid rgba(58, 141, 255, 0.18);
+  box-shadow: 0 10px 18px rgba(58, 141, 255, 0.14);
+  pointer-events: none;
+}
+
+/* Input/select */
+.input,
+.select {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  border: 1px solid #e6e7e9;
+  padding: 0 14px 0 62px;
+  background: #fff;
+  color: #525863;
+  font-family: var(--f-ff-font-1);
+  font-size: var(--f-fs-font-fs16);
+  outline: none;
+  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.select {
+  appearance: none;
+}
+
+.input:focus,
+.select:focus {
+  border-color: rgba(58, 141, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(58, 141, 255, 0.14);
+}
+
+.input::placeholder {
+  color: #9aa0aa;
+}
+
+/* Textarea */
+.fieldTextarea {
+  position: relative;
+}
+
+.fieldIconTextarea {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  border: 1px solid rgba(58, 141, 255, 0.18);
+  box-shadow: 0 10px 18px rgba(58, 141, 255, 0.14);
+  pointer-events: none;
+}
+
+.textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e6e7e9;
+  padding: 14px 14px 14px 62px;
+  background: #fff;
+  color: #525863;
+  font-family: var(--f-ff-font-1);
+  font-size: var(--f-fs-font-fs16);
+  outline: none;
+  resize: vertical;
+  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.textarea:focus {
+  border-color: rgba(58, 141, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(58, 141, 255, 0.14);
+}
+
+/* Submit */
+.submitBtn {
+  width: 100%;
+  height: 54px;
+  border: none;
+  border-radius: 14px;
+  margin-top: 10px;
+
+  background: var(--vtc-text-heading-text-1);
+  color: #fff;
+  font-weight: var(--f-fw-ex-bold);
+  font-family: var(--f-ff-font-1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.16s ease, opacity 0.16s ease;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.smallNote {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--vtc-text-pera-text-3);
+  font-family: var(--f-ff-font-1);
+  line-height: 1.35;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .title {
+    font-size: var(--f-fs-font-fs44);
+    line-height: var(--f-fs-font-fs48);
+  }
+
+  .imageWrap {
+    height: 220px;
+  }
+
+  .formCard {
+    padding: 22px;
+  }
+}
+
+/* === Make theme-btn1 work nicely inside this module === */
+.themeBtnFix {
+  /* keep theme-btn1 look; only control layout */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+/* Contact button on left should NOT be full width */
+.themeBtnFix:not(.full) {
+  margin-top: 18px;
+}
+
+/* Submit button should be full width but SAME theme style */
+.full {
+  width: 100%;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Ensure the icon inside <span> matches theme-btn1 structure */
+.themeBtnFix span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* If your theme uses <i> normally, this makes react-icons feel identical */
+.themeBtnFix svg {
+  font-size: 16px;
+}

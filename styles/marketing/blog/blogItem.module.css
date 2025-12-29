@@ -1,0 +1,21 @@
+.imageWrapper {
+  width: 100%;
+  height: 220px; /* ✅ uniform height for all blog images */
+  overflow: hidden;
+  border-radius: 12px; /* optional: matches most modern UI cards */
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ✅ crops without stretching */
+  display: block;
+}
+
+/* Optional: force equal content height too */
+.contentWrapper {
+  min-height: 220px; /* helps keep cards equal overall height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

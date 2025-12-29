@@ -1,66 +1,56 @@
 [
-    {
-        "id": 1,
-        "title": "Scientists speculate that ours might not be held",
-        "img": "inner_blog_img01.jpg",
-        "category": "Gaming",
-        "author": "miranda h.",
-        "date": "25 April 2023"
-    },
-    {
-        "id": 2,
-        "title": "The Multiverse is the collection of alternate universes",
-        "img": "inner_blog_img02.jpg",
-        "category": "Tech",
-        "author": "miranda h.",
-        "date": "25 April 2023"
-    },
-    {
-        "id": 3,
-        "title": "That share a universal hierarchy a large variety of these",
-        "img": "inner_blog_img03.jpg",
-        "category": "Movie",
-        "author": "miranda h.",
-        "date": "25 April 2023"
-    },
-    {
-        "id": 4,
-        "title": "Universes were originated from another due to a major",
-        "img": "inner_blog_img01.jpg",
-        "category": "Sports",
-        "author": "miranda h.",
-        "date": "25 April 2023"
-    },
-    {
-        "id": 5,
-        "title": "A hypothetical collection of potentially diverse",
-        "img": "inner_blog_img02.jpg",
-        "category": "Gaming",
-        "author": "miranda h.",
-        "date": "25 April 2023"
-    },
-    {
-        "id": 6,
-        "title": "Stanford physicists Andrei Linde In a new study",
-        "img": "inner_blog_img03.jpg",
-        "category": "Tech",
-        "author": "miranda h.",
-        "date": "25 April 2023"
-    },
-    {
-        "id": 7,
-        "title": "Accessible to telescopes, is about 90 billion years",
-        "img": "inner_blog_img01.jpg",
-        "category": "Movie",
-        "author": "miranda h.",
-        "date": "25 April 2023"
-    },
-    {
-        "id": 8,
-        "title": "Observable universes each of which would comprise",
-        "img": "inner_blog_img02.jpg",
-        "category": "Sports",
-        "author": "miranda h.",
-        "date": "25 April 2023"
-    }
+  {
+    "id": 1,
+    "title": "Brobyggere er nå sertifisert for kvalitet, trygghet og miljø",
+    "img": "assets/img/blog/blog2-img1.png",
+    "category": "Sertifiseringer",
+    "author": "Celine a.",
+    "date": "25 April 2023",
+    "content": [
+      "Vi er stolte av å kunne dele at vi nå har tre sertifiseringer som setter standarden for kvalitet, trygghet og bærekraft i bemanningsbransjen. ",
+      "Et kvalitetsstempel fra NHO service og handel som bekrefter at vi etterlever strenge krav til rutiner og praksis i bemanningsbransjen.",
+      "En internasjonal standard som dokumenterer at vi jobber systematisk med kvalitet i alle ledd. "
+    ],
+    "footerText": "Bloggen vår er ditt sted for oppdatert innsikt, beste praksis og faglige råd innen bemanning – fra å forbedre rekrutteringsprosessene til å navigere endringer i arbeidslivslovgivningen og utvikle karrieren din."
+  },
+  {
+    "id": 2,
+    "title": "Inspirerende foredrag om arbeidslivet for NAV-deltakere",
+    "img": "assets/img/blog/blog2-img2.png",
+    "category": "Foredrag & Kurs",
+    "author": "Mostafa y.",
+    "date": "25 April 2023",
+    "content": [
+      "I en nylig hendelse som markerte ukens høydepunkt, hadde Brobyggere Bemannings- og rekrutteringstjeneste gleden av å besøke NAV for å holde et inspirerende foredrag for NAVs deltakere. Dagen var fylt med engasjement og entusiasme, et tydelig tegn på deltakernes interesse og vilje til å lære mer om arbeidslivet i Norge. Foredraget omhandlet nøkkelfaktorer som rettigheter og forventninger i arbeidslivet, samt hva arbeidsgivere ser etter i potensielle ansatte.​",
+      "Det var et givende øyeblikk å se den genuine interessen og engasjementet fra deltakerne, noe som gjorde dagen ekstra spesiell og morsom. Brobyggere sin hensikt med dette initiativet var ikke bare å dele viktig informasjon, men også å bidra til å styrke deltakernes forståelse og forberedelse for det norske arbeidsmarkedet. Ved å belyse disse viktige aspektene, håper vi å ha lagt et solid grunnlag for en mer inkluderende og forståelsesfull arbeidskultur, og ikke minst, å ha inspirert deltakerne til å ta aktive skritt mot sine karrieremål.",
+      "Det var en stor glede å oppleve den varme velkomsten og den positive atmosfæren hos NAV. Vi, i Brobyggere, er dypt takknemlige for at vi ble tatt så godt imot og fikk muligheten til å dele vår kunnskap og erfaring. Engasjementet og den positive responsen fra deltakerne har vært utrolig oppmuntrende, og det er disse øyeblikkene som virkelig understreker verdien av vårt arbeid. Vi ser frem til flere slike berikende samarbeid og takker hjertelig for en minnerik og inspirerende dag."
+    ],
+    "footerText": "Bloggen vår er ditt sted for oppdatert innsikt, beste praksis og faglige råd innen bemanning – fra å forbedre rekrutteringsprosessene til å navigere endringer i arbeidslivslovgivningen og utvikle karrieren din."
+  },
+  {
+    "id": 3,
+    "title": "Teambuilding som styrker både relasjoner og samarbeid",
+    "img": "assets/img/blog/blog2-img3.jpeg",
+    "category": "Teambuilding",
+    "author": "Rachel b.",
+    "date": "25 April 2023",
+    "content": [
+      "Hos oss i Brobyggere er gode relasjoner og en positiv stemning i teamet essensielt. Derfor arrangerer vi ofte aktiviteter som padleturer for å styrke båndene, bygge samhold og hente ny energi. Slike aktiviteter gir oss bedre samarbeid og økt engasjement, og sørger for at vi alltid har de rette «vibene» i teamet.",
+      "Vi vet at et sterkt og sammensveiset team gir de beste resultatene – både for oss og for kundene våre."
+    ],
+    "footerText": "Bloggen vår er ditt sted for oppdatert innsikt, beste praksis og faglige råd innen bemanning – fra å forbedre rekrutteringsprosessene til å navigere endringer i arbeidslivslovgivningen og utvikle karrieren din."
+  },
+  {
+    "id": 4,
+    "title": "Karrieredagen 2025 bød på inspirerende studentmøter",
+    "img": "assets/img/blog/blog2-img4.png",
+    "category": "Karriere",
+    "author": "Eline b.",
+    "date": "25 April 2023",
+    "content": [
+      "Vi var så heldige at vi fikk holde stand på Høyskolen Kristiania i forbindelse med deres Karrieredag! Her møtte vi mange engasjerte og nysgjerrige studenter på leting etter både deltidsjobb ved siden av studiet og jobbmuligheter etter endt studie..",
+      "Henriette Alvsaker og Henrik Garmannslund presenterte hvilke givende og ikke minst fleksible jobbmuligheter som finnes hos oss både i barnehage og skole. Vi er takknemlige for muligheten til å komme tett på og få et innblikk i studentenes ønsker og ambisjoner."
+    ],
+    "footerText": "Bloggen vår er ditt sted for oppdatert innsikt, beste praksis og faglige råd innen bemanning – fra å forbedre rekrutteringsprosessene til å navigere endringer i arbeidslivslovgivningen og utvikle karrieren din."
+  }
 ]

@@ -1,129 +1,134 @@
 import Link from "next/link";
+import styles from "../../../../styles/marketing/home/section3.module.css";
 
 export default function Section3() {
-    return (
-        <>
-            {/*=====ABOUT AREA START=======*/}
-            <div className="chosse1 sp overflow-hidden" id="choose">
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-2">
-                            <div className="" data-aos="zoom-in-up" data-aos-duration={700}>
-                                <div className="icon-box">
-                                    <div className="icon">
-                                        <img src="assets/img/icons/choose1-icon1.png" alt="" />
-                                    </div>
-                                    <div className="heading1">
-                                        <h3>
-                                            <span className="counter">98</span>%
-                                        </h3>
-                                        <div className="space10" />
-                                        <p>Successful Client</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="" data-aos="zoom-in-up" data-aos-duration={900}>
-                                <div className="icon-box">
-                                    <div className="icon">
-                                        <img src="assets/img/icons/choose1-icon2.png" alt="" />
-                                    </div>
-                                    <div className="heading1">
-                                        <h3>
-                                            <span className="counter">79</span>%
-                                        </h3>
-                                        <div className="space10" />
-                                        <p>Team Advisors</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="" data-aos="zoom-in-up" data-aos-duration={1200}>
-                                <div className="icon-box icon-box2">
-                                    <div className="icon">
-                                        <img src="assets/img/icons/choose1-icon3.png" alt="" />
-                                    </div>
-                                    <div className="heading1">
-                                        <h3>
-                                            <span className="counter">12</span>+
-                                        </h3>
-                                        <div className="space10" />
-                                        <p>Years Experience</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-5">
-                            <div className="image reveal overlay-anim">
-                                <img src="assets/img/others/choose1-img.png" alt="" />
-                            </div>
-                        </div>
-                        <div className="col-lg-5">
-                            <div className="heading1 choose1-heading">
-                                <span className="span" data-aos="fade-left" data-aos-duration={700}>
-                                    Why Choose Us
-                                </span>
-                                <h2 className="text-anime-style-3">Choose Excellence Elevate Your Hiring Experience</h2>
-                                <div className="space16" />
-                                <p data-aos="fade-left" data-aos-duration={900}>
-                                    Our team of industry experts is dedicated to understanding your unique needs and delivering tailored solutions that propel your business forward.
-                                </p>
-                                <div className="space10" />
-                                <div className="row" data-aos="fade-left" data-aos-duration={800}>
-                                    <div className="col-lg-6">
-                                        <ul className="icon-list">
-                                            <li>
-                                                <span>
-                                                    <i className="fa-solid fa-check" />
-                                                </span>
-                                                Range Of Services
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="col-lg-6">
-                                        <ul className="icon-list">
-                                            <li>
-                                                <span>
-                                                    <i className="fa-solid fa-check" />
-                                                </span>
-                                                Professional Expertise
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="col-lg-6">
-                                        <ul className="icon-list">
-                                            <li>
-                                                <span>
-                                                    <i className="fa-solid fa-check" />
-                                                </span>
-                                                Online Recourses
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="col-lg-6">
-                                        <ul className="icon-list">
-                                            <li>
-                                                <span>
-                                                    <i className="fa-solid fa-check" />
-                                                </span>
-                                                Client Success Stories
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="space30" />
-                                <div className="" data-aos="fade-left" data-aos-duration={1100}>
-                                    <Link className="theme-btn1" href="/about">
-                                        About US
-                                        <span>
-                                            <i className="fa-solid fa-arrow-right" />
-                                        </span>
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div
+      className={`${styles.section} service-section sp overflow-hidden`}
+      id="service"
+    >
+      <div className="container">
+        {/* Heading */}
+        <div className="row justify-content-center text-center">
+          <div className="col-lg-8">
+            <div className={styles.serviceHeading}>
+              <h2 className="text-anime-style-3">Våre tjenester</h2>
+
+              <div className="space16" />
+
+              <p data-aos="fade-left" data-aos-duration={800}>
+                Vi leverer kvalifiserte vikarer til barnehager og skoler i våre
+                tre avdelinger: <strong>Vestland</strong>,{" "}
+                <strong>Rogaland</strong> og <strong>Oslo/Akershus</strong>.
+              </p>
             </div>
-            {/*=====ABOUT AREA END=======*/}
-        </>
-    );
+          </div>
+        </div>
+
+        <div className="space30" />
+
+        {/* Service Cards */}
+        <div className="row g-4">
+          {/* Barnehage */}
+          <div className="col-lg-6 col-md-6">
+            <div
+              className={`${styles.card} card`}
+              data-aos="zoom-in-up"
+              data-aos-duration={700}
+            >
+              <div className={styles.cardImage}>
+                <img
+                  src="assets/img/service/service1-img1.jpg"
+                  alt="Vikarer til barnehage"
+                />
+              </div>
+
+              <div className={styles.cardBody}>
+                <div className={styles.iconWrapper}>
+                  <span className={styles.icon}>
+                    <i className="fa-solid fa-children" />
+                  </span>
+                </div>
+
+                <h4 className={styles.title}>
+                  <Link href="/tjenester/barnehage">Vikarer til barnehage</Link>
+                </h4>
+
+                <p className={styles.text}>
+                  Vi tilbyr <strong>barnehageassistenter</strong> og{" "}
+                  <strong>barnehagelærere</strong> som raskt kan dekke behov ved
+                  fravær.
+                </p>
+
+                <ul className={styles.list}>
+                  <li>Erfarne og pålitelige vikarer</li>
+                  <li>Korte og lange oppdrag</li>
+                  <li>Trygg og stabil bemanning</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Skole */}
+          <div className="col-lg-6 col-md-6">
+            <div
+              className={`${styles.card} card`}
+              data-aos="zoom-in-up"
+              data-aos-duration={900}
+            >
+              <div className={styles.cardImage}>
+                <img
+                  src="assets/img/service/service1-img2.jpg"
+                  alt="Vikarer til skole"
+                />
+              </div>
+
+              <div className={styles.cardBody}>
+                <div className={styles.iconWrapper}>
+                  <span className={styles.icon}>
+                    <i className="fa-solid fa-school" />
+                  </span>
+                </div>
+
+                <h4 className={styles.title}>
+                  <Link href="/tjenester/skole">Vikarer til skole</Link>
+                </h4>
+
+                <p className={styles.text}>
+                  Vi bemanner med <strong>skoleassistenter</strong>,{" "}
+                  <strong>lærervikarer</strong>,{" "}
+                  <strong>SFO-assistenter</strong> og{" "}
+                  <strong>miljøarbeidere</strong>.
+                </p>
+
+                <ul className={styles.list}>
+                  <li>Rask og fleksibel bemanning</li>
+                  <li>Kompetanse tilpasset behov</li>
+                  <li>Støtte i både undervisning og SFO</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* New Button */}
+        <div className="space40" />
+
+        <div className="row justify-content-center">
+          <div
+            className="col-lg-4 text-center"
+            data-aos="fade-up"
+            data-aos-duration={1100}
+          >
+            <Link href="/service" className="theme-btn1">
+              Se alle tjenester
+              <span>
+                <i className="fa-solid fa-arrow-right" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

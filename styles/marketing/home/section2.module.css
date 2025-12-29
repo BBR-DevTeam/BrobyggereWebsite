@@ -1,0 +1,31 @@
+/* Wrapper around the image in Section 2 */
+.chooseImageWrapper {
+  display: flex;
+  justify-content: flex-end;
+  max-height: 600px;
+
+  border-radius: 12px; /* round ALL corners on the container */
+  overflow: hidden; /* clip the image to the rounded box */
+}
+
+/* Image itself */
+.chooseImageWrapper img {
+  width: 100%; /* fill the container horizontally */
+  height: 100%; /* fill the container vertically */
+  object-fit: cover; /* crop nicely if aspect ratio differs */
+
+  border-radius: 0 !important; /* override any template radius on the img */
+  display: block;
+}
+
+/* On smaller screens, center the image again */
+@media (max-width: 991.98px) {
+  .chooseImageWrapper {
+    justify-content: center;
+    max-height: 280px;
+  }
+
+  .chooseImageWrapper img {
+    height: 100%;
+  }
+}

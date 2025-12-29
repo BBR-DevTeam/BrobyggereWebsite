@@ -1,0 +1,31 @@
+/* Wrapper controls the visible size */
+.heroImageWrapper {
+  width: 100%;
+  max-width: 100%;
+  height: 420px; /* ✅ CHANGE THIS to control height */
+  overflow: hidden;
+  border-radius: 12px; /* optional: softer edges */
+  background: #f2f2f2; /* fallback while image loads */
+}
+
+/* Image fills the wrapper perfectly */
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ✅ keeps aspect ratio, crops overflow */
+  display: block;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .heroImageWrapper {
+    height: 320px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .heroImageWrapper {
+    height: 240px;
+  }
+}

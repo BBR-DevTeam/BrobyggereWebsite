@@ -1,6 +1,7 @@
 import Link from "next/link";
 import MobileMenu from "../MobileMenu";
 import MainMenu from "../MainMenu";
+import styles from "../../../../styles/marketing/header/header.module.css";
 
 export default function Header({
   scroll,
@@ -21,9 +22,10 @@ export default function Header({
             <div className="row">
               <div className="col-12">
                 <div className="header-elements">
-                  <div className="site-logo">
+                  <div className={`site-logo ${styles.siteLogo}`}>
                     <Link href="/">
-                      <img src="assets/img/logo/header-logo1.png" alt="" />
+                      {/* ✅ use absolute path */}
+                      <img src="/assets/img/logo/header-logo1.png" alt="" />
                     </Link>
                   </div>
                   <div className="main-menu-ex main-menu-ex1">
@@ -33,7 +35,7 @@ export default function Header({
                   <div className="header2-buttons">
                     <div className="button">
                       <Link className="theme-btn1" href="/contact">
-                        Get A Quote
+                        Bestill Vikar
                         <span>
                           <i className="fa-solid fa-arrow-right" />
                         </span>
@@ -45,18 +47,21 @@ export default function Header({
             </div>
           </div>
         </div>
+
         <MobileMenu
           isMobileMenu={isMobileMenu}
           handleMobileMenu={handleMobileMenu}
         />
       </header>
+
       <div className="mobile-header mobile-header-main d-block d-lg-none">
         <div className="container-fluid">
           <div className="col-12">
             <div className="mobile-header-elements">
               <div className="mobile-logo">
-                <Link href="/index1">
-                  <img src="assets/img/logo/header-logo1.png" alt="" />
+                {/* ✅ probably want to go to "/" instead of /index1 */}
+                <Link href="/">
+                  <img src="/assets/img/logo/header-logo1.png" alt="" />
                 </Link>
               </div>
               <div className="mobile-nav-icon" onClick={handleMobileMenu}>

@@ -1,182 +1,231 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { FormEvent, useState } from 'react';
+import Link from "next/link";
+import { useMemo, useState } from "react";
+import styles from "@/styles/marketing/contact/contact.module.css";
+import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
+
+type CityKey = "bergen" | "oslo" | "stavanger";
+
+type CityContact = {
+  key: CityKey;
+  label: string;
+  phoneLabel: string;
+  phoneHref: string;
+  emailLabel: string;
+  emailHref: string;
+  addressLabel?: string;
+  addressHref?: string;
+};
 
 export default function Section1() {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-    });
+  const cities = useMemo<CityContact[]>(
+    () => [
+      {
+        key: "oslo",
+        label: "Oslo",
+        phoneLabel: "+47 90 00 00 00",
+        phoneHref: "tel:+4790000000",
+        emailLabel: "oslo@brobyggere.com",
+        emailHref: "mailto:oslo@brobyggere.com",
+      },
+      {
+        key: "bergen",
+        label: "Bergen",
+        phoneLabel: "+47 479 68 163",
+        phoneHref: "tel:+4747968163",
+        emailLabel: "kontakt@brobyggere.com",
+        emailHref: "mailto:kontakt@brobyggere.com",
+        addressLabel: "Strandgaten 87, 5004 Bergen",
+        addressHref:
+          "https://maps.google.com/?q=Strandgaten%2087,%205004%20Bergen",
+      },
+      {
+        key: "stavanger",
+        label: "Stavanger",
+        phoneLabel: "+47 91 00 00 00",
+        phoneHref: "tel:+4791000000",
+        emailLabel: "stavanger@brobyggere.com",
+        emailHref: "mailto:stavanger@brobyggere.com",
+      },
+    ],
+    []
+  );
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        // Handle form submission here
-        console.log('Form submitted:', formData);
-    };
+  const [activeCity, setActiveCity] = useState<CityKey>("bergen");
+  const active = cities.find((c) => c.key === activeCity)!;
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
+  return (
+    <>
+      {/*=====CONTACT AREA START=======*/}
+      <div className="contact1-modified spcontact overflow-hidden" id="contact">
+        <div className="container">
+          <div className="row align-items-stretch">
+            {/* LEFT */}
+            <div className="col-lg-6">
+              <div className={`heading1-w-modified ${styles.leftTopAlign}`}>
+                <h2 className="text-anime-style-3">Ta kontakt</h2>
 
-    return (
-        // Contact Area Start
-        <div className="contact-page sp">
-            <div className="container">
-                <div className="row align-items-center">
-                    <div className="col-lg-6">
-                        <div className="heading1">
-                            <span className="span">Contact Us</span>
-                            <h2>Get in Touch Let's Start the Conversation</h2>
-                            <div className="space16"></div>
-                            <p>We're here to help you find the right staffing solutions for your needs. Whether you're a company looking to hire top talent or a candidate seeking your next career opportunity,</p>
-                        </div>
+                <div className="space16" />
 
-                        <div className="contact-page-box">
-                            <div className="row">
-                                <div className="col-lg-6">
-                                    <div className="contact-box">
-                                        <div className="icon">
-                                            <Image
-                                                src="/assets/img/icons/contact-icon1.png"
-                                                alt="contact icon"
-                                                width={40}
-                                                height={40}
-                                            />
-                                        </div>
-                                        <div className="heading1">
-                                            <p>Gives us a Call</p>
-                                            <h4><Link href="tel:123-456-7890">123-456-7890</Link></h4>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-lg-6">
-                                    <div className="contact-box contact-box2">
-                                        <div className="icon">
-                                            <Image
-                                                src="/assets/img/icons/contact-icon2.png"
-                                                alt="contact icon"
-                                                width={40}
-                                                height={40}
-                                            />
-                                        </div>
-                                        <div className="heading1">
-                                            <p>Send me Mail</p>
-                                            <h4><Link href="mailto:Recrute@hotmail.com">Recrute@hotmail.com</Link></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-lg-6">
-                        <div className="contact1-form">
-                            <div className="heading1">
-                                <h3>Send us a Message</h3>
-                                <div className="space16"></div>
-                                <p>Feel free to reach out to us with any questions, inquiries, or staffing requirements you may have. Our experienced</p>
-                            </div>
-                            <div className="space10"></div>
-
-                            <form onSubmit={handleSubmit}>
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <div className="single-input">
-                                            <input
-                                                type="text"
-                                                name="firstName"
-                                                placeholder="First Name"
-                                                value={formData.firstName}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <div className="single-input">
-                                            <input
-                                                type="text"
-                                                name="lastName"
-                                                placeholder="Last Name"
-                                                value={formData.lastName}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <div className="single-input">
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                placeholder="Email"
-                                                value={formData.email}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <div className="single-input">
-                                            <input
-                                                type="tel"
-                                                name="phone"
-                                                placeholder="Phone"
-                                                value={formData.phone}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-12">
-                                        <div className="single-input">
-                                            <input
-                                                type="text"
-                                                name="subject"
-                                                placeholder="Subject"
-                                                value={formData.subject}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-12">
-                                        <div className="single-input">
-                                            <textarea
-                                                rows={4}
-                                                name="message"
-                                                placeholder="Message"
-                                                value={formData.message}
-                                                onChange={handleChange}
-                                            ></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-md-12">
-                                        <div className="button">
-                                            <button type="submit" className="theme-btn1">
-                                                Submit Now <span><i className="fa-solid fa-arrow-right"></i></span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                {/* ✅ Tabs */}
+                <div className={styles.tabsWrap}>
+                  <div
+                    className={styles.tabs}
+                    role="tablist"
+                    aria-label="Velg avdeling"
+                  >
+                    {cities.map((c) => {
+                      const isActive = c.key === activeCity;
+                      return (
+                        <button
+                          key={c.key}
+                          type="button"
+                          role="tab"
+                          aria-selected={isActive}
+                          className={`${styles.tab} ${
+                            isActive ? styles.tabActive : ""
+                          }`}
+                          onClick={() => setActiveCity(c.key)}
+                        >
+                          {c.label}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
+
+                {/* ✅ Animated content switch */}
+                <div key={active.key} className={styles.fadeSlide}>
+                  <div className="space16" />
+
+                  {/* Phone */}
+                  <div>
+                    <div className="contact1-box">
+                      <div className={`${styles.iconCircle} ${styles.primary}`}>
+                        <FiPhone />
+                      </div>
+                      <div className="heading">
+                        <p>Ring oss</p>
+                        <Link href={active.phoneHref}>{active.phoneLabel}</Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Email */}
+                  <div>
+                    <div className="contact1-box">
+                      <div className={`${styles.iconCircle} ${styles.primary}`}>
+                        <FiMail />
+                      </div>
+                      <div className="heading">
+                        <p>Send oss e-post</p>
+                        <Link href={active.emailHref}>{active.emailLabel}</Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ✅ Address (ONLY Bergen) */}
+                  {active.key === "bergen" &&
+                    active.addressLabel &&
+                    active.addressHref && (
+                      <div>
+                        <div className="contact1-box">
+                          <div
+                            className={`${styles.iconCircle} ${styles.primary}`}
+                          >
+                            <FiMapPin />
+                          </div>
+                          <div className="heading">
+                            <p>Besøksadresse</p>
+                            <Link href={active.addressHref}>
+                              {active.addressLabel}
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                </div>
+                {/* end animated content */}
+              </div>
             </div>
+
+            {/* RIGHT */}
+            <div className="col-lg-6 d-flex">
+              <div className="contact1-form w-100 d-flex flex-column">
+                <div className="heading1">
+                  <h3>Send oss en melding</h3>
+                  <div className="space16" />
+                  <p>
+                    Ta gjerne kontakt med oss dersom du har spørsmål,
+                    forespørsler eller behov for bemanning. Vi svarer deg så
+                    raskt som mulig.
+                  </p>
+                </div>
+                <div className="space10" />
+
+                <form action="#">
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="single-input">
+                        <input type="text" placeholder="Fornavn" />
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="single-input">
+                        <input type="text" placeholder="Etternavn" />
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="single-input">
+                        <input type="email" placeholder="E-post" />
+                      </div>
+                    </div>
+
+                    <div className="col-md-6">
+                      <div className="single-input">
+                        <input type="number" placeholder="Telefon" />
+                      </div>
+                    </div>
+
+                    <div className="col-md-12">
+                      <div className="single-input">
+                        <input type="text" placeholder="Emne" />
+                      </div>
+                    </div>
+
+                    <div className="col-md-12">
+                      <div className="single-input">
+                        <textarea
+                          rows={4}
+                          placeholder="Melding"
+                          defaultValue={""}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="col-md-12">
+                      <div className="button">
+                        <button className="theme-btn1" type="button">
+                          Send melding
+                          <span>
+                            <i className="fa-solid fa-arrow-right" />
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            {/* row end */}
+          </div>
         </div>
-        // Contact Area End
-    );
+      </div>
+      {/*=====CONTACT AREA END=======*/}
+    </>
+  );
 }

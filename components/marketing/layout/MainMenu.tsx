@@ -1,73 +1,84 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import styles from "../../../styles/marketing/header/mainMenu.module.css";
 
 export default function MainMenu() {
+  const pathname = usePathname();
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
   return (
-    <ul>
-      <li>
-        <Link href="/">Home</Link>
+    <ul className={styles.menu}>
+      <li className={styles.menuItem}>
+        <Link
+          href="/"
+          className={`${styles.link} ${isActive("/") ? styles.active : ""}`}
+        >
+          Hjem
+        </Link>
       </li>
 
-      <li>
-        <Link href="/about">About Us</Link>
-      </li>
-      <li className="dropdown-menu-parrent">
-        <Link href="#" className="main1">
-          Service <i className="fa-solid fa-angle-down" />
+      <li className={styles.menuItem}>
+        <Link
+          href="/about"
+          className={`${styles.link} ${
+            isActive("/about") ? styles.active : ""
+          }`}
+        >
+          Om oss
         </Link>
-        <ul>
-          <li>
-            <Link href="/service">Service</Link>
-          </li>
-          <li className="has-dropdown has-dropdown1">
-            <Link href="/service-details" className="main">
-              Service Detials
-              <span>
-                <i className="fa-solid fa-angle-right" />
-              </span>
-            </Link>
-            <ul className="sub-menu">
-              <li>
-                <Link href="/service-details-left">Details Left</Link>
-              </li>
-              <li>
-                <Link href="/service-details-right">Details Right</Link>
-              </li>
-              <li>
-                <Link href="/service-details">Single Details</Link>
-              </li>
-            </ul>
-          </li>
-        </ul>
       </li>
 
-      <li className="dropdown-menu-parrent">
-        <Link href="#" className="main1">
-          Blog <i className="fa-solid fa-angle-down" />
+      <li className={styles.menuItem}>
+        <Link
+          href="/service"
+          className={`${styles.link} ${
+            isActive("/service") ? styles.active : ""
+          }`}
+        >
+          Tjenester
         </Link>
-        <ul>
-          <li>
-            <Link href="/blog">Blog</Link>
-          </li>
-          <li className="has-dropdown has-dropdown1">
-            <Link href="/blog-details" className="main">
-              Blog Detials
-              <span>
-                <i className="fa-solid fa-angle-right" />
-              </span>
-            </Link>
-            <ul className="sub-menu">
-              <li>
-                <Link href="/blog-details-left">Details Left</Link>
-              </li>
-              <li>
-                <Link href="/blog-details-right">Details Right</Link>
-              </li>
-              <li>
-                <Link href="/blog-details">Single Details</Link>
-              </li>
-            </ul>
-          </li>
-        </ul>
+      </li>
+
+      <li className={styles.menuItem}>
+        <Link
+          href="/order"
+          className={`${styles.link} ${
+            isActive("/order") ? styles.active : ""
+          }`}
+        >
+          For kunder
+        </Link>
+      </li>
+
+      <li className={styles.menuItem}>
+        <Link
+          href="/jobs"
+          className={`${styles.link} ${isActive("/jobs") ? styles.active : ""}`}
+        >
+          Ledige stillinger
+        </Link>
+      </li>
+
+      <li className={styles.menuItem}>
+        <Link
+          href="/contact"
+          className={`${styles.link} ${
+            isActive("/contact") ? styles.active : ""
+          }`}
+        >
+          Kontakt
+        </Link>
+      </li>
+
+      <li className={styles.menuItem}>
+        <Link
+          href="/blog"
+          className={`${styles.link} ${isActive("/blog") ? styles.active : ""}`}
+        >
+          Nyheter
+        </Link>
       </li>
     </ul>
   );

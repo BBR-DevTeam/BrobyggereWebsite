@@ -1,103 +1,169 @@
+"use client";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import Link from "next/link";
+import "swiper/css";
+import "swiper/css/autoplay";
+import styles from "../../../../styles/marketing/home/section4.module.css";
 
-export default function Section4() {
-    return (
-        <>
-            {/*=====SERVICE AREA START=======*/}
-            <div className="service1 sp overflow-hidden" id="service">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-8 m-auto text-center">
-                            <div className="heading1-w">
-                                <span className="span" data-aos="zoom-in-left" data-aos-duration={700}>
-                                    Our Service
-                                </span>
-                                <h2 className="text-anime-style-3">Tailored Solutions for Your Hiring Needs</h2>
-                                <div className="space16" />
-                                <p data-aos="fade-left" data-aos-duration={800}>
-                                    With our proven track record and commitment to excellence, we're here to support your <br />
-                                    organization's growth and help you achieve your hiring goals.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="space30" />
-                    <div className="row">
-                        <div className="col-lg-4 col-md-6">
-                            <div className="service1-box" data-aos="zoom-in-up" data-aos-duration={700}>
-                                <div className="image overlay-anim">
-                                    <img src="assets/img/service/service1-img1.png" alt="" />
-                                </div>
-                                <div className="hover-area">
-                                    <div className="icon">
-                                        <img src="assets/img/icons/service1-icon1.png" alt="" />
-                                    </div>
-                                    <div className="space16" />
-                                    <div className="heading1-w">
-                                        <h4>
-                                            <Link href="/service-details">Executive Search Services</Link>
-                                        </h4>
-                                        <div className="space16" />
-                                        <p>Whether you're looking for temporary staffing, direct hire placements,</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6">
-                            <div className="service1-box active" data-aos="zoom-in-up" data-aos-duration={900}>
-                                <div className="image overlay-anim">
-                                    <img src="assets/img/service/service1-img2.png" alt="" />
-                                </div>
-                                <div className="hover-area">
-                                    <div className="icon">
-                                        <img src="assets/img/icons/service1-icon2.png" alt="" />
-                                    </div>
-                                    <div className="space16" />
-                                    <div className="heading1-w">
-                                        <h4>
-                                            <Link href="/service-details">HR Consulting &amp; Staffing</Link>
-                                        </h4>
-                                        <div className="space16" />
-                                        <p>Whether you're looking for temporary staffing, direct hire placements,</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6">
-                            <div className="service1-box" data-aos="zoom-in-up" data-aos-duration={1100}>
-                                <div className="image overlay-anim">
-                                    <img src="assets/img/service/service1-img3.png" alt="" />
-                                </div>
-                                <div className="hover-area">
-                                    <div className="icon">
-                                        <img src="assets/img/icons/service1-icon3.png" alt="" />
-                                    </div>
-                                    <div className="space16" />
-                                    <div className="heading1-w">
-                                        <h4>
-                                            <Link href="/service-details">Temporary Staffing Services</Link>
-                                        </h4>
-                                        <div className="space16" />
-                                        <p>Whether you're looking for temporary staffing, direct hire placements,</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="space50" />
-                        <div className="col-lg-12">
-                            <div className="text-center" data-aos="zoom-in-up" data-aos-duration={700}>
-                                <Link className="theme-btn3" href="/service">
-                                    Let’s get started
-                                    <span>
-                                        <i className="fa-solid fa-arrow-right" />
-                                    </span>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+const swiperOptions = {
+  modules: [Autoplay],
+  slidesPerView: 1,
+  spaceBetween: 30,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+  loop: true,
+  breakpoints: {
+    320: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    576: {
+      slidesPerView: 3,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 4,
+      spaceBetween: 25,
+    },
+    992: {
+      slidesPerView: 4,
+      spaceBetween: 25,
+    },
+    1200: {
+      slidesPerView: 5,
+      spaceBetween: 30,
+    },
+    1400: {
+      slidesPerView: 6,
+      spaceBetween: 30,
+    },
+  },
+};
+
+export default function Section4({
+  backgroundColor,
+}: {
+  backgroundColor: string;
+}) {
+  return (
+    <>
+      {/*=====HERO SLIDER AREA START=======*/}
+      <div
+        className={`hero1-slider ${!backgroundColor ? "" : backgroundColor} ${
+          styles.heroSliderWrapper
+        }`}
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <Swiper {...swiperOptions}>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo1.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo2.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo3.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo4.jpg"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo5.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo6.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo7.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo1.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo2.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo3.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo4.jpg"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo5.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo6.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+                <SwiperSlide className={styles.slideItem}>
+                  <img
+                    src="assets/img/logo/slider-logo7.png"
+                    alt="recrute"
+                    className={styles.logoImage}
+                  />
+                </SwiperSlide>
+              </Swiper>
             </div>
-            {/*=====SERVICE AREA END=======*/}
-        </>
-    );
+          </div>
+        </div>
+      </div>
+      {/*=====HERO SLIDER AREA END=======*/}
+    </>
+  );
 }

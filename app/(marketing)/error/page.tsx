@@ -1,17 +1,10 @@
 import Link from "next/link";
 import Layout from "@/components/marketing/layout/Layout";
-import SectionHeader from "@/components/marketing/layout/SectionHeader";
-import Section2 from "@/components/marketing/sections/about/Section3";
+
 export default function Home() {
   return (
     <>
       <Layout>
-        <SectionHeader
-          title="Error 404"
-          group_page=""
-          current_page="Error 404"
-          display="d-none"
-        />
         <>
           {/*=====ERROR AREA START=======*/}
           <div className="error-page sp">
@@ -47,8 +40,6 @@ export default function Home() {
           </div>
           {/*=====ERROR AREA END=======*/}
         </>
-
-        <Section2 />
       </Layout>
     </>
   );

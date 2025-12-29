@@ -54,7 +54,7 @@ export default function MobileMenu({
       >
         <div className="logo-m">
           <Link href="/">
-            <img src="assets/img/logo/header-logo1.png" alt="" />
+            <img src="/assets/img/logo/header-logo1.png" alt="" />
           </Link>
         </div>
         <div className="menu-close" onClick={handleMobileMenu}>
@@ -177,7 +177,7 @@ export default function MobileMenu({
             <h3>Contact Us</h3>
             <div className="contact-box">
               <div className="icon">
-                <img src="assets/img/icons/footer-icon1.png" alt="" />
+                <img src="/assets/img/icons/footer-icon1.png" alt="" />
               </div>
               <div className="pera">
                 <Link href="tel:+880123456789">+880 123 456 789</Link>
@@ -185,7 +185,7 @@ export default function MobileMenu({
             </div>
             <div className="contact-box">
               <div className="icon">
-                <img src="assets/img/icons/footer-icon2.png" alt="" />
+                <img src="/assets/img/icons/footer-icon2.png" alt="" />
               </div>
               <div className="pera">
                 <Link href="mailto:info@mail.com">info@mail.com</Link>
@@ -193,7 +193,7 @@ export default function MobileMenu({
             </div>
             <div className="contact-box">
               <div className="icon">
-                <img src="assets/img/icons/footer-icon3.png" alt="" />
+                <img src="/assets/img/icons/footer-icon3.png" alt="" />
               </div>
               <div className="pera">
                 <Link href="tel:+880123456789">
