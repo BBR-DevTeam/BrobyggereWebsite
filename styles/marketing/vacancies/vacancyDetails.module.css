@@ -1,0 +1,640 @@
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* left 2/3, right 1/3 */
+  gap: 24px;
+  align-items: start;
+}
+
+/* LEFT */
+.left {
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 16px;
+}
+
+.breadcrumb {
+  margin: 0 0 6px 0;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 34px;
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+  font-weight: var(--f-fw-ex-bold);
+}
+
+.subTitle {
+  margin: 10px 0 0 0;
+  opacity: 0.75;
+  font-size: 14px;
+  color: var(--vtc-text-pera-text-1);
+  font-family: var(--f-ff-font-1);
+}
+
+.slug {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+}
+
+/* Content cards */
+.sectionCard {
+  background: var(--vtc-bg-bg-white);
+  border: 1px solid var(--vtc-border-border-1);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 10px 22px rgba(8, 17, 32, 0.06);
+}
+
+.sectionTitle {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+  font-weight: var(--f-fw-ex-bold);
+}
+
+.text {
+  margin: 0;
+  color: var(--vtc-text-pera-text-1);
+  font-family: var(--f-ff-font-1);
+  line-height: 1.55;
+}
+
+/* RIGHT */
+.right {
+  width: 100%;
+  position: sticky;
+  top: 110px;
+}
+
+.formCard {
+  width: 100%;
+  border-radius: 14px;
+  background: var(--vtc-bg-bg-white);
+  border: 1px solid var(--vtc-border-border-1);
+  box-shadow: 0 14px 34px rgba(8, 17, 32, 0.08);
+  padding: 22px;
+}
+
+.formHeader {
+  margin-bottom: 16px;
+}
+
+.formTitle {
+  margin: 0;
+  font-size: var(--f-fs-font-fs24);
+  line-height: var(--f-fs-font-fs28);
+  font-weight: var(--f-fw-ex-bold);
+  font-family: var(--f-ff-font-1);
+  color: var(--vtc-text-heading-text-1);
+}
+
+.formSub {
+  margin: 8px 0 0;
+  font-size: var(--f-fs-font-fs14);
+  color: var(--vtc-text-pera-text-1);
+  font-family: var(--f-ff-font-1);
+  line-height: 1.45;
+}
+
+/* Form layout */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Labels */
+.label {
+  display: block;
+  margin: 10px 0 6px;
+  font-size: 13px;
+  font-weight: var(--f-fw-semibold);
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+}
+
+/* Field wrapper with icon */
+.field {
+  position: relative;
+}
+
+.fieldIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--brand-primary-soft);
+  color: var(--brand-primary);
+  border: 1px solid rgba(58, 141, 255, 0.18);
+  box-shadow: 0 10px 18px rgba(58, 141, 255, 0.14);
+  pointer-events: none;
+}
+
+/* Input */
+.input {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  border: 1px solid #e6e7e9;
+  padding: 0 14px 0 62px;
+  background: #fff;
+  color: #525863;
+  font-family: var(--f-ff-font-1);
+  font-size: var(--f-fs-font-fs16);
+  outline: none;
+  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.input:focus {
+  border-color: rgba(58, 141, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(58, 141, 255, 0.14);
+}
+
+.input::placeholder {
+  color: #9aa0aa;
+}
+
+/* File field */
+.fileField {
+  position: relative;
+}
+
+.fileInner {
+  position: relative;
+}
+
+.fileInput {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  border: 1px solid #e6e7e9;
+  padding: 0 14px 0 62px;
+  background: #fff;
+  color: #525863;
+  font-family: var(--f-ff-font-1);
+  font-size: var(--f-fs-font-fs16);
+  outline: none;
+  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+/* Make the file picker button look modern-ish */
+.fileInput::file-selector-button {
+  height: 38px;
+  margin-right: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.fileInput:focus {
+  border-color: rgba(58, 141, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(58, 141, 255, 0.14);
+}
+
+.fileMeta {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.fileHint {
+  font-size: 13px;
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+  opacity: 0.9;
+}
+
+.fileSubHint {
+  font-size: 12px;
+  color: var(--vtc-text-pera-text-3);
+  font-family: var(--f-ff-font-1);
+}
+
+.fileList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: -2px;
+}
+
+.filePill {
+  max-width: 100%;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Submit + note (same approach as your order form) */
+.themeBtnFix {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.full {
+  width: 100%;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.themeBtnFix span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.themeBtnFix svg {
+  font-size: 16px;
+}
+
+.smallNote {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--vtc-text-pera-text-3);
+  font-family: var(--f-ff-font-1);
+  line-height: 1.35;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .right {
+    position: static;
+    top: auto;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}
+
+.hiddenFileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fileRow {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  border: 1px solid #e6e7e9;
+  background: #fff;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 0 14px 0 62px; /* same as your normal inputs */
+  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.fileRow:focus-within {
+  border-color: rgba(58, 141, 255, 0.5);
+  box-shadow: 0 0 0 4px rgba(58, 141, 255, 0.14);
+}
+
+.fileButton {
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 14px;
+  font-family: var(--f-ff-font-1);
+  color: var(--vtc-text-heading-text-1);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.fileButton:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.fileName {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--f-fs-font-fs16);
+  font-family: var(--f-ff-font-1);
+  color: #525863;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- NEW: hero image --- */
+.hero {
+  width: 100%;
+  height: 400px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--vtc-border-border-1);
+  background: #e9ebea;
+  box-shadow: 0 14px 30px rgba(8, 17, 32, 0.08);
+  margin-bottom: 16px;
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* --- NEW: meta row under title --- */
+.metaBar {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.metaPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 15px;
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+  font-weight: var(--f-fw-semibold);
+  letter-spacing: 1px;
+}
+
+.metaPill svg {
+  font-size: 15px;
+}
+
+/* make one pill a bit more “visible” */
+.pillStrong {
+  background: rgba(58, 141, 255, 0.14);
+  border: 1px solid rgba(58, 141, 255, 0.25);
+}
+
+/* paragraphs wrapper */
+.paragraphs {
+  display: grid;
+  gap: 10px;
+}
+
+/* list styling */
+.list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--vtc-text-pera-text-1);
+  font-family: var(--f-ff-font-1);
+  line-height: 1.55;
+}
+
+.listItem {
+  margin: 6px 0;
+}
+
+/* not found */
+.notFoundCard {
+  background: var(--vtc-bg-bg-white);
+  border: 1px solid var(--vtc-border-border-1);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 14px 34px rgba(8, 17, 32, 0.08);
+}
+
+.notFoundTitle {
+  margin: 0;
+  font-size: 22px;
+  font-family: var(--f-ff-font-1);
+  font-weight: var(--f-fw-ex-bold);
+  color: var(--vtc-text-heading-text-1);
+}
+
+.notFoundText {
+  margin: 10px 0 0;
+  color: var(--vtc-text-pera-text-1);
+  font-family: var(--f-ff-font-1);
+}
+
+/* LEFT: make it feel like one smooth sheet (no cards) */
+.leftSheet {
+  background: var(--vtc-bg-bg-white);
+  border: 1px solid var(--vtc-border-border-1);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 14px 34px rgba(8, 17, 32, 0.06);
+}
+
+/* section spacing like a document */
+.section {
+  margin-top: 18px;
+}
+
+.section:first-of-type {
+  margin-top: 14px;
+}
+
+/* headings */
+.sectionTitle {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+  font-weight: var(--f-fw-ex-bold);
+}
+
+/* make content text more visible (less gray) */
+.text {
+  margin: 0;
+  color: rgba(12, 18, 28, 0.88); /* darker than your gray */
+  font-family: var(--f-ff-font-1);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* paragraphs spacing */
+.paragraphs {
+  display: grid;
+  gap: 12px;
+}
+
+/* bullet list with visible dots */
+.list {
+  margin: 0;
+  padding-left: 22px; /* ensures bullet dots are visible */
+  color: rgba(12, 18, 28, 0.88);
+  font-family: var(--f-ff-font-1);
+  line-height: 1.7;
+  font-size: 15px;
+  list-style: disc; /* ensure dots */
+}
+
+.listItem {
+  margin: 8px 0;
+}
+
+/* optional: bigger bullet dots */
+.listItem::marker {
+  font-size: 1.1em;
+}
+
+.metaBar {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* strong, visible pills */
+.metaPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-radius: 999px;
+
+  background: var(--brand-primary);
+  color: #fff;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 18px rgba(58, 141, 255, 0.18);
+
+  font-size: 13px;
+  font-family: var(--f-ff-font-1);
+  font-weight: var(--f-fw-ex-bold);
+}
+
+.metaPill svg {
+  font-size: 15px;
+}
+
+/* if you want “secondary” pills (still strong, but softer) */
+.metaPillSoft {
+  background: rgba(58, 141, 255, 0.14);
+  color: var(--brand-primary);
+  border: 1px solid rgba(58, 141, 255, 0.25);
+  box-shadow: none;
+}
+
+/* --- NEW: contact person card under the form --- */
+.contactCard {
+  margin-top: 14px;
+  border-radius: 14px;
+  background: var(--vtc-bg-bg-white);
+  border: 1px solid var(--vtc-border-border-1);
+  box-shadow: 0 14px 34px rgba(8, 17, 32, 0.08);
+  padding: 16px;
+}
+
+.contactTitle {
+  font-size: 24px;
+  font-weight: var(--f-fw-ex-bold);
+  font-family: var(--f-ff-font-1);
+  color: var(--vtc-text-heading-text-1);
+  opacity: 0.85;
+  margin-bottom: 25px;
+}
+
+.contactRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contactAvatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #e9ebea;
+}
+
+.contactInfo {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contactName {
+  font-family: var(--f-ff-font-1);
+  font-weight: var(--f-fw-ex-bold);
+  color: var(--vtc-text-heading-text-1);
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.contactRole {
+  font-family: var(--f-ff-font-1);
+  color: rgba(12, 18, 28, 0.72);
+  font-size: 14px;
+}
+
+.contactLinks {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: var(--f-ff-font-1);
+  color: rgba(12, 18, 28, 0.9);
+  font-size: 14px;
+}
+
+.contactLink svg {
+  font-size: 20px;
+  color: var(--brand-primary);
+}
+
+.contactLink span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 240px;
+}

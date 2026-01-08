@@ -36,22 +36,22 @@ export default function Footer() {
                 </div>
                 <ul className="social-icon">
                   <li>
-                    <Link href="#">
+                    <Link href="https://www.linkedin.com/company/brobyggere-vikarbyr-as/">
                       <i className="fa-brands fa-linkedin-in" />
                     </Link>
                   </li>
                   <li>
-                    <Link href="#">
+                    <Link href="https://www.facebook.com/BrobyggereNorge">
                       <i className="fa-brands fa-x-twitter" />
                     </Link>
                   </li>
                   <li>
-                    <Link href="#">
+                    <Link href="https://www.tiktok.com/@brobyggere">
                       <i className="fa-brands fa-youtube" />
                     </Link>
                   </li>
                   <li>
-                    <Link href="#">
+                    <Link href="https://www.instagram.com/brobyggere/">
                       <i className="fa-brands fa-instagram" />
                     </Link>
                   </li>
@@ -64,16 +64,16 @@ export default function Footer() {
                 <h3>Quick Links</h3>
                 <ul className="menu-list">
                   <li>
-                    <Link href="#">Staff Management</Link>
+                    <Link href="/order">Bestill Vikar</Link>
                   </li>
                   <li>
-                    <Link href="#">Leadership Training</Link>
+                    <Link href="#">Personvernseklæring</Link>
                   </li>
                   <li>
-                    <Link href="#">Corporate Program&nbsp;</Link>
+                    <Link href="/blog-details/1">Sertifiseringer</Link>
                   </li>
                   <li>
-                    <Link href="#">Staffing Solutions</Link>
+                    <Link href="blog">Nyheter</Link>
                   </li>
                   <li>
                     <Link href="#">Blog Standard</Link>
@@ -96,7 +96,7 @@ export default function Footer() {
                     <Link href="/service">Tjenester</Link>
                   </li>
                   <li>
-                    <Link href="/jobs">Ledige stillinger</Link>
+                    <Link href="/vacancies">Ledige stillinger</Link>
                   </li>
                   <li>
                     <Link href="/contact">Kontakt</Link>
@@ -152,7 +152,9 @@ export default function Footer() {
             <div className="row align-items-center">
               <div className="col-md-12">
                 <div className="coppyright">
-                  <p>© Copyright 2025 -Recrute. All Right Reserved</p>
+                  <p>
+                    © 2026 - Brobyggere Bemannings- og Rekruitteringstjeneste
+                  </p>
                 </div>
               </div>
             </div>

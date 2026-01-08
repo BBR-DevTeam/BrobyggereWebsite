@@ -1,0 +1,102 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* 1/3 left, 2/3 right */
+  gap: 24px;
+  align-items: start;
+}
+
+/* Left column */
+.sidebar {
+  width: 100%;
+}
+
+/* Makes the left title match “Ta kontakt” style scale */
+.leftHeader {
+  margin: 0 0 14px 0; /* pushes filter down slightly */
+}
+
+.leftHeader h2 {
+  margin: 0;
+  line-height: 1.1;
+}
+
+.filterCard {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.filterTitle {
+  margin: 0;
+  font-size: 18px;
+}
+
+.filterList {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkboxRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+  font-size: 15px;
+}
+
+.checkboxRow input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Right column */
+.results {
+  width: 100%;
+}
+
+.resultsHeader {
+  margin-bottom: 10px;
+}
+
+.resultsSubtitle {
+  margin: 0;
+  opacity: 0.75;
+  font-size: 14px;
+}
+
+.jobList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.topPadding {
+  padding-top: 140px !important;
+  background-color: var(--vtc-bg-common-bg2);
+}
+
+.filterDivider {
+  height: 1px;
+  margin: 16px 0;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.count {
+  opacity: 0.6;
+  font-size: 14px;
+}
+
+/* Mobile */
+@media (max-width: 992px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leftHeader {
+    margin-bottom: 16px;
+  }
+}

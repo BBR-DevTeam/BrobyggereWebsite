@@ -34,7 +34,7 @@ export default function Header({
 
                   <div className="header2-buttons">
                     <div className="button">
-                      <Link className="theme-btn1" href="/contact">
+                      <Link className="theme-btn1" href="/order">
                         Bestill Vikar
                         <span>
                           <i className="fa-solid fa-arrow-right" />

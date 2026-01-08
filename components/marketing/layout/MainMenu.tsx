@@ -54,8 +54,10 @@ export default function MainMenu() {
 
       <li className={styles.menuItem}>
         <Link
-          href="/jobs"
-          className={`${styles.link} ${isActive("/jobs") ? styles.active : ""}`}
+          href="/vacancies"
+          className={`${styles.link} ${
+            isActive("/vacancies") ? styles.active : ""
+          }`}
         >
           Ledige stillinger
         </Link>

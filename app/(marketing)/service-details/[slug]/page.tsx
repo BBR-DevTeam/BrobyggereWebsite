@@ -1,6 +1,6 @@
 // app/service-details/[slug]/page.tsx
 import Layout from "@/components/marketing/layout/Layout";
-import Section1 from "@/components/marketing/sections/service-details-right/Section1";
+import Section1 from "@/components/marketing/sections/service-details/Section1";
 import Section2 from "@/components/marketing/sections/service-details/Section2";
 
 import { services } from "@/utils/marketing/service";

@@ -40,7 +40,7 @@ export default function Section1() {
                   data-aos="fade-right"
                   data-aos-duration={1200}
                 >
-                  <Link className="theme-btn1" href="/service">
+                  <Link className="theme-btn1" href="/order">
                     Bestill vikar
                     <span>
                       <i className="fa-solid fa-arrow-right" />

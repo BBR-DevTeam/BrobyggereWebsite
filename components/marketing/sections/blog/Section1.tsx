@@ -6,7 +6,7 @@ export default function Section1() {
   return (
     <>
       {/*===== BLOG AREA START =======*/}
-      <div className="blog-page ">
+      <div className="blog-page">
         <div className="container">
           <div className="row">
             {blogData.map((item) => (

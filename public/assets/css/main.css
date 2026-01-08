@@ -238,14 +238,6 @@ body {
   font-size: var(--f-fs-font-fs16);
 }
 
-.body2 {
-  background-image: url(../img/bg/home-page2-bg.png);
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: -33;
-}
-
 @media screen and (min-width: 769px) {
   .body.unic-body {
     overflow-x: initial !important;
@@ -4404,27 +4396,7 @@ body.body {
     display: none;
   }
 }
-.about8 .about8-images .cs_case_study_thumb {
-  background-image: url(../img/hero/hero7-image1.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-.about8 .about8-images .cs_case_study_thumb.cs_case_study_thumb2 {
-  background-image: url(../img/hero/hero7-image2.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-.about8 .about8-images .cs_case_study_thumb.cs_case_study_thumb3 {
-  background-image: url(../img/hero/hero7-image3.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
+
 .about8 .about8-images .cs_case_study.cs_style_1.cs_hover_active {
   margin: 0px 12px;
   border-radius: 8px;
@@ -4656,27 +4628,7 @@ body.body {
     display: none;
   }
 }
-.about10 .about10-images .cs_case_study_thumb {
-  background-image: url(../img/hero/hero7-image1.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-.about10 .about10-images .cs_case_study_thumb.cs_case_study_thumb2 {
-  background-image: url(../img/hero/hero7-image2.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-.about10 .about10-images .cs_case_study_thumb.cs_case_study_thumb3 {
-  background-image: url(../img/hero/hero7-image3.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
+
 .about10 .about10-images .cs_case_study.cs_style_1.cs_hover_active {
   margin: 0px 12px;
   border-radius: 8px;
@@ -9662,27 +9614,7 @@ body.body {
     display: none;
   }
 }
-.hero7 .hero7-images .cs_case_study_thumb {
-  background-image: url(../img/hero/hero7-image1.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-.hero7 .hero7-images .cs_case_study_thumb.cs_case_study_thumb2 {
-  background-image: url(../img/hero/hero7-image2.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-.hero7 .hero7-images .cs_case_study_thumb.cs_case_study_thumb3 {
-  background-image: url(../img/hero/hero7-image3.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
+
 .hero7 .hero7-images .cs_case_study.cs_style_1.cs_hover_active {
   margin: 0px 12px;
   border-radius: 8px;
@@ -9899,35 +9831,7 @@ body.body {
   display: flex;
   align-items: center;
 }
-.hero10-sliders .hero10-single::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-image: url(../img/bg/hero10-bg.jpg);
-  z-index: -3;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transition: all 4s;
-}
-.hero10-sliders .hero10-single.swiper-slide.swiper-slide-active::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-image: url(../img/bg/hero10-bg.jpg);
-  z-index: -3;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transition: all 4s;
-  transform: scale(1.2);
-}
+
 .hero10-sliders .hero10-single.swiper-slide.swiper-slide-active .main-heading {
   padding-top: 80px;
 }
