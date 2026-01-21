@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "../../../../styles/marketing/home/section2.module.css";
+import styles from "@/styles/marketing/home/section2.module.css";
 
 export default function Section2() {
   return (
@@ -16,7 +16,7 @@ export default function Section2() {
                   </div>
                   <div className="heading1">
                     <h3>
-                      <span className="counter">150+</span>
+                      <span className="counter">249+</span>
                     </h3>
                     <div className="space10" />
                     <p>Fornøyde Kunder</p>
@@ -46,10 +46,10 @@ export default function Section2() {
                   </div>
                   <div className="heading1">
                     <h3>
-                      <span className="counter">10 000+</span>
+                      <span className="counter">12 000+</span>
                     </h3>
                     <div className="space10" />
-                    <p>Fullførte Oppdrag</p>
+                    <p>Utførte Vakter</p>
                   </div>
                 </div>
               </div>
@@ -65,16 +65,11 @@ export default function Section2() {
 
             <div className="col-lg-5">
               <div className="heading1 choose1-heading">
-                <span
-                  className="span"
-                  data-aos="fade-left"
-                  data-aos-duration={700}
-                >
-                  Hvorfor Velge Oss
-                </span>
-
-                <h2 className="text-anime-style-3">
-                  Trygg Bemanning – Når Dere Trenger Det Som Mest
+                <h2 className={`text-anime-style-3 ${styles.sectionTitle}`}>
+                  <span className={styles.titleMain}>TRYGG BEMANNING</span>
+                  <span className={styles.titleSub}>
+                    Når Dere Trenger Det Som Mest
+                  </span>
                 </h2>
 
                 <div className="space16" />
@@ -98,7 +93,7 @@ export default function Section2() {
                         <span>
                           <i className="fa-solid fa-check" />
                         </span>
-                        Fleksible Løsninger
+                        Fleksible løsninger
                       </li>
                     </ul>
                   </div>
@@ -109,7 +104,7 @@ export default function Section2() {
                         <span>
                           <i className="fa-solid fa-check" />
                         </span>
-                        Kompetente Vikarer
+                        Kvalitetssikrede vikarer
                       </li>
                     </ul>
                   </div>
@@ -120,7 +115,7 @@ export default function Section2() {
                         <span>
                           <i className="fa-solid fa-check" />
                         </span>
-                        Enkle Digitale Verktøy
+                        Brukervennlig funksjoner
                       </li>
                     </ul>
                   </div>
@@ -131,7 +126,7 @@ export default function Section2() {
                         <span>
                           <i className="fa-solid fa-check" />
                         </span>
-                        Gode Tilbakemeldinger
+                        Tilbakemeldingskultur
                       </li>
                     </ul>
                   </div>

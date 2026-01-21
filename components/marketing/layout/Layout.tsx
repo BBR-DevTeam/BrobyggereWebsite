@@ -1,4 +1,13 @@
 "use client";
+
+import { useEffect, useState, type FC } from "react";
+import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+import "wowjs/css/libs/animate.css";
+
 import { DataBg } from "@/utils/marketing/data-bg";
 import { useOffcanvasMenu } from "@/utils/marketing/offcanvasMenu";
 import { useAccordion } from "@/utils/marketing/useAccordion";
@@ -9,18 +18,10 @@ import useTextAnimation2 from "@/utils/marketing/useTextAnimation2";
 import useTextAnimation3 from "@/utils/marketing/useTextAnimation3";
 import { useRevealAnimation } from "@/utils/marketing/useRevealAnimation";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-import dynamic from "next/dynamic";
-import type { FC } from "react";
-import { useEffect, useState } from "react";
-
 import ScrollToTop from "../elements/BackToTop";
 import Footer1 from "./footer/Footer1";
 import Header1 from "./header/Header1";
-import "wowjs/css/libs/animate.css";
 
-// same props type – headerStyle/footerStyle are kept but no longer used
 interface LayoutProps {
   headerStyle?: Number;
   mainMenuStyle?: string;
@@ -29,52 +30,60 @@ interface LayoutProps {
   bodyName?: string;
 }
 
-// dynamic bootstrap init
 interface BootstrapComponentsProps {}
 const BootstrapComponents = dynamic<BootstrapComponentsProps>(
   () => import("@/utils/marketing/useBootstrap"),
-  { ssr: false }
+  { ssr: false },
 ) as FC<BootstrapComponentsProps>;
 
 export default function Layout({
-  headerStyle,
   mainMenuStyle,
-  footerStyle,
   children,
   bodyName,
 }: LayoutProps) {
-  const [scroll, setScroll] = useState<boolean>(false);
-  const [isMobileMenu, setMobileMenu] = useState<boolean>(false);
+  const pathname = usePathname();
+
+  const [scroll, setScroll] = useState(false);
+  const [isMobileMenu, setMobileMenu] = useState(false);
 
   const handleMobileMenu = (): void => {
-    setMobileMenu(!isMobileMenu);
-    !isMobileMenu
-      ? document.body.classList.add("mobile-menu-active")
-      : document.body.classList.remove("mobile-menu-active");
+    setMobileMenu((prev) => {
+      const next = !prev;
+      if (next) document.body.classList.add("mobile-menu-active");
+      else document.body.classList.remove("mobile-menu-active");
+      return next;
+    });
   };
 
+  // ✅ scroll listener once
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100,
-      });
+    const handleScroll = () => {
+      setScroll(window.scrollY > 100);
+    };
 
-      const handleScroll = (): void => {
-        const scrollCheck: boolean = window.scrollY > 100;
-        if (scrollCheck !== scroll) {
-          setScroll(scrollCheck);
-        }
-      };
+    document.addEventListener("scroll", handleScroll);
+    handleScroll();
 
-      document.addEventListener("scroll", handleScroll);
+    return () => document.removeEventListener("scroll", handleScroll);
+  }, []);
 
-      return () => {
-        document.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, [scroll]);
+  // ✅ init AOS once
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
+  // ✅ refresh AOS on route change
+  useEffect(() => {
+    const t = setTimeout(() => {
+      AOS.refreshHard();
+    }, 50);
+
+    return () => clearTimeout(t);
+  }, [pathname]);
 
   // init theme JS / effects
   DataBg();
@@ -85,6 +94,8 @@ export default function Layout({
   useCircleText();
   useOdometerCounter();
   useParallaxEffect();
+
+  // ✅ reveal hook will now rerun because it uses pathname internally
   useRevealAnimation();
 
   return (
@@ -92,7 +103,6 @@ export default function Layout({
       <div id="top" />
       <BootstrapComponents />
 
-      {/* Always use Header1 */}
       <Header1
         mainMenuStyle={mainMenuStyle}
         scroll={scroll}
@@ -102,9 +112,7 @@ export default function Layout({
 
       <main>{children}</main>
 
-      {/* Always use Footer1 */}
       <Footer1 />
-
       <ScrollToTop />
     </div>
   );

@@ -29,3 +29,29 @@
     height: 240px;
   }
 }
+
+.richContent {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* “Section title” inside the article (your new h2 blocks) */
+.blockH2 {
+  margin: 18px 0 0;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+/* Sub-section title */
+.blockH3 {
+  margin: 10px 0 0;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+/* Paragraph */
+.blockP {
+  margin: 0;
+  line-height: 1.75;
+}

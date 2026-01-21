@@ -20,36 +20,37 @@ const BlogItem: React.FC<BlogItemProps> = ({
   date,
 }) => {
   const detailsHref = `/blog-details/${id}`;
-  const imageSrc = img.startsWith("/") ? img : `/${img}`; // ✅ fixes relative path issue
+  const imageSrc = img.startsWith("/") ? img : `/${img}`;
 
   return (
-    <div className="col-lg-4 col-md-6">
-      <div className="blog2-box">
-        {/* Controlled image size */}
+    <div className={`col-lg-4 col-md-6 d-flex ${styles.col}`}>
+      <div className={`blog2-box ${styles.card}`}>
         <div className={styles.imageWrapper}>
           <img src={imageSrc} alt={title} />
         </div>
 
-        {/* Content */}
         <div className={`heading5 ${styles.contentWrapper}`}>
-          <div className="tags">
-            <Link href="#">
-              <img src="/assets/img/icons/date2.png" alt="" /> {date}
-            </Link>
-            <Link href="#">
-              <img src="/assets/img/icons/user2.png" alt="" /> {author}
-            </Link>
+          {/* TOP AREA */}
+          <div className={styles.topArea}>
+            <div className="tags">
+              <Link href="#">
+                <img src="/assets/img/icons/date2.png" alt="" /> {date}
+              </Link>
+              <Link href="#">
+                <img src="/assets/img/icons/user2.png" alt="" /> {author}
+              </Link>
+            </div>
+
+            {/* Fixed-height title block keeps category aligned */}
+            <h4 className={styles.title}>
+              <Link href={detailsHref}>{title}</Link>
+            </h4>
+
+            <p className={styles.categoryText}>Kategori: {category}</p>
           </div>
 
-          <h4>
-            <Link href={detailsHref}>{title}</Link>
-          </h4>
-
-          <div className="space16" />
-          <p>Kategori: {category}</p>
-          <div className="space16" />
-
-          <Link href={detailsHref} className="learn">
+          {/* BOTTOM AREA */}
+          <Link href={detailsHref} className={`learn ${styles.learn}`}>
             Les mer
             <span>
               <i className="fa-solid fa-arrow-right" />

@@ -303,13 +303,17 @@ body.body {
 }
 
 .spabout {
-  padding-top: 150px;
+  padding-top: 200px;
   padding-bottom: 100px;
 }
 
 .spcontact {
   padding-top: 150px;
   padding-bottom: 100px;
+}
+
+.sphome {
+  padding-top: 70px;
 }
 
 .sp2 {
@@ -5256,7 +5260,7 @@ body.body {
 }
 
 .service1.service-page-service {
-  background-color: #fff;
+  background-color: var(--vtc-bg-common-bg2);
 }
 
 .service6 {
@@ -6390,9 +6394,10 @@ body.body {
 .faq-all-area .accordion {
   --bs-accordion-color: #000;
   --bs-accordion-bg: #fff;
-  --bs-accordion-transition: color 0.15s ease-in-out,
-    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+  --bs-accordion-transition:
+    color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    border-radius 0.15s ease;
   --bs-accordion-border-color: #dee2e600;
   --bs-accordion-border-width: 1px;
   --bs-accordion-border-radius: 0.375rem;
@@ -9246,7 +9251,7 @@ body.body {
   align-items: center;
 }
 .common-hero .main-heading {
-  padding-top: 70px;
+  padding-top: 100px;
 }
 .common-hero .main-heading h1 {
   font-size: var(--f-fs-font-fs64);
@@ -14457,6 +14462,10 @@ body.body {
 .blog5 .blog2-box:hover .image img {
   transition: all 0.4s;
   transform: scale(1.1) rotate(4deg);
+}
+
+.blog-page {
+  background-color: var(--vtc-bg-common-bg2);
 }
 
 .blog-page .blog2-box {
@@ -23245,10 +23254,14 @@ li.has-dropdown1 span {
 
 /* Page hero / section header fine-tuning */
 
+.service-details-all {
+  background-color: var(--vtc-bg-common-bg2);
+}
+
 .common-hero {
   padding-top: 60px;
   padding-bottom: 60px;
-  background-color: var(--vtc-bg-bg-white);
+  background-color: var(--vtc-bg-common-bg2);
 }
 
 .common-hero .main-heading h1 {

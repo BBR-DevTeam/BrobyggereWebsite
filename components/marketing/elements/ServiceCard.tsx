@@ -1,6 +1,6 @@
 import Link from "next/link";
-import type { Service } from "../../../utils/marketing/service";
-import styles from "../../../styles/marketing/service/section1.module.css";
+import type { Service } from "@/utils/marketing/service";
+import styles from "@/styles/marketing/service/section1.module.css";
 
 type ServiceCardProps = {
   service: Service;

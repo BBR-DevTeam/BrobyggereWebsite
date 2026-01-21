@@ -10,10 +10,40 @@ interface Section1Props {
   blogId: number;
 }
 
+type ContentBlock =
+  | { type: "h2"; text: string }
+  | { type: "h3"; text: string }
+  | { type: "p"; text: string };
+
+type Blog = {
+  id: number;
+  title: string;
+  img: string;
+  category: string;
+  author: string;
+  date: string;
+  footerText?: string;
+  content?: string[] | ContentBlock[];
+};
+
+function normalizeContent(
+  content: Blog["content"]
+): ContentBlock[] | undefined {
+  if (!content) return undefined;
+
+  // Old format: string[]
+  if (Array.isArray(content) && typeof content[0] === "string") {
+    return (content as string[]).map((text) => ({ type: "p", text }));
+  }
+
+  // New format: ContentBlock[]
+  return content as ContentBlock[];
+}
+
 export default function Section1({ blogId }: Section1Props) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const blog = blogData.find((b) => b.id === blogId);
+  const blog = (blogData as Blog[]).find((b) => b.id === blogId);
 
   if (!blog) {
     return (
@@ -27,23 +57,16 @@ export default function Section1({ blogId }: Section1Props) {
 
   const heroImageSrc = blog.img.startsWith("/") ? blog.img : `/${blog.img}`;
 
-  // default Norwegian footer text (translation of the original English)
   const defaultFooterText =
     "Bloggen vår er ditt sted for oppdatert innsikt, beste praksis og faglige råd innen bemanning – fra å forbedre rekrutteringsprosessene til å navigere endringer i arbeidslivslovgivningen og utvikle karrieren din.";
 
-  const footerText = (blog as any).footerText || defaultFooterText;
-  const content = (blog as any).content as string[] | undefined;
+  const footerText = blog.footerText || defaultFooterText;
+
+  const blocks = normalizeContent(blog.content);
 
   return (
     <>
-      <ModalVideo
-        channel="youtube"
-        isOpen={isOpen}
-        videoId="Y8XpQpW5OVY"
-        onClose={() => setIsOpen(false)}
-      />
-
-      <div className="service-details-all sp">
+      <div className="service-details-all spabout">
         <div className="container">
           <div className="row">
             <div className="col-lg-8 m-auto">
@@ -57,15 +80,8 @@ export default function Section1({ blogId }: Section1Props) {
                         className={styles.heroImage}
                       />
                     </div>
+
                     <ul className="users">
-                      <li>
-                        <img
-                          className="author"
-                          src="/assets/img/blog/blog-details-othor.png"
-                          alt={blog.author}
-                        />
-                        <Link href="#">{blog.author}</Link>
-                      </li>
                       <li>
                         <img
                           src="/assets/img/icons/blog-details-icon1.png"
@@ -81,30 +97,50 @@ export default function Section1({ blogId }: Section1Props) {
                         <Link href="#">{blog.category}</Link>
                       </li>
                     </ul>
+
                     <div className="space10" />
+
                     <div className="heading1">
+                      {/* Main title stays as-is */}
                       <h2>{blog.title}</h2>
+
                       <div className="space16" />
 
-                      {content && content.length > 0 ? (
-                        content.map((paragraph, index) => (
-                          <div key={index}>
-                            <p>{paragraph}</p>
-                            {/* space between paragraphs, except after last */}
-                            {index < content.length - 1 && (
-                              <div className="space16" />
-                            )}
-                          </div>
-                        ))
+                      {blocks && blocks.length > 0 ? (
+                        <div className={styles.richContent}>
+                          {blocks.map((block, index) => {
+                            if (!block.text?.trim()) return null;
+
+                            switch (block.type) {
+                              case "h2":
+                                return (
+                                  <h3 key={index} className={styles.blockH2}>
+                                    {block.text}
+                                  </h3>
+                                );
+
+                              case "h3":
+                                return (
+                                  <h4 key={index} className={styles.blockH3}>
+                                    {block.text}
+                                  </h4>
+                                );
+
+                              case "p":
+                              default:
+                                return (
+                                  <p key={index} className={styles.blockP}>
+                                    {block.text}
+                                  </p>
+                                );
+                            }
+                          })}
+                        </div>
                       ) : (
-                        <>
-                          {/* fallback if no content is defined yet */}
-                          <p>
-                            Her kommer brødteksten for blogginnlegget. Legg inn
-                            en eller flere paragrafer i content-feltet i
-                            blog.json.
-                          </p>
-                        </>
+                        <p>
+                          Her kommer brødteksten for blogginnlegget. Legg inn en
+                          eller flere paragrafer i content-feltet i blog.json.
+                        </p>
                       )}
                     </div>
                   </div>
@@ -114,7 +150,6 @@ export default function Section1({ blogId }: Section1Props) {
                 <div className="blog-details-border" />
                 <div className="space20" />
 
-                {/* Footer text box */}
                 <div className="after-box-details">
                   <div className="heading1">
                     <p>{footerText}</p>

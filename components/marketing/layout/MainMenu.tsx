@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import styles from "../../../styles/marketing/header/mainMenu.module.css";
+import styles from "@/styles/marketing/header/mainMenu.module.css";
+import { NAV_ITEMS } from "@/utils/marketing/navItems";
 
 export default function MainMenu() {
   const pathname = usePathname();
@@ -10,78 +11,18 @@ export default function MainMenu() {
 
   return (
     <ul className={styles.menu}>
-      <li className={styles.menuItem}>
-        <Link
-          href="/"
-          className={`${styles.link} ${isActive("/") ? styles.active : ""}`}
-        >
-          Hjem
-        </Link>
-      </li>
-
-      <li className={styles.menuItem}>
-        <Link
-          href="/about"
-          className={`${styles.link} ${
-            isActive("/about") ? styles.active : ""
-          }`}
-        >
-          Om oss
-        </Link>
-      </li>
-
-      <li className={styles.menuItem}>
-        <Link
-          href="/service"
-          className={`${styles.link} ${
-            isActive("/service") ? styles.active : ""
-          }`}
-        >
-          Tjenester
-        </Link>
-      </li>
-
-      <li className={styles.menuItem}>
-        <Link
-          href="/order"
-          className={`${styles.link} ${
-            isActive("/order") ? styles.active : ""
-          }`}
-        >
-          For kunder
-        </Link>
-      </li>
-
-      <li className={styles.menuItem}>
-        <Link
-          href="/vacancies"
-          className={`${styles.link} ${
-            isActive("/vacancies") ? styles.active : ""
-          }`}
-        >
-          Ledige stillinger
-        </Link>
-      </li>
-
-      <li className={styles.menuItem}>
-        <Link
-          href="/contact"
-          className={`${styles.link} ${
-            isActive("/contact") ? styles.active : ""
-          }`}
-        >
-          Kontakt
-        </Link>
-      </li>
-
-      <li className={styles.menuItem}>
-        <Link
-          href="/blog"
-          className={`${styles.link} ${isActive("/blog") ? styles.active : ""}`}
-        >
-          Nyheter
-        </Link>
-      </li>
+      {NAV_ITEMS.map((item) => (
+        <li key={item.href} className={styles.menuItem}>
+          <Link
+            href={item.href}
+            className={`${styles.link} ${
+              isActive(item.href) ? styles.active : ""
+            }`}
+          >
+            {item.label}
+          </Link>
+        </li>
+      ))}
     </ul>
   );
 }

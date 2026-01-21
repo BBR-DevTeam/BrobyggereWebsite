@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "@/styles/marketing/vacancies/vacancyItem.module.css";
 import type { Vacancy } from "@/utils/marketing/vacanciesData";
+import { regionLabel, areaLabel } from "@/utils/marketing/vacanciesData";
 
 type Props = {
   vacancy: Vacancy;
@@ -9,46 +10,33 @@ type Props = {
 export default function VacancyItem({ vacancy }: Props) {
   const href = `/vacancies/${vacancy.slug}`;
 
+  const region = regionLabel[vacancy.region];
+  const areas = vacancy.areas.map((a) => areaLabel[a]).join(", ");
+
   return (
     <Link href={href} className={styles.card}>
-      {/* Left image column */}
       <div className={styles.imageWrap}>
         <img src={vacancy.image} alt={vacancy.title} />
       </div>
 
-      {/* Right content column */}
       <div className={styles.content}>
-        {/* City */}
         <div className={styles.metaRow}>
           <i className={`fa-solid fa-location-dot ${styles.metaIcon}`} />
           <span className={styles.metaText}>
-            {vacancy.city.charAt(0).toUpperCase() + vacancy.city.slice(1)}
+            <span className={styles.metaRegion}>{region}</span>
+            <span className={styles.metaDot}>•</span>
+            <span className={styles.metaAreas}>{areas}</span>
           </span>
         </div>
 
-        {/* Title */}
         <h4 className={styles.title}>{vacancy.title}</h4>
-
-        {/* Short description */}
         <p className={styles.description}>{vacancy.shortDescription}</p>
 
-        {/* Tags */}
-        {vacancy.tags?.length > 0 && (
-          <div className={styles.tagsRow}>
-            {vacancy.tags.includes("fast") && (
-              <span className={styles.tag}>
-                <i className={`fa-solid fa-briefcase ${styles.tagIcon}`} />
-                Fast
-              </span>
-            )}
-            {vacancy.tags.includes("midlertidig") && (
-              <span className={styles.tag}>
-                <i className={`fa-solid fa-clock ${styles.tagIcon}`} />
-                Midlertidig
-              </span>
-            )}
-          </div>
-        )}
+        <div className={styles.bottomRow}>
+          <span className={styles.openPositions}>
+            {vacancy.openPositions} ledige stillinger
+          </span>
+        </div>
       </div>
     </Link>
   );

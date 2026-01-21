@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "../../../../styles/marketing/footer/footer.module.css";
+import { FiClock } from "react-icons/fi";
 
 export default function Footer() {
   return (
@@ -8,8 +9,11 @@ export default function Footer() {
       <div className="footer1 _relative">
         <div className="container">
           <div className="row">
+            {/* BRAND / LOGO */}
             <div className="col-lg-4 col-md-6 col-12">
-              <div className="single-footer-items footer-logo-area">
+              <div
+                className={`single-footer-items footer-logo-area ${styles.brandCol}`}
+              >
                 <div className="footer-logo">
                   <div className={styles.brand}>
                     <Link href="/" className={styles.logoLink}>
@@ -23,42 +27,16 @@ export default function Footer() {
                     <p
                       className={`${styles.companyName} ${styles.companyNameGlow}`}
                     >
-                      Brobyggere Bemannings- og Rekruitteringstjeneste
+                      Brobyggere bemannings- og rekrutteringstjeneste
                     </p>
                   </div>
                 </div>
+
                 <div className="space20" />
-                <div className="heading1-w-modified">
-                  <p>
-                    Vi forenkler komplekse prosesser og gir deg tryggheten til å
-                    ta riktige valg.
-                  </p>
-                </div>
-                <ul className="social-icon">
-                  <li>
-                    <Link href="https://www.linkedin.com/company/brobyggere-vikarbyr-as/">
-                      <i className="fa-brands fa-linkedin-in" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://www.facebook.com/BrobyggereNorge">
-                      <i className="fa-brands fa-x-twitter" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://www.tiktok.com/@brobyggere">
-                      <i className="fa-brands fa-youtube" />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://www.instagram.com/brobyggere/">
-                      <i className="fa-brands fa-instagram" />
-                    </Link>
-                  </li>
-                </ul>
               </div>
             </div>
 
+            {/* QUICK LINKS */}
             <div className="col-lg col-md-6 col-12">
               <div className="single-footer-items">
                 <h3>Quick Links</h3>
@@ -67,21 +45,24 @@ export default function Footer() {
                     <Link href="/order">Bestill Vikar</Link>
                   </li>
                   <li>
-                    <Link href="#">Personvernseklæring</Link>
+                    <Link href="/privacy-policy">Personvernseklæring</Link>
+                  </li>
+                  <li>
+                    <Link href="/privacy-policy-app">
+                      Personvernseklæring - App
+                    </Link>
                   </li>
                   <li>
                     <Link href="/blog-details/1">Sertifiseringer</Link>
                   </li>
                   <li>
-                    <Link href="blog">Nyheter</Link>
-                  </li>
-                  <li>
-                    <Link href="#">Blog Standard</Link>
+                    <Link href="/blog">Nyheter</Link>
                   </li>
                 </ul>
               </div>
             </div>
 
+            {/* MENU */}
             <div className="col-lg col-md-6 col-12">
               <div className="single-footer-items pl-5">
                 <h3>Meny</h3>
@@ -105,17 +86,17 @@ export default function Footer() {
               </div>
             </div>
 
+            {/* CONTACT + SOCIAL */}
             <div className="col-lg-3 col-md-6 col-12">
-              <div className="single-footer-items">
+              <div className={`single-footer-items ${styles.contactCol}`}>
                 <h3>Kontakt Oss</h3>
 
                 <div className="contact-box">
                   <div className="icon">
-                    {/* ✅ absolute paths for icons */}
                     <img src="/assets/img/icons/footer-icon1.png" alt="" />
                   </div>
                   <div className="pera">
-                    <Link href="tel:+4747968163">+47 479 68 163</Link>
+                    <a href="tel:+4747968163">+47 479 68 163</a>
                   </div>
                 </div>
 
@@ -124,9 +105,9 @@ export default function Footer() {
                     <img src="/assets/img/icons/footer-icon2.png" alt="" />
                   </div>
                   <div className="pera">
-                    <Link href="mailto:kontakt@brobyggere.com">
+                    <a href="mailto:kontakt@brobyggere.com">
                       kontakt@brobyggere.com
-                    </Link>
+                    </a>
                   </div>
                 </div>
 
@@ -135,11 +116,83 @@ export default function Footer() {
                     <img src="/assets/img/icons/footer-icon3.png" alt="" />
                   </div>
                   <div className="pera">
-                    <Link href="tel:+4747968163">
+                    <a
+                      href="https://www.google.com/maps?q=Strandgaten+87,+5004+Bergen"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       Strandgaten 87, 5004 Bergen
-                    </Link>
+                    </a>
                   </div>
                 </div>
+
+                <div className="contact-box">
+                  <div className={`icon ${styles.reactIconWrapper}`}>
+                    <FiClock className={styles.reactIcon} />
+                  </div>
+                  <div className="pera">
+                    <a href="/contact">Åpningstider: 06:00 – 22:00</a>
+                  </div>
+                </div>
+
+                {/* Social icons */}
+                <ul className={`social-icon ${styles.socialInContact}`}>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/company/brobyggere-vikarbyr-as/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/assets/img/social/linkedin.png"
+                        alt="LinkedIn"
+                        className={styles.footerSocialIcon}
+                      />
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://www.facebook.com/BrobyggereNorge"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/assets/img/social/facebook.png"
+                        alt="Facebook"
+                        className={styles.footerSocialIcon}
+                      />
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://www.tiktok.com/@brobyggere"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/assets/img/social/tik-tok.png"
+                        alt="TikTok"
+                        className={styles.footerSocialIcon}
+                      />
+                    </a>
+                  </li>
+
+                  <li>
+                    <a
+                      href="https://www.instagram.com/brobyggere/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        src="/assets/img/social/instagram.png"
+                        alt="Instagram"
+                        className={styles.footerSocialIcon}
+                      />
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

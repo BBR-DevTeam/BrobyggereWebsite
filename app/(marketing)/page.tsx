@@ -12,9 +12,9 @@ export default function Home() {
       <Layout>
         <Section1 />
         <Section2 />
-        <Section4 backgroundColor="" />
 
         <Section5 />
+        <Section4 backgroundColor="" />
 
         <Section6 />
 

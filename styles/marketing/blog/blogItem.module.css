@@ -1,21 +1,158 @@
+/* =========================
+   Mobile spacing fix
+   ========================= */
+
+/* Add spacing between cards when stacked (tablet/mobile) */
+.col {
+  margin-bottom: 24px;
+}
+
+/* On desktop 3-col layout, spacing usually comes naturally from the row layout */
+@media (min-width: 992px) {
+  .col {
+    margin-bottom: 0;
+  }
+}
+
+/* =========================
+   Card layout + rounding
+   ========================= */
+
+.card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /* ✅ round ALL corners (top + bottom) */
+  border-radius: 12px !important;
+
+  /* ✅ ensures inner content respects rounded corners */
+  overflow: hidden;
+}
+
+/* Image stays fixed height */
 .imageWrapper {
   width: 100%;
-  height: 220px; /* ✅ uniform height for all blog images */
+  height: 220px;
   overflow: hidden;
-  border-radius: 12px; /* optional: matches most modern UI cards */
+
+  /* Let the card handle rounding so bottom also rounds correctly */
+  border-radius: 0;
 }
 
 .imageWrapper img {
+  overflow-clip-margin: unset;
+
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ✅ crops without stretching */
+  object-fit: cover;
   display: block;
 }
 
-/* Optional: force equal content height too */
+/* Content area fills remaining space */
 .contentWrapper {
-  min-height: 220px; /* helps keep cards equal overall height */
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* ===== Tags (date + author) ===== */
+.contentWrapper :global(.tags) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.contentWrapper :global(.tags a) {
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+  opacity: 0.9;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contentWrapper :global(.tags a img) {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex: 0 0 16px;
+}
+
+/* Top group layout */
+.topArea {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Title block: reserve 2 lines so category always aligns */
+.title {
+  margin-top: 10px;
+  margin-bottom: 0;
+  line-height: 1.25;
+  min-height: calc(1.25em * 2);
+}
+
+/* Clamp the link itself */
+.title > a {
+  font-size: 20px !important;
+  font-weight: 800;
+  text-decoration: none;
+
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  line-clamp: 2 !important;
+  overflow: hidden !important;
+}
+
+/* Category always starts at same Y because title has fixed height */
+.categoryText {
+  font-size: 16px !important;
+  line-height: 1.5;
+  margin: 10px 0 0;
+}
+
+/* Keep learn link consistent */
+.learn {
+  margin-top: 16px;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 991px) {
+  .imageWrapper {
+    height: 200px;
+  }
+
+  .title > a {
+    font-size: 18px !important;
+  }
+
+  .categoryText {
+    font-size: 16px !important;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 575px) {
+  .imageWrapper {
+    height: 180px;
+  }
+
+  .title {
+    line-height: 1.2;
+    min-height: calc(1.2em * 2);
+  }
+
+  .title > a {
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+  }
+
+  .categoryText {
+    font-size: 16px !important;
+  }
 }

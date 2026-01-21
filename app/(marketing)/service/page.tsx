@@ -2,6 +2,12 @@ import Layout from "@/components/marketing/layout/Layout";
 import SectionHeader from "@/components/marketing/layout/SectionHeader";
 import Section1 from "@/components/marketing/sections/service/Section1";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Tjenester",
+};
+
 export default function Home() {
   return (
     <>

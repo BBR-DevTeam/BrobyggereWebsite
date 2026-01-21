@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import React, { FormEvent, useMemo, useState } from "react";
 import styles from "@/styles/marketing/vacancies/vacancyDetails.module.css";
 import {
   FiUser,
@@ -10,11 +10,13 @@ import {
   FiFileText,
   FiPaperclip,
   FiArrowRight,
-  FiBriefcase,
-  FiClock,
   FiMapPin as FiMapPinSmall,
 } from "react-icons/fi";
-import { vacanciesData } from "@/utils/marketing/vacanciesData";
+import {
+  vacanciesData,
+  regionLabel,
+  areaLabel,
+} from "@/utils/marketing/vacanciesData";
 
 type Props = {
   slug: string;
@@ -32,7 +34,7 @@ type FormState = {
 export default function VacancyDetailsSection({ slug }: Props) {
   const vacancy = useMemo(
     () => vacanciesData.find((v) => v.slug === slug),
-    [slug]
+    [slug],
   );
 
   const [formData, setFormData] = useState<FormState>({
@@ -68,6 +70,8 @@ export default function VacancyDetailsSection({ slug }: Props) {
       cvFileName: formData.cvFile?.name,
       otherFileNames: formData.otherFiles.map((f) => f.name),
     });
+
+    // Later: send to API route / email / CRM etc.
   };
 
   if (!vacancy) {
@@ -85,8 +89,9 @@ export default function VacancyDetailsSection({ slug }: Props) {
     );
   }
 
-  const cityLabel =
-    vacancy.city.charAt(0).toUpperCase() + vacancy.city.slice(1);
+  // ✅ NEW: region + areas (after vacancy exists)
+  const region = regionLabel[vacancy.region];
+  const areas = vacancy.areas.map((a) => areaLabel[a]);
 
   return (
     <section className="section-padding">
@@ -107,49 +112,58 @@ export default function VacancyDetailsSection({ slug }: Props) {
                 <p className={styles.breadcrumb}>Ledige stillinger</p>
                 <h1 className={styles.title}>{vacancy.title}</h1>
 
+                {/* ✅ NEW: region + subregions */}
                 <div className={styles.metaBar}>
+                  {/* Strong parent pill */}
                   <span className={styles.metaPill}>
                     <FiMapPinSmall />
-                    {cityLabel}
+                    {region}
                   </span>
 
-                  {vacancy.tags.includes("fast") && (
-                    <span className={styles.metaPill}>
-                      <FiBriefcase />
-                      Fast
+                  {/* Softer child pills */}
+                  {areas.map((a) => (
+                    <span
+                      key={a}
+                      className={`${styles.metaPill} ${styles.metaPillSoft}`}
+                    >
+                      {a}
                     </span>
-                  )}
-
-                  {vacancy.tags.includes("midlertidig") && (
-                    <span className={styles.metaPill}>
-                      <FiClock />
-                      Midlertidig
-                    </span>
-                  )}
+                  ))}
                 </div>
 
                 <p className={styles.subTitle}>{vacancy.shortDescription}</p>
+
+                <div className={styles.openPositionsLine}>
+                  {vacancy.openPositions} ledige stillinger
+                </div>
               </div>
 
               {vacancy.details.map((section, idx) => (
                 <div key={idx} className={styles.section}>
-                  <h3 className={styles.sectionTitle}>{section.title}</h3>
+                  {/* Allow empty title blocks in your data without rendering a blank heading */}
+                  {section.title?.trim() ? (
+                    <h3 className={styles.sectionTitle}>{section.title}</h3>
+                  ) : null}
 
                   {section.type === "text" ? (
                     <div className={styles.paragraphs}>
-                      {section.paragraphs.map((p, i) => (
-                        <p key={i} className={styles.text}>
-                          {p}
-                        </p>
-                      ))}
+                      {section.paragraphs
+                        .filter((p) => p.trim().length > 0)
+                        .map((p, i) => (
+                          <p key={i} className={styles.text}>
+                            {p}
+                          </p>
+                        ))}
                     </div>
                   ) : (
                     <ul className={styles.list}>
-                      {section.items.map((item, i) => (
-                        <li key={i} className={styles.listItem}>
-                          {item}
-                        </li>
-                      ))}
+                      {section.items
+                        .filter((item) => item.trim().length > 0)
+                        .map((item, i) => (
+                          <li key={i} className={styles.listItem}>
+                            {item}
+                          </li>
+                        ))}
                     </ul>
                   )}
                 </div>
@@ -231,6 +245,7 @@ export default function VacancyDetailsSection({ slug }: Props) {
                   />
                 </div>
 
+                {/* CV */}
                 <div className={styles.fileGroup}>
                   <div className={styles.fileRow}>
                     <span className={styles.fieldIcon}>
@@ -261,6 +276,7 @@ export default function VacancyDetailsSection({ slug }: Props) {
                   </div>
                 </div>
 
+                {/* Other docs */}
                 <div className={styles.fileGroup}>
                   <div className={styles.fileRow}>
                     <span className={styles.fieldIcon}>
@@ -324,7 +340,7 @@ export default function VacancyDetailsSection({ slug }: Props) {
               </form>
             </div>
 
-            {/* ✅ NEW: Contact person card under the form */}
+            {/* Contact person card */}
             <div className={styles.contactCard}>
               <div className={styles.contactTitle}>Kontaktperson</div>
 
@@ -348,7 +364,7 @@ export default function VacancyDetailsSection({ slug }: Props) {
                       className={styles.contactLink}
                       href={`tel:${vacancy.contactPerson.phone.replace(
                         /\s+/g,
-                        ""
+                        "",
                       )}`}
                     >
                       <FiPhone />

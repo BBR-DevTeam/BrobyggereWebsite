@@ -1,0 +1,52 @@
+/* styles/marketing/service-details/section2.module.css */
+
+.section2 {
+  background-color: var(--vtc-bg-common-bg2);
+}
+
+.titleRow {
+  display: flex;
+  justify-content: center;
+}
+
+.titleCol {
+  text-align: center;
+}
+
+.cardsRow {
+  justify-content: center;
+  --bs-gutter-x: 24px;
+  --bs-gutter-y: 24px;
+}
+
+/* 3-up on lg (override ServiceCard's col-lg-3) */
+.cardsRow :global(.col-lg-3) {
+  flex: 0 0 auto;
+  width: 33.333333%;
+}
+
+@media (max-width: 991.98px) {
+  .cardsRow :global(.col-lg-3) {
+    width: 50%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .cardsRow :global(.col-lg-3) {
+    width: 100%;
+  }
+}
+
+/* ✅ REAL FIX:
+   Your ServiceCard uses CSS modules, so "cardBody" isn't literally ".cardBody".
+   It becomes something like "section1_cardBody__abc123".
+   This targets any class that CONTAINS "cardBody".
+*/
+.cardsRow :global([class*="cardBody"]) {
+  padding-top: 34px !important; /* more room */
+}
+
+/* Optional: add a little space above the icon block too */
+.cardsRow :global([class*="iconWrapper"]) {
+  margin-top: 6px !important;
+}

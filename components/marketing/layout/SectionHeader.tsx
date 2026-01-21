@@ -1,9 +1,10 @@
 // components/marketing/layout/SectionHeader.tsx
 import Link from "next/link";
+import styles from "@/styles/marketing/layout/sectionHeader.module.css";
 
 type BreadcrumbItem = {
   label: string;
-  href?: string; // if no href → rendered as plain text (current page)
+  href?: string;
 };
 
 type SectionHeaderProps = {
@@ -24,30 +25,27 @@ export default function SectionHeader({
 
   return (
     <>
-      {/*===== PAGE HERO / HEADER START =======*/}
-      <div className="common-hero">
+      <div className={`common-hero`}>
         <div className="container">
           <div className="row">
             <div className={colClass}>
-              <div className={`main-heading ${textAlignClass}`}>
-                {/* Optional breadcrumb (small & subtle) */}
+              <div
+                className={`main-heading ${textAlignClass} ${styles.header}`}
+              >
                 {breadcrumb && breadcrumb.length > 0 && (
-                  <nav className="page-breadcrumb">
+                  <nav className={styles.breadcrumb}>
                     {breadcrumb.map((item, index) => {
                       const isLast = index === breadcrumb.length - 1;
-
                       return (
-                        <span key={index} className="page-breadcrumb-item">
+                        <span key={index} className={styles.crumbItem}>
                           {item.href && !isLast ? (
                             <Link href={item.href}>{item.label}</Link>
                           ) : (
-                            <span className="page-breadcrumb-current">
+                            <span className={styles.crumbCurrent}>
                               {item.label}
                             </span>
                           )}
-                          {!isLast && (
-                            <span className="page-breadcrumb-separator">/</span>
-                          )}
+                          {!isLast && <span className={styles.sep}>/</span>}
                         </span>
                       );
                     })}
@@ -55,16 +53,15 @@ export default function SectionHeader({
                 )}
 
                 {/* Main title */}
-                <h1>{title}</h1>
+                <h1 className={styles.title}>{title}</h1>
 
-                {/* Optional subtitle / intro text */}
-                {subtitle && <p className="page-subtitle">{subtitle}</p>}
+                {/* Subtitle */}
+                {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/*===== PAGE HERO / HEADER END =======*/}
     </>
   );
 }

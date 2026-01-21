@@ -38,8 +38,9 @@
 }
 
 .slug {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
 }
 
 /* Content cards */
@@ -157,7 +158,9 @@
   font-family: var(--f-ff-font-1);
   font-size: var(--f-fs-font-fs16);
   outline: none;
-  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+  transition:
+    box-shadow 0.16s ease,
+    border-color 0.16s ease;
 }
 
 .input:focus {
@@ -189,7 +192,9 @@
   font-family: var(--f-ff-font-1);
   font-size: var(--f-fs-font-fs16);
   outline: none;
-  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+  transition:
+    box-shadow 0.16s ease,
+    border-color 0.16s ease;
 }
 
 /* Make the file picker button look modern-ish */
@@ -318,7 +323,9 @@
   gap: 12px;
 
   padding: 0 14px 0 62px; /* same as your normal inputs */
-  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+  transition:
+    box-shadow 0.16s ease,
+    border-color 0.16s ease;
 }
 
 .fileRow:focus-within {
@@ -364,7 +371,7 @@
 /* --- NEW: hero image --- */
 .hero {
   width: 100%;
-  height: 400px;
+  height: 500px;
   border-radius: 14px;
   overflow: hidden;
   border: 1px solid var(--vtc-border-border-1);
@@ -378,6 +385,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  overflow-clip-margin: unset;
 }
 
 /* --- NEW: meta row under title --- */
@@ -587,6 +595,7 @@
   object-fit: cover;
   border: 1px solid rgba(0, 0, 0, 0.08);
   background: #e9ebea;
+  overflow-clip-margin: unset;
 }
 
 .contactInfo {
@@ -637,4 +646,26 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 240px;
+}
+
+.openPositionsLine {
+  margin-top: 10px;
+  font-size: 13px;
+  opacity: 0.65;
+  font-family: var(--f-ff-font-1);
+  color: var(--vtc-text-pera-text-1);
+}
+
+@media (max-width: 992px) {
+  .hero {
+    height: auto; /* allow it to shrink */
+
+    background: #e9ebea; /* keep your placeholder color */
+  }
+
+  .heroImg {
+    height: 100%;
+    width: 100%;
+    object-fit: contain; /* ✅ show full image, no crop */
+  }
 }

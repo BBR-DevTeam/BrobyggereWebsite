@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { FormEvent, useMemo, useState } from "react";
 import styles from "@/styles/marketing/order/order.module.css";
 import {
@@ -17,7 +16,7 @@ import {
   FiHome,
 } from "react-icons/fi";
 
-type Place = "bergen" | "oslo" | "stavanger";
+type Place = "vestlandet" | "oslo" | "rogaland";
 
 type JobType =
   | "barnehageassistent"
@@ -59,7 +58,7 @@ export default function Section1() {
       { value: "helsefagarbeider", label: "Helsefagarbeider" },
       { value: "annet", label: "Annet" },
     ],
-    []
+    [],
   );
 
   const [formData, setFormData] = useState<FormState>({
@@ -67,7 +66,7 @@ export default function Section1() {
     contactName: "",
     phone: "",
     email: "",
-    place: "bergen",
+    place: "vestlandet",
     jobType: "barnehageassistent",
     startDate: "",
     endDate: "",
@@ -79,7 +78,7 @@ export default function Section1() {
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -87,22 +86,33 @@ export default function Section1() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: replace with your submit logic (API / email / CRM)
     console.log("Order request:", formData);
   };
 
   return (
     <section className={styles.section}>
       <div className="container">
+        {/* MOBILE-ONLY header (keeps title at top on mobile) */}
+        <div className={`d-block d-lg-none ${styles.mobileHeader}`}>
+          <h2 className={styles.title}>Bestill vikar</h2>
+          <p className={styles.subtitle}>
+            Fyll ut skjemaet, så tar vi kontakt så raskt som mulig. Du kan også
+            bestille via telefon eller e-post.
+          </p>
+        </div>
+
         <div className="row align-items-stretch">
-          {/* LEFT */}
-          <div className="col-lg-5">
+          {/* LEFT (moves below form on mobile) */}
+          <div className="col-lg-5 order-2 order-lg-1">
             <div className={styles.left}>
-              <h2 className={styles.title}>Bestill vikar</h2>
-              <p className={styles.subtitle}>
-                Fyll ut skjemaet, så tar vi kontakt så raskt som mulig. Du kan
-                også bestille via telefon eller e-post.
-              </p>
+              {/* DESKTOP-ONLY title/subtitle (keeps alignment with form) */}
+              <div className="d-none d-lg-block">
+                <h2 className={styles.title}>Bestill vikar</h2>
+                <p className={styles.subtitle}>
+                  Fyll ut skjemaet, så tar vi kontakt så raskt som mulig. Du kan
+                  også bestille via telefon eller e-post.
+                </p>
+              </div>
 
               <Link
                 href="/contact"
@@ -114,20 +124,27 @@ export default function Section1() {
                 </span>
               </Link>
 
-              <div className={styles.imageWrap}>
-                <Image
-                  src="/assets/img/order/order-main.jpg"
-                  alt="Bestill vikar"
-                  fill
-                  className={styles.image}
-                  priority={false}
-                />
+              <div className={styles.serviceBlock}>
+                <p className={styles.serviceText}>
+                  På servicesiden vår finner du en oversikt over oppdragstyper
+                  og hva det er lurt å oppgi i bestillingen for raskere match.
+                </p>
+
+                <Link
+                  href="/service"
+                  className={`theme-btn1 ${styles.themeBtnFix}`}
+                >
+                  Se våre tjenester
+                  <span>
+                    <FiArrowRight />
+                  </span>
+                </Link>
               </div>
             </div>
           </div>
 
-          {/* RIGHT */}
-          <div className="col-lg-7 d-flex">
+          {/* RIGHT (form first on mobile) */}
+          <div className="col-lg-7 d-flex order-1 order-lg-2">
             <div className={styles.formCard}>
               <div className={styles.formHeader}>
                 <h3 className={styles.formTitle}>Bestillingsskjema</h3>
@@ -138,9 +155,8 @@ export default function Section1() {
 
               <form onSubmit={handleSubmit} className={styles.form}>
                 <div className="row">
-                  {/* Org */}
                   <div className="col-md-6">
-                    <label className={styles.label}>
+                    <label className={styles.srOnly} htmlFor="orgName">
                       Skole / barnehage / bedrift
                     </label>
                     <div className={styles.field}>
@@ -148,100 +164,116 @@ export default function Section1() {
                         <FiHome />
                       </span>
                       <input
+                        id="orgName"
                         className={styles.input}
                         name="orgName"
-                        placeholder="F.eks. Solsiden barnehage"
+                        placeholder="Skole / barnehage / bedrift"
                         value={formData.orgName}
                         onChange={handleChange}
                         required
+                        aria-label="Skole / barnehage / bedrift"
                       />
                     </div>
                   </div>
 
-                  {/* Contact */}
                   <div className="col-md-6">
-                    <label className={styles.label}>Kontaktperson</label>
+                    <label className={styles.srOnly} htmlFor="contactName">
+                      Kontaktperson
+                    </label>
                     <div className={styles.field}>
                       <span className={styles.fieldIcon}>
                         <FiUser />
                       </span>
                       <input
+                        id="contactName"
                         className={styles.input}
                         name="contactName"
-                        placeholder="Navn på kontaktperson"
+                        placeholder="Kontaktperson"
                         value={formData.contactName}
                         onChange={handleChange}
                         required
+                        aria-label="Kontaktperson"
                       />
                     </div>
                   </div>
 
-                  {/* Phone */}
                   <div className="col-md-6">
-                    <label className={styles.label}>Telefonnummer</label>
+                    <label className={styles.srOnly} htmlFor="phone">
+                      Telefonnummer
+                    </label>
                     <div className={styles.field}>
                       <span className={styles.fieldIcon}>
                         <FiPhone />
                       </span>
                       <input
+                        id="phone"
                         className={styles.input}
                         name="phone"
-                        placeholder="+47 ..."
+                        placeholder="Telefonnummer (+47 ...)"
                         value={formData.phone}
                         onChange={handleChange}
+                        type="tel"
                         inputMode="tel"
                         required
+                        aria-label="Telefonnummer"
                       />
                     </div>
                   </div>
 
-                  {/* Email */}
                   <div className="col-md-6">
-                    <label className={styles.label}>E-post</label>
+                    <label className={styles.srOnly} htmlFor="email">
+                      E-post
+                    </label>
                     <div className={styles.field}>
                       <span className={styles.fieldIcon}>
                         <FiMail />
                       </span>
                       <input
+                        id="email"
                         className={styles.input}
                         name="email"
                         type="email"
-                        placeholder="navn@firma.no"
+                        placeholder="E-post (navn@firma.no)"
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        aria-label="E-post"
                       />
                     </div>
                   </div>
 
-                  {/* Place */}
                   <div className="col-md-6">
-                    <label className={styles.label}>Sted</label>
+                    <label className={styles.label} htmlFor="place">
+                      Sted
+                    </label>
                     <div className={styles.field}>
                       <span className={styles.fieldIcon}>
                         <FiMapPin />
                       </span>
                       <select
+                        id="place"
                         className={styles.select}
                         name="place"
                         value={formData.place}
                         onChange={handleChange}
                       >
-                        <option value="bergen">Bergen</option>
-                        <option value="oslo">Oslo</option>
-                        <option value="stavanger">Stavanger</option>
+                        <option value="vestlandet">Vestlandet</option>
+                        <option value="oslo">Akershus/Oslo</option>
+                        <option value="rogaland">Rogaland</option>
                       </select>
                     </div>
                   </div>
 
-                  {/* Job type */}
                   <div className="col-md-6">
-                    <label className={styles.label}>Oppdragstype</label>
+                    <label className={styles.label} htmlFor="jobType">
+                      Oppdragstype
+                    </label>
                     <div className={styles.field}>
                       <span className={styles.fieldIcon}>
                         <FiBriefcase />
                       </span>
                       <select
+                        id="jobType"
                         className={styles.select}
                         name="jobType"
                         value={formData.jobType}
@@ -256,14 +288,16 @@ export default function Section1() {
                     </div>
                   </div>
 
-                  {/* Start date */}
                   <div className="col-md-6">
-                    <label className={styles.label}>Startdato</label>
+                    <label className={styles.label} htmlFor="startDate">
+                      Startdato
+                    </label>
                     <div className={styles.field}>
                       <span className={styles.fieldIcon}>
                         <FiCalendar />
                       </span>
                       <input
+                        id="startDate"
                         className={styles.input}
                         type="date"
                         name="startDate"
@@ -274,14 +308,16 @@ export default function Section1() {
                     </div>
                   </div>
 
-                  {/* End date */}
                   <div className="col-md-6">
-                    <label className={styles.label}>Sluttdato</label>
+                    <label className={styles.label} htmlFor="endDate">
+                      Sluttdato (valgfritt)
+                    </label>
                     <div className={styles.field}>
                       <span className={styles.fieldIcon}>
                         <FiCalendar />
                       </span>
                       <input
+                        id="endDate"
                         className={styles.input}
                         type="date"
                         name="endDate"
@@ -291,14 +327,16 @@ export default function Section1() {
                     </div>
                   </div>
 
-                  {/* Start time */}
                   <div className="col-md-6">
-                    <label className={styles.label}>Starttid</label>
+                    <label className={styles.label} htmlFor="startTime">
+                      Starttid
+                    </label>
                     <div className={styles.field}>
                       <span className={styles.fieldIcon}>
                         <FiClock />
                       </span>
                       <input
+                        id="startTime"
                         className={styles.input}
                         type="time"
                         name="startTime"
@@ -309,14 +347,16 @@ export default function Section1() {
                     </div>
                   </div>
 
-                  {/* End time */}
                   <div className="col-md-6">
-                    <label className={styles.label}>Sluttid</label>
+                    <label className={styles.label} htmlFor="endTime">
+                      Sluttid (valgfritt)
+                    </label>
                     <div className={styles.field}>
                       <span className={styles.fieldIcon}>
                         <FiClock />
                       </span>
                       <input
+                        id="endTime"
                         className={styles.input}
                         type="time"
                         name="endTime"
@@ -326,25 +366,27 @@ export default function Section1() {
                     </div>
                   </div>
 
-                  {/* Comment */}
                   <div className="col-md-12">
-                    <label className={styles.label}>Kommentar</label>
+                    <label className={styles.srOnly} htmlFor="comment">
+                      Kommentar
+                    </label>
                     <div className={styles.fieldTextarea}>
                       <span className={styles.fieldIconTextarea}>
                         <FiMessageSquare />
                       </span>
                       <textarea
+                        id="comment"
                         className={styles.textarea}
                         name="comment"
-                        placeholder="F.eks. antall personer, erfaring, språk, behov for politiattest, osv."
+                        placeholder="Kommentar (valgfritt) – f.eks. antall personer, erfaring, språk, behov for politiattest, osv."
                         value={formData.comment}
                         onChange={handleChange}
                         rows={4}
+                        aria-label="Kommentar"
                       />
                     </div>
                   </div>
 
-                  {/* Submit */}
                   <div className="col-md-12">
                     <button
                       type="submit"
@@ -365,7 +407,6 @@ export default function Section1() {
               </form>
             </div>
           </div>
-
           {/* row end */}
         </div>
       </div>

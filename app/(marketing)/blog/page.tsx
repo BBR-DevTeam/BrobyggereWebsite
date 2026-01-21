@@ -3,6 +3,13 @@ import Layout from "@/components/marketing/layout/Layout";
 import Section1 from "@/components/marketing/sections/blog/Section1";
 
 import SectionHeader from "@/components/marketing/layout/SectionHeader";
+
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Nyheter",
+};
+
 export default function Home() {
   return (
     <>

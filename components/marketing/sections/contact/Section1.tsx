@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
 import styles from "@/styles/marketing/contact/contact.module.css";
 import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
 
-type CityKey = "bergen" | "oslo" | "stavanger";
+type CityKey = "vestlandet" | "oslo" | "rogaland";
 
 type CityContact = {
   key: CityKey;
@@ -23,15 +22,15 @@ export default function Section1() {
     () => [
       {
         key: "oslo",
-        label: "Oslo",
-        phoneLabel: "+47 90 00 00 00",
-        phoneHref: "tel:+4790000000",
-        emailLabel: "oslo@brobyggere.com",
-        emailHref: "mailto:oslo@brobyggere.com",
+        label: "Akershus/Oslo",
+        phoneLabel: "+47 479 62 683",
+        phoneHref: "tel:+4747962683",
+        emailLabel: "celine@brobyggere.com",
+        emailHref: "mailto:celine@brobyggere.com",
       },
       {
-        key: "bergen",
-        label: "Bergen",
+        key: "vestlandet",
+        label: "Vestlandet",
         phoneLabel: "+47 479 68 163",
         phoneHref: "tel:+4747968163",
         emailLabel: "kontakt@brobyggere.com",
@@ -41,24 +40,27 @@ export default function Section1() {
           "https://maps.google.com/?q=Strandgaten%2087,%205004%20Bergen",
       },
       {
-        key: "stavanger",
-        label: "Stavanger",
-        phoneLabel: "+47 91 00 00 00",
-        phoneHref: "tel:+4791000000",
-        emailLabel: "stavanger@brobyggere.com",
-        emailHref: "mailto:stavanger@brobyggere.com",
+        key: "rogaland",
+        label: "Rogaland",
+        phoneLabel: "+47 972 78 547",
+        phoneHref: "tel:+4797278547",
+        emailLabel: "eline@brobyggere.com",
+        emailHref: "mailto:eline@brobyggere.com",
       },
     ],
-    []
+    [],
   );
 
-  const [activeCity, setActiveCity] = useState<CityKey>("bergen");
+  const [activeCity, setActiveCity] = useState<CityKey>("vestlandet");
   const active = cities.find((c) => c.key === activeCity)!;
 
   return (
     <>
       {/*=====CONTACT AREA START=======*/}
-      <div className="contact1-modified spcontact overflow-hidden" id="contact">
+      <div
+        className={`contact1-modified spcontact overflow-hidden ${styles.contactRoot}`}
+        id="contact"
+      >
         <div className="container">
           <div className="row align-items-stretch">
             {/* LEFT */}
@@ -68,7 +70,7 @@ export default function Section1() {
 
                 <div className="space16" />
 
-                {/* ✅ Tabs */}
+                {/* Tabs */}
                 <div className={styles.tabsWrap}>
                   <div
                     className={styles.tabs}
@@ -95,7 +97,7 @@ export default function Section1() {
                   </div>
                 </div>
 
-                {/* ✅ Animated content switch */}
+                {/* Animated content switch */}
                 <div key={active.key} className={styles.fadeSlide}>
                   <div className="space16" />
 
@@ -107,7 +109,7 @@ export default function Section1() {
                       </div>
                       <div className="heading">
                         <p>Ring oss</p>
-                        <Link href={active.phoneHref}>{active.phoneLabel}</Link>
+                        <a href={active.phoneHref}>{active.phoneLabel}</a>
                       </div>
                     </div>
                   </div>
@@ -120,13 +122,13 @@ export default function Section1() {
                       </div>
                       <div className="heading">
                         <p>Send oss e-post</p>
-                        <Link href={active.emailHref}>{active.emailLabel}</Link>
+                        <a href={active.emailHref}>{active.emailLabel}</a>
                       </div>
                     </div>
                   </div>
 
-                  {/* ✅ Address (ONLY Bergen) */}
-                  {active.key === "bergen" &&
+                  {/* Address (ONLY Bergen) */}
+                  {active.key === "vestlandet" &&
                     active.addressLabel &&
                     active.addressHref && (
                       <div>
@@ -138,9 +140,13 @@ export default function Section1() {
                           </div>
                           <div className="heading">
                             <p>Besøksadresse</p>
-                            <Link href={active.addressHref}>
+                            <a
+                              href={active.addressHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               {active.addressLabel}
-                            </Link>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -162,6 +168,7 @@ export default function Section1() {
                     raskt som mulig.
                   </p>
                 </div>
+
                 <div className="space10" />
 
                 <form action="#">
@@ -186,7 +193,11 @@ export default function Section1() {
 
                     <div className="col-md-6">
                       <div className="single-input">
-                        <input type="number" placeholder="Telefon" />
+                        <input
+                          type="tel"
+                          inputMode="tel"
+                          placeholder="Telefon"
+                        />
                       </div>
                     </div>
 

@@ -1,0 +1,105 @@
+/* styles/marketing/service-details/serviceDetailsContent.module.css */
+
+/* wrap only the left content area */
+.sheet {
+  background: var(--vtc-bg-bg-white);
+  border: 1px solid var(--vtc-border-border-1);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 14px 34px rgba(8, 17, 32, 0.06);
+}
+
+/* hero */
+.hero {
+  width: 100%;
+  height: 360px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--vtc-border-border-1);
+  background: #e9ebea;
+  box-shadow: 0 14px 30px rgba(8, 17, 32, 0.08);
+  margin-bottom: 16px;
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.title {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.15;
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+  font-weight: var(--f-fw-ex-bold);
+}
+
+.intro {
+  margin-top: 10px;
+  color: rgba(12, 18, 28, 0.88);
+  font-family: var(--f-ff-font-1);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.section {
+  margin-top: 18px;
+}
+
+.section:first-of-type {
+  margin-top: 14px;
+}
+
+.sectionTitle {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  color: var(--vtc-text-heading-text-1);
+  font-family: var(--f-ff-font-1);
+  font-weight: var(--f-fw-ex-bold);
+}
+
+/* paragraphs */
+.paragraphs {
+  display: grid;
+  gap: 12px;
+}
+
+.text {
+  margin: 0;
+  color: rgba(12, 18, 28, 0.88); /* ✅ sharper / darker */
+  font-family: var(--f-ff-font-1);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* list like vacancies */
+.list {
+  margin: 0;
+  padding-left: 22px;
+  color: rgba(12, 18, 28, 0.88);
+  font-family: var(--f-ff-font-1);
+  line-height: 1.7;
+  font-size: 15px;
+  list-style: disc;
+}
+
+.listItem {
+  margin: 8px 0;
+}
+
+.listItem::marker {
+  font-size: 1.1em;
+}
+
+@media (max-width: 991.98px) {
+  .hero {
+    height: 280px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}

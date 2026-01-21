@@ -1,11 +1,11 @@
 import Link from "next/link";
-import styles from "../../../../styles/marketing/home/section1.module.css";
+import styles from "@/styles/marketing/home/section1.module.css";
 
 export default function Section1() {
   return (
-    <>
+    <div className={styles.heroWrapper}>
       {/*=====HERO AREA START =======*/}
-      <div className="hero-area1">
+      <div className="hero-area1 sphome">
         <div className="container">
           <div className="row align-items-center">
             {/* LEFT SIDE TEXT */}
@@ -16,27 +16,29 @@ export default function Section1() {
                   data-aos="fade-right"
                   data-aos-duration={800}
                 >
-                  Brobyggere Bemannings- og Rekruitteringstjeneste
+                  Brobyggere bemannings- og rekrutteringstjeneste
                 </span>
 
-                <h1 className="text-anime-style-3">
-                  Vikarer med kvalitet – Vi skaper trygghet og stabilitet for
-                  alle
+                <h1 className={`text-anime-style-3 ${styles.heroTitle}`}>
+                  <span className={styles.heroTitleMain}>
+                    VIKARER MED KVALITET
+                  </span>
+                  <span className={styles.heroTitleSub}>
+                    Skaper trygghet og stabilitet for alle
+                  </span>
                 </h1>
 
                 <div className="space16" />
 
                 <p data-aos="fade-right" data-aos-duration={1000}>
-                  Vi leverer fleksible bemanningsløsninger til barnehager og
-                  skoler, <br />
-                  og hjelper dere å finne rett kompetanse – akkurat når behovet
-                  oppstår.
+                  Vi leverer fleksible bemanningsløsninger og hjelper dere å
+                  finne rett kompetanse - akkurat når behovet oppstår.
                 </p>
 
                 <div className="space30" />
 
                 <div
-                  className="hero1-buttons"
+                  className={`hero1-buttons ${styles.heroButtons}`}
                   data-aos="fade-right"
                   data-aos-duration={1200}
                 >
@@ -46,6 +48,7 @@ export default function Section1() {
                       <i className="fa-solid fa-arrow-right" />
                     </span>
                   </Link>
+
                   <Link className="theme-btn2" href="/service">
                     Våre Tjenester
                     <span>
@@ -78,6 +81,6 @@ export default function Section1() {
         </div>
       </div>
       {/*=====HERO AREA END=======*/}
-    </>
+    </div>
   );
 }

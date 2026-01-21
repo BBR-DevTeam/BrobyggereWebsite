@@ -1,0 +1,102 @@
+/* MOBILE */
+@media (max-width: 991px) {
+  /* 1) Make the inner two columns stack full width */
+  .root :global(.about3-images > .row),
+  .root :global(.about3-images .row) {
+    display: flex !important;
+    flex-direction: column !important;
+    row-gap: 18px !important;
+  }
+
+  /* Target the exact bootstrap cols inside this component */
+  .root :global(.about3-images .row > .col-lg-6) {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* 2) Force image wrappers to be full width */
+  .root :global(.about3-images .image),
+  .root :global(.about3-images .image.overlay-anim) {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+
+  /* Some templates set the wrapper to a fixed height -> remove it */
+  .root :global(.about3-images .image) {
+    height: auto !important;
+  }
+
+  /* 3) Force images to fill width but keep aspect ratio (no crop) */
+  .root :global(.about3-images .image img) {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important;
+  }
+
+  /* 4) Ensure stat boxes match width & add vertical spacing */
+  .root :global(.about3-images .conter-box) {
+    width: 100% !important;
+    margin-top: 14px !important;
+  }
+
+  /* Extra vertical space between the two counter cards (as you asked) */
+  .root :global(.about3-images .conter-box2) {
+    margin-bottom: 14px !important;
+  }
+}
+
+/* Smaller phones */
+@media (max-width: 480px) {
+  .root :global(.about3-images .image img) {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Liberated icons (no template wrapper styling) */
+.freeIcon {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* remove any default wrapper look */
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.freeIcon img {
+  display: block;
+  width: 60px; /* customize freely */
+  height: 60px;
+  object-fit: contain;
+}
+
+/* Liberated icons (force size even if template fights it) */
+.root :global(.about3-icon-box) .freeIcon {
+  width: 60px !important; /* wrapper size */
+  height: 60px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.root :global(.about3-icon-box) .freeIcon img {
+  width: 60px !important; /* image size */
+  height: 60px !important;
+  display: block !important;
+  object-fit: contain !important;
+
+  max-width: none !important; /* prevents template max-width: 10px type rules */
+}

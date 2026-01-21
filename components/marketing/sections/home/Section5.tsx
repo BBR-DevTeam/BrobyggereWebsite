@@ -1,11 +1,14 @@
 import Link from "next/link";
-import styles from "../../../../styles/marketing/home/section5.module.css";
+import styles from "@/styles/marketing/home/section5.module.css";
 
 export default function Section5() {
   return (
     <>
       {/*=====WORK AREA START=======*/}
-      <div className="work1 sp overflow-hidden" id="work">
+      <div
+        className={`work1 sp overflow-hidden ${styles.section5Wrapper}`}
+        id="work"
+      >
         <div className="container">
           <div className="row align-items-center">
             {/* LEFT SIDE — Mockup with background */}

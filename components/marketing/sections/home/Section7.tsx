@@ -1,10 +1,14 @@
 import Link from "next/link";
+import styles from "@/styles/marketing/home/section7.module.css";
 
 export default function Section7() {
   return (
     <>
       {/*=====CONTACT AREA START=======*/}
-      <div className="contact1 sp overflow-hidden" id="contact">
+      <div
+        className={`contact1 sp overflow-hidden ${styles.section7Wrapper}`}
+        id="contact"
+      >
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-6">
@@ -16,16 +20,20 @@ export default function Section7() {
                 >
                   Kontakt oss
                 </span>
+
                 <h2 className="text-anime-style-3">
                   Ta kontakt – la oss starte dialogen
                 </h2>
+
                 <div className="space16" />
+
                 <p data-aos="fade-right" data-aos-duration={900}>
                   Vi hjelper deg med å finne riktige bemanningsløsninger for
                   dine behov. Enten du er en barnehage eller skole som trenger
                   kvalifiserte vikarer, eller en jobbsøker på jakt etter nye
                   muligheter.
                 </p>
+
                 <div className="" data-aos="fade-right" data-aos-duration={800}>
                   <div className="contact1-box">
                     <div className="icon">
@@ -37,8 +45,9 @@ export default function Section7() {
                     </div>
                   </div>
                 </div>
+
                 <div
-                  className=""
+                  className={styles.contactEmailBox}
                   data-aos="fade-right"
                   data-aos-duration={1100}
                 >
@@ -56,6 +65,7 @@ export default function Section7() {
                 </div>
               </div>
             </div>
+
             <div className="col-lg-6">
               <div
                 className="contact1-form"
@@ -71,7 +81,9 @@ export default function Section7() {
                     raskt som mulig.
                   </p>
                 </div>
+
                 <div className="space10" />
+
                 <form action="#">
                   <div className="row">
                     <div className="col-md-6">
@@ -79,35 +91,37 @@ export default function Section7() {
                         <input type="text" placeholder="Fornavn" />
                       </div>
                     </div>
+
                     <div className="col-md-6">
                       <div className="single-input">
                         <input type="text" placeholder="Etternavn" />
                       </div>
                     </div>
+
                     <div className="col-md-6">
                       <div className="single-input">
                         <input type="email" placeholder="E-post" />
                       </div>
                     </div>
+
                     <div className="col-md-6">
                       <div className="single-input">
                         <input type="number" placeholder="Telefon" />
                       </div>
                     </div>
+
                     <div className="col-md-12">
                       <div className="single-input">
                         <input type="text" placeholder="Emne" />
                       </div>
                     </div>
+
                     <div className="col-md-12">
                       <div className="single-input">
-                        <textarea
-                          rows={4}
-                          placeholder="Melding"
-                          defaultValue={""}
-                        />
+                        <textarea rows={4} placeholder="Melding" />
                       </div>
                     </div>
+
                     <div className="col-md-12">
                       <div className="button">
                         <button className="theme-btn1">

@@ -1,83 +1,115 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// We'll dynamically import SplitText
-let SplitText: any
+gsap.registerPlugin(ScrollTrigger);
+
+let SplitText: any;
+
+type AnimEl = HTMLElement & {
+  __originalHTML?: string;
+  __tween?: gsap.core.Tween;
+  __trigger?: ScrollTrigger;
+};
 
 export default function useTextAnimation2() {
+  const pathname = usePathname();
+  const elsRef = useRef<AnimEl[]>([]);
+
   useEffect(() => {
-    // Make sure we're on the client
-    if (typeof window === "undefined") return
+    if (typeof window === "undefined") return;
 
-    const setupAnimation = async () => {
-      // Register ScrollTrigger
-      gsap.registerPlugin(ScrollTrigger)
-
-      // Try to dynamically import SplitText
+    const setup = async () => {
+      // Dynamic import SplitText (if available)
       try {
-        const gsapAll = await import("gsap/all")
-        SplitText = gsapAll.SplitText
-        gsap.registerPlugin(SplitText)
-      } catch (error) {
-        console.warn("SplitText plugin not available. Falling back to simpler animation.")
+        const gsapAll = await import("gsap/all");
+        SplitText = gsapAll.SplitText;
+        if (SplitText) gsap.registerPlugin(SplitText);
+      } catch {
+        // silent – fallback will be used
       }
 
-      // Select all elements with the class 'text-anime-style-3'
-      const elements = document.querySelectorAll('.text-anime-style-2')
+      elsRef.current = Array.from(
+        document.querySelectorAll(
+          ".text-anime-style-2",
+        ) as NodeListOf<HTMLElement>,
+      ) as AnimEl[];
 
-      elements.forEach((element) => {
-        let chars: HTMLElement[] | null = null
+      elsRef.current.forEach((el, idx) => {
+        // restore original HTML if needed
+        if (!el.__originalHTML) el.__originalHTML = el.innerHTML;
+        else el.innerHTML = el.__originalHTML;
 
-        // Use SplitText if available, otherwise fallback to simple spans
+        // kill only our tween/trigger
+        el.__tween?.kill();
+        el.__trigger?.kill();
+
+        let chars: HTMLElement[] = [];
+
         if (SplitText) {
-          const split = new SplitText(element, {
+          const split = new SplitText(el, {
             type: "chars",
             charsClass: "split-char",
-          })
-          chars = split.chars
+          });
+          chars = split.chars;
         } else {
-          // Simple fallback: wrap each character in a span
-          const text = element.textContent || ""
-          element.innerHTML = text.split('').map(char => `<span class="split-char">${char}</span>`).join('')
-          chars = Array.from(element.querySelectorAll('.split-char'))
+          const text = el.textContent || "";
+          el.innerHTML = text
+            .split("")
+            .map(
+              (c) =>
+                `<span class="split-char">${c === " " ? "&nbsp;" : c}</span>`,
+            )
+            .join("");
+          chars = Array.from(el.querySelectorAll(".split-char"));
         }
 
-        // Set initial styles
-        gsap.set(element, { perspective: 400 })
-        gsap.set(chars, {
-          opacity: 0,
-          x: "50",
-        })
+        gsap.set(el, { perspective: 400 });
+        gsap.set(chars, { opacity: 0, x: 50 });
 
-        // Create animation timeline
-        gsap.timeline({
+        const tween = gsap.to(chars, {
           scrollTrigger: {
-            trigger: element,
+            id: `text2-${pathname}-${idx}`,
+            trigger: el,
             start: "top 90%",
-          }
-        }).to(chars, {
-          x: "0",
-          y: "0",
-          rotateX: "0",
+            toggleActions: "play none none reverse",
+          },
+          x: 0,
           opacity: 1,
           duration: 1,
           ease: "back.out",
           stagger: 0.02,
-        })
-      })
-    }
+          onComplete: () => {
+            gsap.set(chars, { opacity: 1, x: 0, clearProps: "transform" });
+          },
+        });
 
-    setupAnimation()
+        el.__tween = tween;
+        el.__trigger = tween.scrollTrigger as ScrollTrigger;
+      });
 
-    // Cleanup function
+      ScrollTrigger.refresh();
+    };
+
+    setup();
+
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
-  }, [])
+      elsRef.current.forEach((el) => {
+        el.__tween?.kill();
+        el.__trigger?.kill();
 
-  // This component doesn't render anything itself
-  return null
+        if (el.__originalHTML) el.innerHTML = el.__originalHTML;
+
+        gsap.set(el, { clearProps: "opacity,transform" });
+
+        delete el.__tween;
+        delete el.__trigger;
+      });
+    };
+  }, [pathname]);
+
+  return null;
 }

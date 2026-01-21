@@ -4,18 +4,36 @@
   justify-content: flex-end;
   max-height: 600px;
 
-  border-radius: 12px; /* round ALL corners on the container */
-  overflow: hidden; /* clip the image to the rounded box */
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 /* Image itself */
 .chooseImageWrapper img {
-  width: 100%; /* fill the container horizontally */
-  height: 100%; /* fill the container vertically */
-  object-fit: cover; /* crop nicely if aspect ratio differs */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 
-  border-radius: 0 !important; /* override any template radius on the img */
+  border-radius: 0 !important;
   display: block;
+}
+
+/* --- Split title like Section 1 --- */
+.sectionTitle {
+  margin: 0;
+}
+
+.titleMain {
+  display: block;
+}
+
+.titleSub {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.62em;
+  font-weight: 600;
+  opacity: 0.9;
+  line-height: 1.2;
 }
 
 /* On smaller screens, center the image again */

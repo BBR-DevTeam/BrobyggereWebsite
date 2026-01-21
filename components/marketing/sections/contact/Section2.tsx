@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import styles from "../../../../styles/marketing/contact/contactSection2.module.css";
 
 export default function Section2() {
@@ -33,12 +32,13 @@ export default function Section2() {
               </div>
 
               <div className={styles.grid}>
-                <Link
+                <a
                   href="https://www.instagram.com/brobyggere/"
                   className={styles.socialBtn}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span className={styles.icon}>
-                    {/* Replace src with your logo path */}
                     <img
                       src="/assets/img/social/instagram.png"
                       alt="Instagram"
@@ -52,11 +52,13 @@ export default function Section2() {
                   <span className={styles.arrow}>
                     <i className="fa-solid fa-arrow-right" />
                   </span>
-                </Link>
+                </a>
 
-                <Link
+                <a
                   href="https://www.facebook.com/BrobyggereNorge"
                   className={styles.socialBtn}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span className={styles.icon}>
                     <img
@@ -72,11 +74,13 @@ export default function Section2() {
                   <span className={styles.arrow}>
                     <i className="fa-solid fa-arrow-right" />
                   </span>
-                </Link>
+                </a>
 
-                <Link
+                <a
                   href="https://www.tiktok.com/@brobyggere"
                   className={styles.socialBtn}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span className={styles.icon}>
                     <img
@@ -92,11 +96,13 @@ export default function Section2() {
                   <span className={styles.arrow}>
                     <i className="fa-solid fa-arrow-right" />
                   </span>
-                </Link>
+                </a>
 
-                <Link
+                <a
                   href="https://www.linkedin.com/company/brobyggere-vikarbyr-as/"
                   className={styles.socialBtn}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span className={styles.icon}>
                     <img
@@ -114,7 +120,7 @@ export default function Section2() {
                   <span className={styles.arrow}>
                     <i className="fa-solid fa-arrow-right" />
                   </span>
-                </Link>
+                </a>
               </div>
 
               <div className={styles.footerNote}>

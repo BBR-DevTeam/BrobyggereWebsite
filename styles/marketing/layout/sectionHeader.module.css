@@ -1,0 +1,64 @@
+/* sectionHeader.module.css */
+
+/* Hook class on main-heading wrapper */
+.header {
+}
+
+/* Desktop defaults (leave template mostly intact) */
+.title {
+  margin: 0;
+}
+
+.subtitle {
+  margin-top: 14px;
+}
+
+/* Optional breadcrumb styling */
+.breadcrumb {
+  margin-bottom: 10px;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.crumbItem {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.crumbCurrent {
+  font-weight: 600;
+}
+
+.sep {
+  opacity: 0.6;
+  margin: 0 10px;
+}
+
+/* =========================================================
+   ✅ FORCE RESPONSIVE HERO TYPOGRAPHY (beats main.css)
+   We target the actual markup: .header h1 / .header p
+   and add !important because template likely uses strong rules.
+   ========================================================= */
+
+@media (max-width: 991px) {
+  .header .title {
+    font-size: 34px !important; /* match Contact */
+    line-height: 1.15 !important;
+  }
+
+  .header .subtitle {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .header .title {
+    font-size: 30px !important;
+  }
+
+  .header .subtitle {
+    font-size: 14px !important;
+  }
+}

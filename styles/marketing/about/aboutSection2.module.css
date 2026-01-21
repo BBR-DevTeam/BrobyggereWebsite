@@ -1,0 +1,71 @@
+/* styles/marketing/about/aboutSection2.module.css */
+
+.root {
+  font-family: var(--f-ff-font-1);
+}
+
+/* optional: makes the cards look consistent even if template styles change */
+.missionBox {
+  text-align: center; /* ✅ centers icon + title */
+}
+
+/* ✅ Custom icon wrapper (NO template background/padding/circle) */
+.iconWrap {
+  width: fit-content;
+  margin: 0 auto 14px auto; /* ✅ centers icon horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* hard reset template icon styling */
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.iconWrap img {
+  display: block;
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+}
+
+/* Card title */
+.cardTitle {
+  text-align: center;
+  margin: 0;
+}
+
+/* Remove default ugly blue Link styling */
+.titleLink {
+  color: var(--vtc-text-heading-text-1);
+  text-decoration: none;
+  font-weight: var(--f-fw-bold);
+  font-size: var(--f-fs-font-fs20);
+  letter-spacing: -0.2px;
+}
+
+.titleLink:hover {
+  color: var(--brand-primary);
+}
+
+/* Text */
+.cardText {
+  text-align: center;
+  color: var(--vtc-text-pera-text-1);
+  font-size: var(--f-fs-font-fs16);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Mobile spacing improvement */
+@media (max-width: 991px) {
+  .root :global(.row > [class*="col-"]) {
+    margin-bottom: 18px;
+  }
+
+  .root :global(.row > [class*="col-"]:last-child) {
+    margin-bottom: 0;
+  }
+}

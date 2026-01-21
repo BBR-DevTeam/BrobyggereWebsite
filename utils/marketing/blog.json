@@ -1,55 +1,92 @@
 [
   {
     "id": 1,
-    "title": "Brobyggere er nå sertifisert for kvalitet, trygghet og miljø",
+    "title": "Brobyggere er sertifisert for kvalitet, trygghet og miljø",
     "img": "assets/img/blog/blog2-img1.jpg",
     "category": "Sertifiseringer",
-    "author": "Celine a.",
-    "date": "25 April 2023",
+    "author": "Rachel.b",
+    "date": "18 August 2025",
     "content": [
-      "Vi er stolte av å kunne dele at vi nå har tre sertifiseringer som setter standarden for kvalitet, trygghet og bærekraft i bemanningsbransjen. ",
-      "Et kvalitetsstempel fra NHO service og handel som bekrefter at vi etterlever strenge krav til rutiner og praksis i bemanningsbransjen.",
-      "En internasjonal standard som dokumenterer at vi jobber systematisk med kvalitet i alle ledd. "
+      {
+        "type": "h3",
+        "text": "Våre sertifiseringer innen kvalitetsledelse  og miljøledelse"
+      },
+      {
+        "type": "p",
+        "text": "I 2025 har vi jobbet målrettet for å kvalitetssikre og heve våre tjenester. HR-konsulent Celine Rosnes Ramberg er kvalitetsansvarlig i Brobyggere. Det vil si at hun er ansvarlig for å formidle og følge opp prosedyrer og tiltak vi innfører i administrasjonen. Celine jobber tett med Mostafa Abdul Jabar som er kvalitetsleder, for å sørge for at alle våre sertifiseringer etterleves i hverdagen."
+      },
+      {
+        "type": "p",
+        "text": "I Brobyggere er vi stolte av å kunne dele at vi nå har oppnådd tre sertifiseringer som setter standarden for vårt arbeid innen kvalitet, trygghet og bærekraft i bemannings- og rekrutteringsbransjen. Sertifiseringene dokumenterer vår forpliktelse til kontinuerlig forbedring, gode rutiner og arbeidspraksis, samt miljøansvar."
+      },
+      {
+        "type": "h3",
+        "text": "Revidert arbeidsgiver ved NHO"
+      },
+
+      {
+        "type": "p",
+        "text": "Revidert Arbeidsgiver (RA) er et kvalitetsstempel for bemanningsbedrifter. Sertifiseringen innebærer ekstern revisjon av våre rutiner og praksis, slik at vi kontinuerlig dokumenterer og opprettholder kvaliteten på det vi gjør."
+      },
+      {
+        "type": "p",
+        "text": "Gjennom Brobyggeres sertifisering som RA hos NHO dokumenteres vår kvalitet som arbeidsgiver gjennom ekstern revisjon av rutiner og praksis. Dette gjelder blant annet for ansettelseskontrakter, vurdering av risikoforhold, HMS, arbeidstid, lønn og sykepenger (NHO Service og Handel, u.å). En slik sertifisering gir våre ansatte trygghet for at de har en arbeidsgiver som ivaretar deres rettigheter og velvære, uansett hvilken arbeidsplass de jobber på."
+      },
+      {
+        "type": "h3",
+        "text": "ISO 9001:2015 - Kvalitetsstyring"
+      },
+      {
+        "type": "p",
+        "text": "ISO 9001 er en internasjonal standard for kvalitetsstyring, og viser til at Brobyggere har systemer og ruiner som sikrer kontinuerlig forbedring, effektivitet og høy kvalitet i våre tjenester. Sertifiseringen sikrer at våre kunder alltid kan forvente konsekvent og pålitelig kvalitet i alle våre prosesser, for eksempel i forbindelse med avvikshåndtering."
+      },
+
+      {
+        "type": "h3",
+        "text": "ISO 14001 - Miljøledelse"
+      },
+      {
+        "type": "p",
+        "text": "ISO 14001 er en internasjonal standard for miljøledelse, som dokumenterer vårt arbeid med å redusere miljøpåvirkning og fremme bærekraftige løsninger. Sertifiseringen viser til at Brobyggere aktivt jobber med å ta miljøhensyn i alle deler av virksomheten. "
+      },
+
+      {
+        "type": "h3",
+        "text": "Kompetanseheving"
+      },
+      {
+        "type": "p",
+        "text": "I Brobyggere gir vi grundig opplæring til våre vikarer. Våre ansatte får tilbudt intern opplæring gjennom vårt eget kompetanseheving og kursprogram “Brobyggere Academy”. Brobyggere Academy er utviklet i samarbeid med både både interne og eksterne forelesere og fagkyndig. “Borbyggere Academy” er en mer utdypende kurs for vikarer i barnehage og skole. Kurset går mer i dybden på flere temaer."
+      }
     ],
     "footerText": "Bloggen vår er ditt sted for oppdatert innsikt, beste praksis og faglige råd innen bemanning – fra å forbedre rekrutteringsprosessene til å navigere endringer i arbeidslivslovgivningen og utvikle karrieren din."
   },
+
   {
     "id": 2,
-    "title": "Inspirerende foredrag om arbeidslivet for NAV-deltakere",
-    "img": "assets/img/blog/blog2-img2.png",
-    "category": "Foredrag & Kurs",
-    "author": "Mostafa y.",
-    "date": "25 April 2023",
-    "content": [
-      "I en nylig hendelse som markerte ukens høydepunkt, hadde Brobyggere Bemannings- og rekrutteringstjeneste gleden av å besøke NAV for å holde et inspirerende foredrag for NAVs deltakere. Dagen var fylt med engasjement og entusiasme, et tydelig tegn på deltakernes interesse og vilje til å lære mer om arbeidslivet i Norge. Foredraget omhandlet nøkkelfaktorer som rettigheter og forventninger i arbeidslivet, samt hva arbeidsgivere ser etter i potensielle ansatte.​",
-      "Det var et givende øyeblikk å se den genuine interessen og engasjementet fra deltakerne, noe som gjorde dagen ekstra spesiell og morsom. Brobyggere sin hensikt med dette initiativet var ikke bare å dele viktig informasjon, men også å bidra til å styrke deltakernes forståelse og forberedelse for det norske arbeidsmarkedet. Ved å belyse disse viktige aspektene, håper vi å ha lagt et solid grunnlag for en mer inkluderende og forståelsesfull arbeidskultur, og ikke minst, å ha inspirert deltakerne til å ta aktive skritt mot sine karrieremål.",
-      "Det var en stor glede å oppleve den varme velkomsten og den positive atmosfæren hos NAV. Vi, i Brobyggere, er dypt takknemlige for at vi ble tatt så godt imot og fikk muligheten til å dele vår kunnskap og erfaring. Engasjementet og den positive responsen fra deltakerne har vært utrolig oppmuntrende, og det er disse øyeblikkene som virkelig understreker verdien av vårt arbeid. Vi ser frem til flere slike berikende samarbeid og takker hjertelig for en minnerik og inspirerende dag."
-    ],
-    "footerText": "Bloggen vår er ditt sted for oppdatert innsikt, beste praksis og faglige råd innen bemanning – fra å forbedre rekrutteringsprosessene til å navigere endringer i arbeidslivslovgivningen og utvikle karrieren din."
-  },
-  {
-    "id": 3,
-    "title": "Teambuilding som styrker både relasjoner og samarbeid",
+    "title": "Sosiale treff og teambuilding",
     "img": "assets/img/blog/blog2-img3.jpeg",
     "category": "Teambuilding",
-    "author": "Rachel b.",
-    "date": "25 April 2023",
+    "author": "Celine.a",
+    "date": "13 Mai 2025",
     "content": [
-      "Hos oss i Brobyggere er gode relasjoner og en positiv stemning i teamet essensielt. Derfor arrangerer vi ofte aktiviteter som padleturer for å styrke båndene, bygge samhold og hente ny energi. Slike aktiviteter gir oss bedre samarbeid og økt engasjement, og sørger for at vi alltid har de rette «vibene» i teamet.",
-      "Vi vet at et sterkt og sammensveiset team gir de beste resultatene – både for oss og for kundene våre."
-    ],
-    "footerText": "Bloggen vår er ditt sted for oppdatert innsikt, beste praksis og faglige råd innen bemanning – fra å forbedre rekrutteringsprosessene til å navigere endringer i arbeidslivslovgivningen og utvikle karrieren din."
-  },
-  {
-    "id": 4,
-    "title": "Karrieredagen 2025 bød på inspirerende studentmøter",
-    "img": "assets/img/blog/blog2-img4.jpeg",
-    "category": "Karriere",
-    "author": "Eline b.",
-    "date": "25 April 2023",
-    "content": [
-      "Vi var så heldige at vi fikk holde stand på Høyskolen Kristiania i forbindelse med deres Karrieredag! Her møtte vi mange engasjerte og nysgjerrige studenter på leting etter både deltidsjobb ved siden av studiet og jobbmuligheter etter endt studie..",
-      "Henriette Alvsaker og Henrik Garmannslund presenterte hvilke givende og ikke minst fleksible jobbmuligheter som finnes hos oss både i barnehage og skole. Vi er takknemlige for muligheten til å komme tett på og få et innblikk i studentenes ønsker og ambisjoner."
+      {
+        "type": "p",
+        "text": "I Brobyggere er vi opptatt av at våre ansatte skal trives og oppleve motivasjon i arbeidet de utfører. Et godt arbeidsmiljø er avgjørende både for den enkeltes arbeidshverdag og for kvaliteten på tjenestene vi leverer. Derfor legger vi stor vekt på å tilrettelegge for relasjonsbygging og å skape en sterk følelse av tilhørighet -  både mellom ansatte og til Brobyggere som organisasjon."
+      },
+      {
+        "type": "p",
+        "text": "For å styrke samholdet mellom vikarene, samt relasjonen mellom vikarene og administrasjonen, arrangerer vi jevnlig sosiale aktiviteter, som for eksempel padel. Slike aktiviteter fungerer både som en sosial møteplass der ansatte kan bli kjent, og som en fysisk aktivitet som legger til rette for samarbeid, mestring og fellesskap. Samtidig åpner det opp for erfaringsdeling og dialog mellom ansatte med ulik bakgrunn og erfaringer."
+      },
+
+      {
+        "type": "p",
+        "text": "En sosial arena utenfor den daglige arbeidshverdagen kan være særlig viktig for ansatte som jobber på ulike arbeidsplasser og samarbeider med mange forskjellige kolleger. Teambyggende tiltak og sosiale treff bidrar til å skape fellesskap og tilhørighet, noe som igjen kan ha en positiv effekt på trivsel, motivasjon og engasjement."
+      },
+      {
+        "type": "p",
+        "text": "Gjennom dette tiltaket ønsker vi å legge til rette for gode arbeidsforhold for den enkelte ansatte og styrke samarbeidet mellom administrasjonen og vikarer. Dette for å kunne sikre høy kvalitet i tjenestene vi leverer til våre kunder i barnehager og skoler."
+      }
     ],
     "footerText": "Bloggen vår er ditt sted for oppdatert innsikt, beste praksis og faglige råd innen bemanning – fra å forbedre rekrutteringsprosessene til å navigere endringer i arbeidslivslovgivningen og utvikle karrieren din."
   }

@@ -17,22 +17,15 @@ export default function Section8({ classList = "" }: Section8Props) {
           <div className="row">
             <div className="col-lg-7 m-auto text-center">
               <div className="heading1">
-                <span
-                  className="span"
-                  data-aos="zoom-in-left"
-                  data-aos-duration={800}
-                >
-                  Our Team
-                </span>
-                <h2 className="text-anime-style-3">
-                  Get to Know Our Professionals
-                </h2>
+                <h2 className="text-anime-style-3">Vårt team</h2>
                 <div className="space16" />
                 <p data-aos="fade-up" data-aos-duration={700}>
-                  We take pride in fostering a collaborative environment where
-                  innovation <br />
-                  thrives and clients receive personalized attention at every
-                  step
+                  Bak hvert vellykket oppdrag står et dedikert
+                  administrasjonsteam. Våre ledere, HR-konsulenter,
+                  koordinatorer og systemutviklere jobber tett sammen for å
+                  sikre raske og fleksible løsninger med kvalitet. Alle i
+                  administrasjonen jobber for å støtte og ivareta både kunder og
+                  ansatte.
                 </p>
               </div>
             </div>

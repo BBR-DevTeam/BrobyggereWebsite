@@ -17,7 +17,9 @@
   );
 
   /* Depth + glow */
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 80px rgba(78, 127, 255, 0.25);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.45),
+    0 0 80px rgba(78, 127, 255, 0.25);
 
   position: relative;
   overflow: hidden; /* keep gradient and rounded corners clean */
@@ -62,6 +64,7 @@
   width: auto;
   cursor: pointer;
   transition: 0.25s ease;
+  overflow-clip-margin: unset;
 }
 
 .storeBadges img:hover {
@@ -76,10 +79,12 @@
 
   .mockupImage {
     max-width: 75%;
+    overflow-clip-margin: unset;
   }
 
   .storeBadges img {
     height: 52px;
+    overflow-clip-margin: unset;
   }
 }
 
@@ -99,5 +104,57 @@
 
   .storeBadges img {
     height: 44px;
+    overflow-clip-margin: unset;
+  }
+}
+
+/* ------------------------------
+   Fix: Feature icons stay circular on small screens
+-------------------------------- */
+
+/* Force icon wrapper to stay circular */
+.section5Wrapper :global(.work1-box .icon) {
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  min-height: 64px;
+  border-radius: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex: 0 0 64px;
+}
+
+/* Keep icon image clean */
+.section5Wrapper :global(.work1-box .icon img) {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  display: block;
+  overflow-clip-margin: unset;
+}
+
+/* Mobile: icon above text (prevents squish and looks cleaner) */
+@media (max-width: 575.98px) {
+  .section5Wrapper :global(.work1-box) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .section5Wrapper :global(.work1-box .icon) {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    min-height: 58px;
+    flex: 0 0 58px;
+  }
+
+  .section5Wrapper :global(.work1-box .icon img) {
+    width: 62%;
+    height: 62%;
+    overflow-clip-margin: unset;
   }
 }

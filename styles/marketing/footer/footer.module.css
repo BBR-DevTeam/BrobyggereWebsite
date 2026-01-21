@@ -1,8 +1,13 @@
+/* Brand (logo + company name) */
 .brand {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
+}
+
+.brandDescription {
+  text-align: start;
 }
 
 .logoLink {
@@ -12,10 +17,9 @@
 
 .logoImg {
   display: block;
-
-  height: 40px; /* ✅ adjust if needed: 28–40px usually perfect */
+  height: 40px;
   width: auto;
-  max-width: 180px; /* safety cap */
+  max-width: 180px;
   object-fit: contain;
 }
 
@@ -23,13 +27,58 @@
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 0.2px;
-  color: #ffffff; /* ✅ bright text on dark footer */
+  color: #ffffff;
   opacity: 0.95;
   margin: 0;
   text-align: center;
 }
 
-/* Optional: slight “glow” for readability on very dark backgrounds */
 .companyNameGlow {
   text-shadow: 0 1px 8px rgba(255, 255, 255, 0.12);
+}
+
+/* The description block under logo (we hide on mobile) */
+
+/* Social icons moved to contact column */
+
+/* Make social icons follow left alignment like the contact info */
+/* Force footer social row to align LEFT inside the Contact column */
+.contactCol :global(.social-icon).socialInContact {
+  width: 100% !important; /* prevent "fit-content" centering */
+  margin: 14px 0 0 0 !important; /* kill margin auto */
+  padding-left: 0 !important;
+
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+
+  text-align: left !important; /* kill text-align center */
+  gap: 12px;
+}
+
+/* If template has li spacing */
+.contactCol :global(.social-icon).socialInContact li {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: inline-flex;
+}
+
+/* MOBILE: hide the description text under logo */
+@media (max-width: 991px) {
+  .brandDescription {
+    display: none;
+  }
+}
+
+/* React icon should behave like the footer png icons */
+.reactIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reactIcon {
+  color: #ffffff;
+  font-size: 20px;
+  opacity: 0.95;
 }

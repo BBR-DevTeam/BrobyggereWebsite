@@ -1,6 +1,3 @@
-export type VacancyCity = "bergen" | "oslo" | "stavanger";
-export type VacancyTag = "fast" | "midlertidig";
-
 export type VacancySection =
   | {
       type: "text";
@@ -17,21 +14,115 @@ export type ContactPerson = {
   image: string; // placeholder path (you will replace)
   name: string;
   title: string; // e.g. "HR-konsulent"
-  phone: string;
+  phone: string; // display label e.g. "+47 479 68 163"
   email: string;
+};
+
+export type VacancyRegion = "vestlandet" | "oslo" | "akershus" | "rogaland";
+
+/**
+ * Subregions / areas (the nested items)
+ * Note: you wrote "Sadness" — I assume you meant "Sandnes".
+ */
+export type VacancyArea =
+  | "bergen"
+  | "askoy"
+  | "oygarden"
+  | "oslo"
+  | "asker"
+  | "lillestrom"
+  | "ullensaker"
+  | "lorenskog"
+  | "ralingen"
+  | "baerum"
+  | "stavanger"
+  | "sandnes";
+
+export type RegionNode =
+  | {
+      key: VacancyRegion;
+      label: string;
+      children: { key: VacancyArea; label: string }[];
+    }
+  | {
+      key: VacancyRegion;
+      label: string;
+      children?: undefined; // no nesting
+      selfAreaKey: VacancyArea; // used for "Oslo" single item
+    };
+
+export const regionTree: RegionNode[] = [
+  {
+    key: "vestlandet",
+    label: "Vestlandet",
+    children: [
+      { key: "bergen", label: "Bergen" },
+      { key: "askoy", label: "Askøy" },
+      { key: "oygarden", label: "Øygarden" },
+    ],
+  },
+  {
+    key: "oslo",
+    label: "Oslo",
+    selfAreaKey: "oslo",
+  },
+  {
+    key: "akershus",
+    label: "Akershus",
+    children: [
+      { key: "asker", label: "Asker" },
+      { key: "lillestrom", label: "Lillestrøm" },
+      { key: "ullensaker", label: "Ullensaker" },
+      { key: "lorenskog", label: "Lørenskog" },
+      { key: "ralingen", label: "Rælingen" },
+      { key: "baerum", label: "Bærum" },
+    ],
+  },
+  {
+    key: "rogaland",
+    label: "Rogaland",
+    children: [
+      { key: "stavanger", label: "Stavanger" },
+      { key: "sandnes", label: "Sandnes" },
+    ],
+  },
+];
+
+export const areaLabel: Record<VacancyArea, string> = {
+  bergen: "Bergen",
+  askoy: "Askøy",
+  oygarden: "Øygarden",
+  oslo: "Oslo",
+  asker: "Asker",
+  lillestrom: "Lillestrøm",
+  ullensaker: "Ullensaker",
+  lorenskog: "Lørenskog",
+  ralingen: "Rælingen",
+  baerum: "Bærum",
+  stavanger: "Stavanger",
+  sandnes: "Sandnes",
+};
+
+export const regionLabel: Record<VacancyRegion, string> = {
+  vestlandet: "Vestlandet",
+  oslo: "Oslo",
+  akershus: "Akershus",
+  rogaland: "Rogaland",
 };
 
 export interface Vacancy {
   id: number;
   slug: string;
-  city: VacancyCity;
+
+  // ✅ NEW structure
+  region: VacancyRegion;
+  areas: VacancyArea[]; // can be multiple subregions but must be within the same region
+
   title: string;
   shortDescription: string;
   image: string;
-  tags: VacancyTag[];
+  openPositions: number;
   details: VacancySection[];
-
-  // ✅ NEW
   contactPerson: ContactPerson;
 }
 
@@ -39,20 +130,24 @@ export const vacanciesData: Vacancy[] = [
   {
     id: 1,
     slug: "barnehageassistent-bergen",
-    city: "bergen",
-    title: "Pedagogisk medarbeider (assistent)",
+    region: "vestlandet",
+    areas: ["bergen", "askoy", "oygarden"],
+    title: "Barnehagemedarbeider (Assistent)",
     shortDescription:
-      "Vi søker pedagogiske medarbeidere til Bergen, Stavanger, Oslo og Akershus",
-    image: "/assets/img/vacancies/bergen.png",
-    tags: ["midlertidig"],
+      "Vi søker barnehagemedarbeidere og assistenter til Bergen, Askøy og Øygarden. For deg som ønsker en givende og fleksibel jobb.",
+    image: "/assets/img/vacancies/bergen1.png",
+    openPositions: 14,
     details: [
       {
         type: "text",
-        title: "Om stillingen",
+        title:
+          "Vi søker barnehagemedarbeidere (assistenter) i Bergen og omegn.",
         paragraphs: [
-          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i barnehage og grunnskole! Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer. Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
+          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i barnehage! Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem.",
+          "Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer. Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
         ],
       },
+
       {
         type: "list",
         title:
@@ -67,21 +162,13 @@ export const vacanciesData: Vacancy[] = [
           "Relevant utdanning er ikke et krav, men en fordel.",
         ],
       },
+
       {
         type: "list",
         title: "Kvalifikasjonskrav:",
         items: [
           "Norsk språknivå på minimum B1 (dokumentasjon i form av avlagt norskprøve)",
-          "Du er bosatt og kan arbeide innen følgende områder: Bergen og omegn, Stavanger og Sandnes, Oslo og Akershus",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "Hvilke roller kan jeg ha som vikar i Brobyggere?",
-        paragraphs: [
-          "I avdeling Bergen kan du arbeide som barnehageassistent, barnehagelærer, lærervikar, skoleassistent og miljøarbeider. Hvilke(n) rolle du får tildelt avhenger av dine kvalifikasjoner.",
-          "I de øvrige avdelingene (Stavanger og Sandnes, Oslo og Akershus) er det kun mulig å arbeide som barnehageassistent og barnehagelærer.",
+          "Du er bosatt og kan arbeide innen følgende områder: Bergen, Askøy, Øygarden",
         ],
       },
 
@@ -93,8 +180,8 @@ export const vacanciesData: Vacancy[] = [
 
       {
         type: "text",
-        title: "I barnehage:",
-        paragraphs: ["Barnehageassistent/Barnehagelærer"],
+        title: "",
+        paragraphs: ["Barnehageassistent/Barnehagelærer:"],
       },
 
       {
@@ -106,58 +193,6 @@ export const vacanciesData: Vacancy[] = [
           "Planlegge og gjennomføre aktiviteter som fremmer både læring og lek",
           "Være en imøtekommende og behjelpelig kollega for personalet i barnehagen",
           "Bidra til et godt foreldresamarbeid ved å introdusere deg selv når foreldre leverer barna og fortelle dem om barnas dag når de henter på slutten av dagen.",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "I skole (kun avdeling Bergen):",
-        paragraphs: ["Lærervikar"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Undervise klasser, grupper eller enkeltelever i ulike fag",
-          "Skape stabilitet, engasjement og trygge rammer for læring i klasserommet",
-          "Utøve god klasseledelse",
-          "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Skoleassistent"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Bistå læreren aktivt med å holde ro og orden i klasserommet",
-          "Samarbeide tett med lærere og andre ansatte",
-          "Gi individuell støtte til elever med spesielle behov. Herunder å ta i bruk tilpassede undervisningsmetoder og læringsstiler for å fremme mestring",
-          "Arbeid i skolefritidsordningen (SFO)",
-          "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Miljøarbeider"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "1 til 1 arbeid med elever med tilretteleggingsbehov",
-          "Relasjonsbygging, støtte og motivere elever",
-          "Delta i planlegging og oppfølging med arbeidsstedets personell samt samarbeide med hjemmet",
-          "Mulighet til å arbeide tilsvarende en fulltidsstilling for å sikre forutsigbarhet for eleven",
         ],
       },
 
@@ -189,21 +224,26 @@ export const vacanciesData: Vacancy[] = [
 
   {
     id: 2,
-    slug: "skoleassistent-oslo",
-    city: "oslo",
-    title: "Skoleassistent – tilkalling og lengre oppdrag",
+    slug: "skole-assistent-bergen",
+    region: "vestlandet",
+    areas: ["bergen", "askoy", "oygarden"],
+    title: "Skole-assistent og SFO personell",
     shortDescription:
-      "Jobb i skolemiljø med varierte oppgaver. Passer for deg som ønsker erfaring og en meningsfull hverdag.",
-    image: "/assets/img/vacancies/oslo.png",
-    tags: ["midlertidig"],
+      "Vi søker deg som ønsker å jobbe som assistent i skole og på SFO.",
+    image: "/assets/img/vacancies/bergen2.png",
+    openPositions: 8,
     details: [
       {
         type: "text",
-        title: "Om stillingen",
+        title:
+          "Vi søker skoleassistenter og SFO-medarbeidere til Bergen og omegn.",
         paragraphs: [
-          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i barnehage og grunnskole! Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer. Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
+          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i grunnskole som assistent og SFO-medarbeider!",
+          "Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer.",
+          "Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
         ],
       },
+
       {
         type: "list",
         title:
@@ -218,97 +258,25 @@ export const vacanciesData: Vacancy[] = [
           "Relevant utdanning er ikke et krav, men en fordel.",
         ],
       },
+
       {
         type: "list",
         title: "Kvalifikasjonskrav:",
         items: [
           "Norsk språknivå på minimum B1 (dokumentasjon i form av avlagt norskprøve)",
-          "Du er bosatt og kan arbeide innen følgende områder: Bergen og omegn, Stavanger og Sandnes, Oslo og Akershus",
+          "Du er bosatt og kan arbeide innen følgende områder: Bergen, Askøy, Øygarden",
         ],
       },
 
       {
-        type: "text",
-        title: "Hvilke roller kan jeg ha som vikar i Brobyggere?",
-        paragraphs: [
-          "I avdeling Bergen kan du arbeide som barnehageassistent, barnehagelærer, lærervikar, skoleassistent og miljøarbeider. Hvilke(n) rolle du får tildelt avhenger av dine kvalifikasjoner.",
-          "I de øvrige avdelingene (Stavanger og Sandnes, Oslo og Akershus) er det kun mulig å arbeide som barnehageassistent og barnehagelærer.",
-        ],
-      },
-
-      {
-        type: "text",
+        type: "list",
         title: "Arbeidsoppgaver:",
-        paragraphs: [""],
-      },
-
-      {
-        type: "text",
-        title: "I barnehage:",
-        paragraphs: ["Barnehageassistent/Barnehagelærer"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Bidra til et trygt, inkluderende og positivt læringsmiljø for barna",
-          "Delta aktivt i barnas hverdag og bistå dem i deres utvikling",
-          "Planlegge og gjennomføre aktiviteter som fremmer både læring og lek",
-          "Være en imøtekommende og behjelpelig kollega for personalet i barnehagen",
-          "Bidra til et godt foreldresamarbeid ved å introdusere deg selv når foreldre leverer barna og fortelle dem om barnas dag når de henter på slutten av dagen.",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "I skole (kun avdeling Bergen):",
-        paragraphs: ["Lærervikar"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Undervise klasser, grupper eller enkeltelever i ulike fag",
-          "Skape stabilitet, engasjement og trygge rammer for læring i klasserommet",
-          "Utøve god klasseledelse",
-          "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Skoleassistent"],
-      },
-
-      {
-        type: "list",
-        title: "",
         items: [
           "Bistå læreren aktivt med å holde ro og orden i klasserommet",
           "Samarbeide tett med lærere og andre ansatte",
           "Gi individuell støtte til elever med spesielle behov. Herunder å ta i bruk tilpassede undervisningsmetoder og læringsstiler for å fremme mestring",
           "Arbeid i skolefritidsordningen (SFO)",
           "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Miljøarbeider"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "1 til 1 arbeid med elever med tilretteleggingsbehov",
-          "Relasjonsbygging, støtte og motivere elever",
-          "Delta i planlegging og oppfølging med arbeidsstedets personell samt samarbeide med hjemmet",
-          "Mulighet til å arbeide tilsvarende en fulltidsstilling for å sikre forutsigbarhet for eleven",
         ],
       },
 
@@ -340,21 +308,25 @@ export const vacanciesData: Vacancy[] = [
 
   {
     id: 3,
-    slug: "sfo-medarbeider-oslo",
-    city: "oslo",
-    title: "SFO-medarbeider – fast stilling",
+    slug: "larervikar-bergen",
+    region: "vestlandet",
+    areas: ["bergen", "askoy", "oygarden"],
+    title: "Lærervikar",
     shortDescription:
-      "Vi søker en positiv og strukturert medarbeider til SFO. Du blir en del av et inkluderende team.",
-    image: "/assets/img/vacancies/sfo.png",
-    tags: ["fast"],
+      "Utdanner du deg til å bli lærer, eller er du ferdig studert? Vi søker lærervikarer (1-6 trinn)",
+    image: "/assets/img/vacancies/bergen3.png",
+    openPositions: 7,
     details: [
       {
         type: "text",
-        title: "Om stillingen",
+        title: "Vi søker lærervikarer til Bergen og omegn",
         paragraphs: [
-          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i barnehage og grunnskole! Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer. Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
+          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til oppdrag som lærervikar i grunnskolen.",
+          "Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer.",
+          "Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
         ],
       },
+
       {
         type: "list",
         title:
@@ -369,97 +341,24 @@ export const vacanciesData: Vacancy[] = [
           "Relevant utdanning er ikke et krav, men en fordel.",
         ],
       },
+
       {
         type: "list",
         title: "Kvalifikasjonskrav:",
         items: [
           "Norsk språknivå på minimum B1 (dokumentasjon i form av avlagt norskprøve)",
-          "Du er bosatt og kan arbeide innen følgende områder: Bergen og omegn, Stavanger og Sandnes, Oslo og Akershus",
+          "Du er bosatt og kan arbeide innen følgende områder: Bergen, Askøy, Øygarden",
         ],
       },
 
       {
-        type: "text",
-        title: "Hvilke roller kan jeg ha som vikar i Brobyggere?",
-        paragraphs: [
-          "I avdeling Bergen kan du arbeide som barnehageassistent, barnehagelærer, lærervikar, skoleassistent og miljøarbeider. Hvilke(n) rolle du får tildelt avhenger av dine kvalifikasjoner.",
-          "I de øvrige avdelingene (Stavanger og Sandnes, Oslo og Akershus) er det kun mulig å arbeide som barnehageassistent og barnehagelærer.",
-        ],
-      },
-
-      {
-        type: "text",
+        type: "list",
         title: "Arbeidsoppgaver:",
-        paragraphs: [""],
-      },
-
-      {
-        type: "text",
-        title: "I barnehage:",
-        paragraphs: ["Barnehageassistent/Barnehagelærer"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Bidra til et trygt, inkluderende og positivt læringsmiljø for barna",
-          "Delta aktivt i barnas hverdag og bistå dem i deres utvikling",
-          "Planlegge og gjennomføre aktiviteter som fremmer både læring og lek",
-          "Være en imøtekommende og behjelpelig kollega for personalet i barnehagen",
-          "Bidra til et godt foreldresamarbeid ved å introdusere deg selv når foreldre leverer barna og fortelle dem om barnas dag når de henter på slutten av dagen.",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "I skole (kun avdeling Bergen):",
-        paragraphs: ["Lærervikar"],
-      },
-
-      {
-        type: "list",
-        title: "",
         items: [
           "Undervise klasser, grupper eller enkeltelever i ulike fag",
           "Skape stabilitet, engasjement og trygge rammer for læring i klasserommet",
           "Utøve god klasseledelse",
           "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Skoleassistent"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Bistå læreren aktivt med å holde ro og orden i klasserommet",
-          "Samarbeide tett med lærere og andre ansatte",
-          "Gi individuell støtte til elever med spesielle behov. Herunder å ta i bruk tilpassede undervisningsmetoder og læringsstiler for å fremme mestring",
-          "Arbeid i skolefritidsordningen (SFO)",
-          "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Miljøarbeider"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "1 til 1 arbeid med elever med tilretteleggingsbehov",
-          "Relasjonsbygging, støtte og motivere elever",
-          "Delta i planlegging og oppfølging med arbeidsstedets personell samt samarbeide med hjemmet",
-          "Mulighet til å arbeide tilsvarende en fulltidsstilling for å sikre forutsigbarhet for eleven",
         ],
       },
 
@@ -491,21 +390,32 @@ export const vacanciesData: Vacancy[] = [
 
   {
     id: 4,
-    slug: "spesialassistent-stavanger",
-    city: "stavanger",
-    title: "Spesialassistent – skole/barnehage",
+    slug: "barnehageassistent-oslo",
+    region: "akershus",
+    areas: [
+      "asker",
+      "lillestrom",
+      "ullensaker",
+      "lorenskog",
+      "ralingen",
+      "baerum",
+    ],
+    title: "Barnehagemedarbeider (Assistent)",
     shortDescription:
-      "Har du erfaring med tilrettelegging? Vi har behov for spesialassistenter til både korte og lengre oppdrag.",
-    image: "/assets/img/vacancies/stavanger.png",
-    tags: ["fast", "midlertidig"],
+      "Vi søker barnehagemedarbeidere og assistenter til Oslo og Akershus. For deg som ønsker en givende og fleksibel jobb.",
+    image: "/assets/img/vacancies/oslo1.png",
+    openPositions: 27,
     details: [
       {
         type: "text",
-        title: "Om stillingen",
+        title:
+          "Vi søker barnehagemedarbeidere (assistenter) i Oslo og Akershus.",
         paragraphs: [
-          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i barnehage og grunnskole! Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer. Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
+          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i barnehage! Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem.",
+          "Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer. Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
         ],
       },
+
       {
         type: "list",
         title:
@@ -520,21 +430,13 @@ export const vacanciesData: Vacancy[] = [
           "Relevant utdanning er ikke et krav, men en fordel.",
         ],
       },
+
       {
         type: "list",
         title: "Kvalifikasjonskrav:",
         items: [
           "Norsk språknivå på minimum B1 (dokumentasjon i form av avlagt norskprøve)",
-          "Du er bosatt og kan arbeide innen følgende områder: Bergen og omegn, Stavanger og Sandnes, Oslo og Akershus",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "Hvilke roller kan jeg ha som vikar i Brobyggere?",
-        paragraphs: [
-          "I avdeling Bergen kan du arbeide som barnehageassistent, barnehagelærer, lærervikar, skoleassistent og miljøarbeider. Hvilke(n) rolle du får tildelt avhenger av dine kvalifikasjoner.",
-          "I de øvrige avdelingene (Stavanger og Sandnes, Oslo og Akershus) er det kun mulig å arbeide som barnehageassistent og barnehagelærer.",
+          "Du er bosatt og kan arbeide innen følgende områder: Oslo, Akershus, Jessheim",
         ],
       },
 
@@ -546,8 +448,8 @@ export const vacanciesData: Vacancy[] = [
 
       {
         type: "text",
-        title: "I barnehage:",
-        paragraphs: ["Barnehageassistent/Barnehagelærer"],
+        title: "",
+        paragraphs: ["Barnehageassistent/Barnehagelærer:"],
       },
 
       {
@@ -559,58 +461,6 @@ export const vacanciesData: Vacancy[] = [
           "Planlegge og gjennomføre aktiviteter som fremmer både læring og lek",
           "Være en imøtekommende og behjelpelig kollega for personalet i barnehagen",
           "Bidra til et godt foreldresamarbeid ved å introdusere deg selv når foreldre leverer barna og fortelle dem om barnas dag når de henter på slutten av dagen.",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "I skole (kun avdeling Bergen):",
-        paragraphs: ["Lærervikar"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Undervise klasser, grupper eller enkeltelever i ulike fag",
-          "Skape stabilitet, engasjement og trygge rammer for læring i klasserommet",
-          "Utøve god klasseledelse",
-          "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Skoleassistent"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Bistå læreren aktivt med å holde ro og orden i klasserommet",
-          "Samarbeide tett med lærere og andre ansatte",
-          "Gi individuell støtte til elever med spesielle behov. Herunder å ta i bruk tilpassede undervisningsmetoder og læringsstiler for å fremme mestring",
-          "Arbeid i skolefritidsordningen (SFO)",
-          "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Miljøarbeider"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "1 til 1 arbeid med elever med tilretteleggingsbehov",
-          "Relasjonsbygging, støtte og motivere elever",
-          "Delta i planlegging og oppfølging med arbeidsstedets personell samt samarbeide med hjemmet",
-          "Mulighet til å arbeide tilsvarende en fulltidsstilling for å sikre forutsigbarhet for eleven",
         ],
       },
 
@@ -632,31 +482,35 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/rachel.jpeg",
-      name: "Rachel Bårdsen",
+      image: "/assets/img/team/celine.jpeg",
+      name: "Celine April Rosnes Ramberg",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "rachel@brobyggere.com",
+      email: "celine@brobyggere.com",
     },
   },
 
   {
     id: 5,
-    slug: "barnehagevikar-stavanger",
-    city: "stavanger",
-    title: "Barnehagevikar – fleksibel arbeidshverdag",
+    slug: "skoleassistenter-oslo",
+    region: "oslo",
+    areas: ["oslo"],
+    title: "Skoleassistenter og AKS - personell",
     shortDescription:
-      "Perfekt for deg som ønsker fleksibilitet. Du velger selv når du kan jobbe, og vi matcher deg med oppdrag.",
-    image: "/assets/img/vacancies/kids.png",
-    tags: ["midlertidig"],
+      "Vi søker deg som ønsker å jobbe som assistent i skole og på SFO.",
+    image: "/assets/img/vacancies/oslo2.png",
+    openPositions: 10,
     details: [
       {
         type: "text",
-        title: "Om stillingen",
+        title: "Vi søker skoleassistenter og AKS-medarbeidere til Oslo",
         paragraphs: [
-          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i barnehage og grunnskole! Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer. Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
+          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i grunnskole som assistent og AKS-medarbeider!",
+          "Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer.",
+          "Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
         ],
       },
+
       {
         type: "list",
         title:
@@ -671,97 +525,25 @@ export const vacanciesData: Vacancy[] = [
           "Relevant utdanning er ikke et krav, men en fordel.",
         ],
       },
+
       {
         type: "list",
         title: "Kvalifikasjonskrav:",
         items: [
           "Norsk språknivå på minimum B1 (dokumentasjon i form av avlagt norskprøve)",
-          "Du er bosatt og kan arbeide innen følgende områder: Bergen og omegn, Stavanger og Sandnes, Oslo og Akershus",
+          "Du er bosatt og kan arbeide innen følgende områder: Oslo",
         ],
       },
 
       {
-        type: "text",
-        title: "Hvilke roller kan jeg ha som vikar i Brobyggere?",
-        paragraphs: [
-          "I avdeling Bergen kan du arbeide som barnehageassistent, barnehagelærer, lærervikar, skoleassistent og miljøarbeider. Hvilke(n) rolle du får tildelt avhenger av dine kvalifikasjoner.",
-          "I de øvrige avdelingene (Stavanger og Sandnes, Oslo og Akershus) er det kun mulig å arbeide som barnehageassistent og barnehagelærer.",
-        ],
-      },
-
-      {
-        type: "text",
+        type: "list",
         title: "Arbeidsoppgaver:",
-        paragraphs: [""],
-      },
-
-      {
-        type: "text",
-        title: "I barnehage:",
-        paragraphs: ["Barnehageassistent/Barnehagelærer"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Bidra til et trygt, inkluderende og positivt læringsmiljø for barna",
-          "Delta aktivt i barnas hverdag og bistå dem i deres utvikling",
-          "Planlegge og gjennomføre aktiviteter som fremmer både læring og lek",
-          "Være en imøtekommende og behjelpelig kollega for personalet i barnehagen",
-          "Bidra til et godt foreldresamarbeid ved å introdusere deg selv når foreldre leverer barna og fortelle dem om barnas dag når de henter på slutten av dagen.",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "I skole (kun avdeling Bergen):",
-        paragraphs: ["Lærervikar"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Undervise klasser, grupper eller enkeltelever i ulike fag",
-          "Skape stabilitet, engasjement og trygge rammer for læring i klasserommet",
-          "Utøve god klasseledelse",
-          "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Skoleassistent"],
-      },
-
-      {
-        type: "list",
-        title: "",
         items: [
           "Bistå læreren aktivt med å holde ro og orden i klasserommet",
           "Samarbeide tett med lærere og andre ansatte",
           "Gi individuell støtte til elever med spesielle behov. Herunder å ta i bruk tilpassede undervisningsmetoder og læringsstiler for å fremme mestring",
           "Arbeid i skolefritidsordningen (SFO)",
           "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Miljøarbeider"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "1 til 1 arbeid med elever med tilretteleggingsbehov",
-          "Relasjonsbygging, støtte og motivere elever",
-          "Delta i planlegging og oppfølging med arbeidsstedets personell samt samarbeide med hjemmet",
-          "Mulighet til å arbeide tilsvarende en fulltidsstilling for å sikre forutsigbarhet for eleven",
         ],
       },
 
@@ -783,31 +565,34 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/rachel.jpeg",
-      name: "Rachel Bårdsen",
+      image: "/assets/img/team/celine.jpeg",
+      name: "Celine April Rosnes Ramberg",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "rachel@brobyggere.com",
+      email: "celine@brobyggere.com",
     },
   },
 
   {
     id: 6,
-    slug: "miljoarbeider-bergen",
-    city: "bergen",
-    title: "Miljøarbeider – fast eller midlertidig",
-    shortDescription:
-      "Bidra til et trygt og godt læringsmiljø. Vi ser etter deg som er tydelig, varm og samarbeidsorientert.",
-    image: "/assets/img/vacancies/school.png",
-    tags: ["fast", "midlertidig"],
+    slug: "larervikar-oslo",
+    region: "oslo",
+    areas: ["oslo"],
+    title: "Lærervikar",
+    shortDescription: "Vi søker lærervikarer i Oslo (1-6 trinn)",
+    image: "/assets/img/vacancies/oslo3.png",
+    openPositions: 4,
     details: [
       {
         type: "text",
-        title: "Om stillingen",
+        title: "Vi søker lærervikarer til Oslo",
         paragraphs: [
-          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i barnehage og grunnskole! Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer. Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
+          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til oppdrag som lærervikar i grunnskolen.",
+          "Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer.",
+          "Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
         ],
       },
+
       {
         type: "list",
         title:
@@ -822,97 +607,24 @@ export const vacanciesData: Vacancy[] = [
           "Relevant utdanning er ikke et krav, men en fordel.",
         ],
       },
+
       {
         type: "list",
         title: "Kvalifikasjonskrav:",
         items: [
           "Norsk språknivå på minimum B1 (dokumentasjon i form av avlagt norskprøve)",
-          "Du er bosatt og kan arbeide innen følgende områder: Bergen og omegn, Stavanger og Sandnes, Oslo og Akershus",
+          "Du er bosatt og kan arbeide innen følgende områder: Oslo",
         ],
       },
 
       {
-        type: "text",
-        title: "Hvilke roller kan jeg ha som vikar i Brobyggere?",
-        paragraphs: [
-          "I avdeling Bergen kan du arbeide som barnehageassistent, barnehagelærer, lærervikar, skoleassistent og miljøarbeider. Hvilke(n) rolle du får tildelt avhenger av dine kvalifikasjoner.",
-          "I de øvrige avdelingene (Stavanger og Sandnes, Oslo og Akershus) er det kun mulig å arbeide som barnehageassistent og barnehagelærer.",
-        ],
-      },
-
-      {
-        type: "text",
+        type: "list",
         title: "Arbeidsoppgaver:",
-        paragraphs: [""],
-      },
-
-      {
-        type: "text",
-        title: "I barnehage:",
-        paragraphs: ["Barnehageassistent/Barnehagelærer"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Bidra til et trygt, inkluderende og positivt læringsmiljø for barna",
-          "Delta aktivt i barnas hverdag og bistå dem i deres utvikling",
-          "Planlegge og gjennomføre aktiviteter som fremmer både læring og lek",
-          "Være en imøtekommende og behjelpelig kollega for personalet i barnehagen",
-          "Bidra til et godt foreldresamarbeid ved å introdusere deg selv når foreldre leverer barna og fortelle dem om barnas dag når de henter på slutten av dagen.",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "I skole (kun avdeling Bergen):",
-        paragraphs: ["Lærervikar"],
-      },
-
-      {
-        type: "list",
-        title: "",
         items: [
           "Undervise klasser, grupper eller enkeltelever i ulike fag",
           "Skape stabilitet, engasjement og trygge rammer for læring i klasserommet",
           "Utøve god klasseledelse",
           "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Skoleassistent"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "Bistå læreren aktivt med å holde ro og orden i klasserommet",
-          "Samarbeide tett med lærere og andre ansatte",
-          "Gi individuell støtte til elever med spesielle behov. Herunder å ta i bruk tilpassede undervisningsmetoder og læringsstiler for å fremme mestring",
-          "Arbeid i skolefritidsordningen (SFO)",
-          "Bidra til et trygt, inkluderende og positivt skolemiljø",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: ["Miljøarbeider"],
-      },
-
-      {
-        type: "list",
-        title: "",
-        items: [
-          "1 til 1 arbeid med elever med tilretteleggingsbehov",
-          "Relasjonsbygging, støtte og motivere elever",
-          "Delta i planlegging og oppfølging med arbeidsstedets personell samt samarbeide med hjemmet",
-          "Mulighet til å arbeide tilsvarende en fulltidsstilling for å sikre forutsigbarhet for eleven",
         ],
       },
 
@@ -934,11 +646,365 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/rachel.jpeg",
-      name: "Rachel Bårdsen",
+      image: "/assets/img/team/celine.jpeg",
+      name: "Celine April Rosnes Ramberg",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "rachel@brobyggere.com",
+      email: "celine@brobyggere.com",
+    },
+  },
+
+  {
+    id: 7,
+    slug: "barnehageassistent-stavanger",
+    region: "rogaland",
+    areas: ["stavanger", "sandnes"],
+    title: "Barnehagemedarbeider (assistent)",
+    shortDescription:
+      "Vi søker barnehagemedarbeidere til Sandnes og Stavanger. For deg som ønsker en fleksibel og givende jobb.",
+    image: "/assets/img/vacancies/stavanger1.png",
+    openPositions: 15,
+    details: [
+      {
+        type: "text",
+        title:
+          "Vi søker barnehagemedarbeidere (assistenter) i Stavanger og Sandnes",
+        paragraphs: [
+          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i barnehage! Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem.",
+          "Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer. Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
+        ],
+      },
+
+      {
+        type: "list",
+        title:
+          "Om du kjenner deg igjen i følgende beskrivelse, kan dette være jobben for deg:",
+        items: [
+          "Du har fortrinnsvis erfaring med å jobbe med barn, eksempelvis som barnehage/skole-assistent, trener i barneidretten, ansvarlig i korps/teater eller barnevakt 🤾",
+          "Du er ansvarsfull, pålitelig og selvdrevet ⏰",
+          "Du trives med å være kreativ, delta i lek og være i aktivitet ute med barn 🛝",
+          "Du ser hvert barn og tilrettelegger etter deres behov 🫴",
+          "Du er god til å bygge relasjoner og ønsker å være en positiv rollemodell for barn og unge⭐",
+          "Du studerer eller er ferdig utdannet barnehagelærer, grunnskolelærer, psykologi, pedagogikk, sosiologi, barnevern eller barne-og ungdomsarbeider 📚",
+          "Relevant utdanning er ikke et krav, men en fordel.",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Kvalifikasjonskrav:",
+        items: [
+          "Norsk språknivå på minimum B1 (dokumentasjon i form av avlagt norskprøve)",
+          "Du er bosatt og kan arbeide innen følgende områder: Stavanger, Sandnes",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Arbeidsoppgaver:",
+        paragraphs: [""],
+      },
+
+      {
+        type: "text",
+        title: "",
+        paragraphs: ["Barnehageassistent/Barnehagelærer:"],
+      },
+
+      {
+        type: "list",
+        title: "",
+        items: [
+          "Bidra til et trygt, inkluderende og positivt læringsmiljø for barna",
+          "Delta aktivt i barnas hverdag og bistå dem i deres utvikling",
+          "Planlegge og gjennomføre aktiviteter som fremmer både læring og lek",
+          "Være en imøtekommende og behjelpelig kollega for personalet i barnehagen",
+          "Bidra til et godt foreldresamarbeid ved å introdusere deg selv når foreldre leverer barna og fortelle dem om barnas dag når de henter på slutten av dagen.",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Vi tilbyr:",
+        items: [
+          "Grundig opplæring i forventninger til rollen som pedagogisk personell",
+          "Konkurransedyktig lønn etter tariffavtale",
+          "Et godt arbeidsmiljø med fokus på inkludering, anerkjennelse og trivsel",
+          "Månedlige sosiale treff for ansatte i Brobyggere",
+          "Du får mulighet til å bli kjent med andre vikarer og utveksle erfaringer",
+          "Fleksibilitet i arbeidstid og varighet på oppdrag",
+          "Gode utviklingsmuligheter",
+          "Tilbud om kurs, oppfølging og veiledning ved behov",
+        ],
+      },
+    ],
+
+    // ✅ NEW
+    contactPerson: {
+      image: "/assets/img/team/eline.jpeg",
+      name: "Eline Håstø Borgenvik",
+      title: "HR-konsulent",
+      phone: "+47 479 68 163",
+      email: "eline@brobyggere.com",
+    },
+  },
+
+  {
+    id: 8,
+    slug: "skole-assistent-stavanger",
+    region: "rogaland",
+    areas: ["sandnes"],
+    title: "Skole-assistent og SFO personell",
+    shortDescription:
+      "Vi søker deg som ønsker å jobbe som assistent i skole og på SFO.",
+    image: "/assets/img/vacancies/stavanger2.png",
+    openPositions: 10,
+    details: [
+      {
+        type: "text",
+        title: "Vi søker skoleassistenter og SFO-medarbeidere til Sandnes",
+        paragraphs: [
+          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til vikaroppdrag i grunnskole som assistent og SFO-medarbeider!",
+          "Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer.",
+          "Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
+        ],
+      },
+
+      {
+        type: "list",
+        title:
+          "Om du kjenner deg igjen i følgende beskrivelse, kan dette være jobben for deg:",
+        items: [
+          "Du har fortrinnsvis erfaring med å jobbe med barn, eksempelvis som barnehage/skole-assistent, trener i barneidretten, ansvarlig i korps/teater eller barnevakt 🤾",
+          "Du er ansvarsfull, pålitelig og selvdrevet ⏰",
+          "Du trives med å være kreativ, delta i lek og være i aktivitet ute med barn 🛝",
+          "Du ser hvert barn og tilrettelegger etter deres behov 🫴",
+          "Du er god til å bygge relasjoner og ønsker å være en positiv rollemodell for barn og unge⭐",
+          "Du studerer eller er ferdig utdannet barnehagelærer, grunnskolelærer, psykologi, pedagogikk, sosiologi, barnevern eller barne-og ungdomsarbeider 📚",
+          "Relevant utdanning er ikke et krav, men en fordel.",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Kvalifikasjonskrav:",
+        items: [
+          "Norsk språknivå på minimum B1 (dokumentasjon i form av avlagt norskprøve)",
+          "Du er bosatt og kan arbeide innen følgende områder: Sandnes",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Arbeidsoppgaver:",
+        items: [
+          "Bistå læreren aktivt med å holde ro og orden i klasserommet",
+          "Samarbeide tett med lærere og andre ansatte",
+          "Gi individuell støtte til elever med spesielle behov. Herunder å ta i bruk tilpassede undervisningsmetoder og læringsstiler for å fremme mestring",
+          "Arbeid i skolefritidsordningen (SFO)",
+          "Bidra til et trygt, inkluderende og positivt skolemiljø",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Vi tilbyr:",
+        items: [
+          "Grundig opplæring i forventninger til rollen som pedagogisk personell",
+          "Konkurransedyktig lønn etter tariffavtale",
+          "Et godt arbeidsmiljø med fokus på inkludering, anerkjennelse og trivsel",
+          "Månedlige sosiale treff for ansatte i Brobyggere",
+          "Du får mulighet til å bli kjent med andre vikarer og utveksle erfaringer",
+          "Fleksibilitet i arbeidstid og varighet på oppdrag",
+          "Gode utviklingsmuligheter",
+          "Tilbud om kurs, oppfølging og veiledning ved behov",
+        ],
+      },
+    ],
+
+    // ✅ NEW
+    contactPerson: {
+      image: "/assets/img/team/eline.jpeg",
+      name: "Eline Håstø Borgenvik",
+      title: "HR-konsulent",
+      phone: "+47 479 68 163",
+      email: "eline@brobyggere.com",
+    },
+  },
+
+  {
+    id: 9,
+    slug: "larervikar-stavanger",
+    region: "rogaland",
+    areas: ["sandnes"],
+    title: "Lærervikar",
+    shortDescription: "Vi søker deg som ønsker å jobbe som lærervikar.",
+    image: "/assets/img/vacancies/stavanger3.png",
+    openPositions: 5,
+    details: [
+      {
+        type: "text",
+        title: "Vi søker lærervikarer til Sandnes",
+        paragraphs: [
+          "Vi søker nå etter engasjerte og omsorgsfulle medarbeidere til oppdrag som lærervikar i grunnskolen.",
+          "Som vikar i Brobyggere kan du få tildelt både korte og langvarige oppdrag etter din tilgjengelighet. Du velger selv hvor ofte du ønsker å jobbe, fra en dag i uken til fem. Som vikar vil du få muligheten til å jobbe med barn i ulike aldersgrupper og miljøer.",
+          "Stillingen passer for deg som er student, ønsker en fleksibel hverdag eller er på jakt etter verdifull erfaring. En bonus er at våre medarbeidere ofte får tilbud om faste eller deltidsstillinger direkte hos oppdragsgivere etter en periode som vikar hos oss.",
+        ],
+      },
+
+      {
+        type: "list",
+        title:
+          "Om du kjenner deg igjen i følgende beskrivelse, kan dette være jobben for deg:",
+        items: [
+          "Du har fortrinnsvis erfaring med å jobbe med barn, eksempelvis som barnehage/skole-assistent, trener i barneidretten, ansvarlig i korps/teater eller barnevakt 🤾",
+          "Du er ansvarsfull, pålitelig og selvdrevet ⏰",
+          "Du trives med å være kreativ, delta i lek og være i aktivitet ute med barn 🛝",
+          "Du ser hvert barn og tilrettelegger etter deres behov 🫴",
+          "Du er god til å bygge relasjoner og ønsker å være en positiv rollemodell for barn og unge⭐",
+          "Du studerer eller er ferdig utdannet barnehagelærer, grunnskolelærer, psykologi, pedagogikk, sosiologi, barnevern eller barne-og ungdomsarbeider 📚",
+          "Relevant utdanning er ikke et krav, men en fordel.",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Kvalifikasjonskrav:",
+        items: [
+          "Norsk språknivå på minimum B1 (dokumentasjon i form av avlagt norskprøve)",
+          "Du er bosatt og kan arbeide innen følgende områder: Oslo",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Arbeidsoppgaver:",
+        items: [
+          "Undervise klasser, grupper eller enkeltelever i ulike fag",
+          "Skape stabilitet, engasjement og trygge rammer for læring i klasserommet",
+          "Utøve god klasseledelse",
+          "Bidra til et trygt, inkluderende og positivt skolemiljø",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Vi tilbyr:",
+        items: [
+          "Grundig opplæring i forventninger til rollen som pedagogisk personell",
+          "Konkurransedyktig lønn etter tariffavtale",
+          "Et godt arbeidsmiljø med fokus på inkludering, anerkjennelse og trivsel",
+          "Månedlige sosiale treff for ansatte i Brobyggere",
+          "Du får mulighet til å bli kjent med andre vikarer og utveksle erfaringer",
+          "Fleksibilitet i arbeidstid og varighet på oppdrag",
+          "Gode utviklingsmuligheter",
+          "Tilbud om kurs, oppfølging og veiledning ved behov",
+        ],
+      },
+    ],
+
+    // ✅ NEW
+    contactPerson: {
+      image: "/assets/img/team/eline.jpeg",
+      name: "Eline Håstø Borgenvik",
+      title: "HR-konsulent",
+      phone: "+47 479 68 163",
+      email: "eline@brobyggere.com",
+    },
+  },
+
+  {
+    id: 10,
+    slug: "praktisk-stavanger",
+    region: "rogaland",
+    areas: ["sandnes"],
+    title: "Praktisk bistand",
+    shortDescription:
+      "Vi søker etter medarbeidere for praktisk bistand i Sandnes.",
+    image: "/assets/img/vacancies/stavanger4.png",
+    openPositions: 16,
+    details: [
+      {
+        type: "text",
+        title: "Brobyggere søker medarbeider til praktisk bistand",
+        paragraphs: [],
+      },
+
+      {
+        type: "text",
+        title: "Vil du gjøre en forskjell i menneskers hverdag?",
+        paragraphs: [
+          "Brobyggere søker engasjerte og pålitelige medarbeidere til praktisk bistand. Vi leverer tjenester til mennesker som trenger hjelp for å mestre hverdagen hjemme, og vårt mål er å skape trygghet, verdighet og trivsel for hver enkelt bruker.",
+          "Hos oss blir du en del av et inkluderende og støttende arbeidsmiljø, der relasjonsbygging, respekt og kvalitet i tjenestene står i sentrum.",
+        ],
+      },
+
+      {
+        type: "text",
+        title: "Arbeidsted:",
+        paragraphs: ["Sandnes kommune"],
+      },
+
+      {
+        type: "list",
+        title: "Arbeidsoppgaver:",
+        items: [
+          "Praktisk hjelp i hjemmet etter vedtak/avtale, som rengjøring, klesvask, sengetøyskift og enkle måltider",
+          "Bidra til orden, struktur og trivsel i brukernes hjem",
+          "Skape gode relasjoner og trygge rammer for brukerne",
+          "Samarbeid med kolleger, fagansvarlige og eventuelt pårørende",
+          "Rapportering og enkel dokumentasjon i henhold til interne rutiner",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Kvalifikasjonskrav:",
+        items: [
+          "Gode norskkunnskaper, både muntlig og skriftlig",
+          "Evne til å arbeide selvstendig og strukturert",
+          "Grunnleggende digitale ferdigheter (for enkel rapportering/dokumentasjon)",
+          "Gyldig politiattest (må fremlegges ved ansettelse)",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Personlig egenskaper",
+        items: [
+          "Har et genuint ønske om å hjelpe andre",
+          "Er ansvarsbevisst, pålitelig og serviceinnstilt",
+          "Er selvstendig, men også trives med samarbeid",
+          "Har gode norskkunnskaper, både muntlig og skriftlig",
+          "Har førerkort klasse B (en fordel, men ikke et krav)",
+          "Har erfaring fra praktisk bistand, renhold, hjemmetjeneste eller lignende arbeid (en fordel, men ikke et krav)",
+          "Formell helse- og sosialfaglig utdanning er ikke et krav – personlig egnethet og motivasjon vil bli vektlagt.",
+        ],
+      },
+
+      {
+        type: "list",
+        title: "Vi tilbyr:",
+        items: [
+          "Grundig opplæring i forventninger til rollen som pedagogisk personell",
+          "Konkurransedyktig lønn etter tariffavtale",
+          "Et godt arbeidsmiljø med fokus på inkludering, anerkjennelse og trivsel",
+          "Månedlige sosiale treff for ansatte i Brobyggere",
+          "Du får mulighet til å bli kjent med andre vikarer og utveksle erfaringer",
+          "Fleksibilitet i arbeidstid og varighet på oppdrag",
+          "Gode utviklingsmuligheter",
+          "Tilbud om kurs, oppfølging og veiledning ved behov",
+        ],
+      },
+    ],
+
+    // ✅ NEW
+    contactPerson: {
+      image: "/assets/img/team/eline.jpeg",
+      name: "Eline Håstø Borgenvik",
+      title: "HR-konsulent",
+      phone: "+47 479 68 163",
+      email: "eline@brobyggere.com",
     },
   },
 ];
