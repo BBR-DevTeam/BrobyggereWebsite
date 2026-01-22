@@ -230,7 +230,7 @@ export const vacanciesData: Vacancy[] = [
     title: "Skole-assistent og SFO personell",
     shortDescription:
       "Vi søker deg som ønsker å jobbe som assistent i skole og på SFO.",
-    image: "/assets/img/vacancies/bergen2.png",
+    image: "/assets/img/vacancies/bergen2.webp",
     openPositions: 8,
     details: [
       {
@@ -314,7 +314,7 @@ export const vacanciesData: Vacancy[] = [
     title: "Lærervikar",
     shortDescription:
       "Utdanner du deg til å bli lærer, eller er du ferdig studert? Vi søker lærervikarer (1-6 trinn)",
-    image: "/assets/img/vacancies/bergen3.png",
+    image: "/assets/img/vacancies/bergen3.webp",
     openPositions: 7,
     details: [
       {
@@ -403,7 +403,7 @@ export const vacanciesData: Vacancy[] = [
     title: "Barnehagemedarbeider (Assistent)",
     shortDescription:
       "Vi søker barnehagemedarbeidere og assistenter til Oslo og Akershus. For deg som ønsker en givende og fleksibel jobb.",
-    image: "/assets/img/vacancies/oslo1.png",
+    image: "/assets/img/vacancies/oslo1.webp",
     openPositions: 27,
     details: [
       {
@@ -498,7 +498,7 @@ export const vacanciesData: Vacancy[] = [
     title: "Skoleassistenter og AKS - personell",
     shortDescription:
       "Vi søker deg som ønsker å jobbe som assistent i skole og på SFO.",
-    image: "/assets/img/vacancies/oslo2.png",
+    image: "/assets/img/vacancies/oslo2.webp",
     openPositions: 10,
     details: [
       {
@@ -580,7 +580,7 @@ export const vacanciesData: Vacancy[] = [
     areas: ["oslo"],
     title: "Lærervikar",
     shortDescription: "Vi søker lærervikarer i Oslo (1-6 trinn)",
-    image: "/assets/img/vacancies/oslo3.png",
+    image: "/assets/img/vacancies/oslo3.webp",
     openPositions: 4,
     details: [
       {
@@ -662,7 +662,7 @@ export const vacanciesData: Vacancy[] = [
     title: "Barnehagemedarbeider (assistent)",
     shortDescription:
       "Vi søker barnehagemedarbeidere til Sandnes og Stavanger. For deg som ønsker en fleksibel og givende jobb.",
-    image: "/assets/img/vacancies/stavanger1.png",
+    image: "/assets/img/vacancies/stavanger1.webp",
     openPositions: 15,
     details: [
       {
@@ -757,7 +757,7 @@ export const vacanciesData: Vacancy[] = [
     title: "Skole-assistent og SFO personell",
     shortDescription:
       "Vi søker deg som ønsker å jobbe som assistent i skole og på SFO.",
-    image: "/assets/img/vacancies/stavanger2.png",
+    image: "/assets/img/vacancies/stavanger2.webp",
     openPositions: 10,
     details: [
       {
@@ -839,7 +839,7 @@ export const vacanciesData: Vacancy[] = [
     areas: ["sandnes"],
     title: "Lærervikar",
     shortDescription: "Vi søker deg som ønsker å jobbe som lærervikar.",
-    image: "/assets/img/vacancies/stavanger3.png",
+    image: "/assets/img/vacancies/stavanger3.webp",
     openPositions: 5,
     details: [
       {
@@ -921,7 +921,7 @@ export const vacanciesData: Vacancy[] = [
     title: "Praktisk bistand",
     shortDescription:
       "Vi søker etter medarbeidere for praktisk bistand i Sandnes.",
-    image: "/assets/img/vacancies/stavanger4.png",
+    image: "/assets/img/vacancies/stavanger4.webp",
     openPositions: 16,
     details: [
       {

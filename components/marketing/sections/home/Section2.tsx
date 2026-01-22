@@ -59,7 +59,7 @@ export default function Section2() {
               <div
                 className={`image reveal overlay-anim ${styles.chooseImageWrapper}`}
               >
-                <img src="/assets/img/others/choose1-img.JPG" alt="" />
+                <img src="/assets/img/others/choose1-img.webp" alt="" />
               </div>
             </div>
 

@@ -15,7 +15,7 @@ export default function Section1() {
                 <div className="row">
                   <div className="col-lg-6">
                     <div className="image overlay-anim">
-                      <img src="/assets/img/about/about3-img1.jpg" alt="" />
+                      <img src="/assets/img/about/about3-img1.webp" alt="" />
                     </div>
 
                     <div className="conter-box conter-box1">
@@ -35,7 +35,7 @@ export default function Section1() {
                     </div>
 
                     <div className="image overlay-anim">
-                      <img src="/assets/img/about/about3-img2.png" alt="" />
+                      <img src="/assets/img/about/about3-img2.webp" alt="" />
                     </div>
                   </div>
                 </div>
