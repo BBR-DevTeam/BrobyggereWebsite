@@ -135,7 +135,7 @@ export const vacanciesData: Vacancy[] = [
     title: "Barnehagemedarbeider (Assistent)",
     shortDescription:
       "Vi søker barnehagemedarbeidere og assistenter til Bergen, Askøy og Øygarden. For deg som ønsker en givende og fleksibel jobb.",
-    image: "/assets/img/vacancies/bergen1.png",
+    image: "/assets/img/vacancies/bergen1.webp",
     openPositions: 14,
     details: [
       {
