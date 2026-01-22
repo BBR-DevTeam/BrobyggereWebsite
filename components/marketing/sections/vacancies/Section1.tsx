@@ -177,7 +177,28 @@ function RegionGroup({
   countByArea,
   countByAreas,
 }: RegionGroupProps) {
-  // ✅ leaf (Oslo)
+  // ✅ Hooks MUST be unconditional (always called)
+  const parentRef = useRef<HTMLInputElement | null>(null);
+
+  // We only care about "indeterminate" for group nodes, but we can compute safely.
+  const isGroup = isGroupNode(node);
+  const areas: VacancyArea[] = isGroup ? node.children.map((c) => c.key) : [];
+
+  const selectedCount = isGroup
+    ? areas.reduce((acc, a) => acc + (selectedAreas[a] ? 1 : 0), 0)
+    : 0;
+
+  const allChecked = isGroup ? selectedCount === areas.length : false;
+  const noneChecked = isGroup ? selectedCount === 0 : true;
+  const indeterminate = isGroup ? !allChecked && !noneChecked : false;
+
+  useEffect(() => {
+    // Only apply indeterminate state for groups
+    if (isGroup && parentRef.current) {
+      parentRef.current.indeterminate = indeterminate;
+    }
+  }, [isGroup, indeterminate]);
+
   // ✅ leaf (Oslo)
   if (isLeafNode(node)) {
     const a = node.selfAreaKey;
@@ -203,25 +224,8 @@ function RegionGroup({
     );
   }
 
-  // ✅ group with children
-  if (!isGroupNode(node)) return null;
-
-  const areas: VacancyArea[] = node.children.map((c) => c.key);
-
-  const selectedCount = areas.reduce(
-    (acc, a) => acc + (selectedAreas[a] ? 1 : 0),
-    0,
-  );
-
-  const allChecked = selectedCount === areas.length;
-  const noneChecked = selectedCount === 0;
-  const indeterminate = !allChecked && !noneChecked;
-
-  const parentRef = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    if (parentRef.current) parentRef.current.indeterminate = indeterminate;
-  }, [indeterminate]);
+  // ✅ group with children (if it's neither, render nothing)
+  if (!isGroup) return null;
 
   return (
     <div className={styles.group}>
