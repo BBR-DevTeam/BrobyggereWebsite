@@ -14,6 +14,7 @@
   height: 100%;
   object-fit: cover; /* ✅ keeps aspect ratio, crops overflow */
   display: block;
+  overflow-clip-margin: unset;
 }
 
 /* Tablet */

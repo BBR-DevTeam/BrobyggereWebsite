@@ -13,7 +13,7 @@ export default function Home() {
                 <div className="col-lg-12">
                   <div className="error-page-content">
                     <div className="image text-center">
-                      <img src="assets/img/others/error.png" alt="" />
+                      <img src="/assets/img/others/error.png" alt="" />
                     </div>
                     <div className="space50" />
                     <div className="heading1 text-center">

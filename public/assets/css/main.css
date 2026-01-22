@@ -2209,6 +2209,7 @@ body.body {
 .heading6 span.span img {
   transform: translateY(-3px);
   margin-right: 3px;
+  overflow-clip-margin: unset;
 }
 .heading6 h2 {
   color: #081120;
@@ -2267,6 +2268,7 @@ body.body {
   filter: brightness(0) invert(1);
   transform: translateY(-3px);
   margin-right: 3px;
+  overflow-clip-margin: unset;
 }
 .heading6-w h2 {
   color: #fff;
@@ -2311,6 +2313,7 @@ body.body {
 .heading7 span.span img {
   transform: translateY(-3px);
   margin-right: 3px;
+  overflow-clip-margin: unset;
 }
 .heading7 h2 {
   color: #081120;
@@ -2368,6 +2371,7 @@ body.body {
 .heading8 span.span img {
   transform: translateY(-3px);
   margin-right: 3px;
+  overflow-clip-margin: unset;
 }
 .heading8 h2 {
   color: #081120;
@@ -2412,6 +2416,7 @@ body.body {
 .heading9 span.span img {
   transform: translateY(-3px);
   margin-right: 3px;
+  overflow-clip-margin: unset;
 }
 .heading9 h2 {
   color: #081120;
@@ -2456,6 +2461,7 @@ body.body {
 .heading10 span.span img {
   transform: translateY(-3px);
   margin-right: 3px;
+  overflow-clip-margin: unset;
 }
 .heading10 h2 {
   color: #081120;
@@ -2557,6 +2563,7 @@ body.body {
     -o-object-fit: cover;
     object-fit: cover;
     transform-origin: left;
+    overflow-clip-margin: unset;
   }
 }
 /*============================
@@ -3691,11 +3698,13 @@ body.body {
 }
 .about2 .image img {
   width: 100%;
+  overflow-clip-margin: unset;
 }
 
 .about3 .image img {
   width: 100%;
   border-radius: 4px;
+  overflow-clip-margin: unset;
 }
 .about3 .conter-box {
   border-radius: 4px;
@@ -3737,6 +3746,7 @@ body.body {
 }
 .about3 .about3-icon-box .icon img {
   transition: all 0.4s;
+  overflow-clip-margin: unset;
 }
 .about3 .about3-icon-box .heading3 {
   padding-left: 20px;
@@ -3750,6 +3760,7 @@ body.body {
 .about3 .about3-icon-box:hover .icon img {
   filter: brightness(0) invert(1);
   transition: all 0.4s;
+  overflow-clip-margin: unset;
 }
 .about3 .about3-heading {
   padding-left: 30px;
@@ -3787,6 +3798,7 @@ body.body {
   height: 100%;
   object-fit: cover;
   display: block;
+  overflow-clip-margin: unset;
 }
 
 /* Optional: keep the big numbers on one line so they don't wrap */
@@ -3837,6 +3849,8 @@ body.body {
 }
 .about4 .heading4 .about4-box .icon img {
   transition: all 0.4s;
+  overflow-clip-margin: unset;
+  overflow-clip-margin: unset;
 }
 .about4 .heading4 .about4-box:hover .icon {
   background-color: var(--vtc-bg-main-bg-5);
@@ -3845,6 +3859,7 @@ body.body {
 .about4 .heading4 .about4-box:hover .icon img {
   transition: all 0.4s;
   filter: brightness(0) invert(1);
+  overflow-clip-margin: unset;
 }
 
 .about5 .images {
@@ -3896,6 +3911,7 @@ body.body {
 }
 .about5 .about5-heading .icon-box .icon img {
   transition: all 0.4s;
+  overflow-clip-margin: unset;
 }
 .about5 .about5-heading .icon-box:hover .icon {
   background-color: var(--vtc-bg-main-bg-2);
@@ -14912,6 +14928,7 @@ body.body {
 
 .blog-details-box .image img {
   width: 100%;
+  overflow-clip-margin: unset;
 }
 .blog-details-box .users {
   padding-top: 28px;
@@ -14925,6 +14942,7 @@ body.body {
 .blog-details-box .users li img {
   margin-top: -5px;
   margin-right: 3px;
+  overflow-clip-margin: unset;
 }
 .blog-details-box .users li img.author {
   margin-right: 4px;

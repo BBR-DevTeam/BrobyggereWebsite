@@ -71,7 +71,7 @@ export default function Section1() {
 
                 {/* Main image */}
                 <img
-                  src="assets/img/hero/brobyggere-hero.JPG"
+                  src="/assets/img/hero/brobyggere-hero.JPG"
                   alt="Brobyggere vikar til barnehage og skole"
                   className={styles.heroMainImage}
                 />

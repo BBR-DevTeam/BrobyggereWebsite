@@ -62,98 +62,98 @@ export default function Section4({
               <Swiper {...swiperOptions}>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo1.png"
+                    src="/assets/img/logo/slider-logo1.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo2.png"
+                    src="/assets/img/logo/slider-logo2.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo3.png"
+                    src="/assets/img/logo/slider-logo3.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo4.jpg"
+                    src="/assets/img/logo/slider-logo4.jpg"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo5.png"
+                    src="/assets/img/logo/slider-logo5.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo6.png"
+                    src="/assets/img/logo/slider-logo6.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo7.png"
+                    src="/assets/img/logo/slider-logo7.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo1.png"
+                    src="/assets/img/logo/slider-logo1.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo2.png"
+                    src="/assets/img/logo/slider-logo2.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo3.png"
+                    src="/assets/img/logo/slider-logo3.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo4.jpg"
+                    src="/assets/img/logo/slider-logo4.jpg"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo5.png"
+                    src="/assets/img/logo/slider-logo5.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo6.png"
+                    src="/assets/img/logo/slider-logo6.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
                 <SwiperSlide className={styles.slideItem}>
                   <img
-                    src="assets/img/logo/slider-logo7.png"
+                    src="/assets/img/logo/slider-logo7.png"
                     alt="recrute"
                     className={styles.logoImage}
                   />

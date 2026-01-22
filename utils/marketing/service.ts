@@ -38,11 +38,11 @@ export const services: Service[] = [
     subtitle: "Vikarer til skole",
     description:
       "Lærervikarer, assistenter, SFO-personale og miljøarbeidere som skaper ro, struktur og støtte i klasserommet.",
-    image: "assets/img/service/service1-img2.jpg",
+    image: "/assets/img/service/service1-img2.jpg",
     iconClass: "fa-solid fa-school",
 
     detailTitle: "Bemanning til skoler – trygt, raskt og fleksibelt",
-    detailHeroImage: "assets/img/service/service1-img2.jpg",
+    detailHeroImage: "/assets/img/service/service1-img2.jpg",
     detailIntro:
       "Når hverdagen krever ekstra ressurser, leverer vi kompetent personell til grunnskole og videregående skole. Vi sørger for god flyt i undervisningen og trygghet i skolemiljøet – enten dere trenger hjelp for én dag, flere uker eller lengre perioder.",
 
@@ -138,11 +138,11 @@ export const services: Service[] = [
     subtitle: "Vikarer til barnehage",
     description:
       "Kvalifiserte barnehageassistenter og barnehagelærere som skaper trygghet, lek og læring i hverdagen.",
-    image: "assets/img/service/service1-img1.jpg",
+    image: "/assets/img/service/service1-img1.jpg",
     iconClass: "fa-solid fa-children",
 
     detailTitle: "Bemanning til barnehager – trygt, raskt og fleksibelt",
-    detailHeroImage: "assets/img/service/service1-img1.jpg",
+    detailHeroImage: "/assets/img/service/service1-img1.jpg",
     detailIntro:
       "Vi tilbyr kvalifisert personell som kan steppe inn på kort varsel og sikre god drift i barnehagen. Med fokus på trygghet, kvalitet og kontinuitet leverer vi vikarer til både korte og langvarige behov.",
 
@@ -264,11 +264,11 @@ export const services: Service[] = [
     subtitle: "Bemanning innen helse og omsorg",
     description:
       "Fagpersonell og assistenter til helse- og omsorgstjenester ved behov",
-    image: "assets/img/service/service1-img3.jpg",
+    image: "/assets/img/service/service1-img3.jpg",
     iconClass: "fa-solid fa-heart-pulse",
 
     detailTitle: "Bemanning til helse og omsorg – trygt, raskt og fleksibelt",
-    detailHeroImage: "assets/img/service/service1-img3.jpg",
+    detailHeroImage: "/assets/img/service/service1-img3.jpg",
     detailIntro:
       "Vi tilbyr kvalifisert personell som kan steppe inn på kort varsel og sikre god drift i helse- og omsorgstjenester. Med fokus på trygghet, kvalitet og kontinuitet leverer vi vikarer til både korte og langvarige behov.",
 
@@ -393,11 +393,11 @@ export const services: Service[] = [
     subtitle: "Fleksible renholdstjenester",
     description:
       "Pålitelig renholdspersonell til skoler, barnehager og andre virksomheter – for et rent og trygt miljø.",
-    image: "assets/img/service/service1-img4.jpg",
+    image: "/assets/img/service/service1-img4.jpg",
     iconClass: "fa-solid fa-broom",
 
     detailTitle: "Bemanning til renhold – trygt, raskt og fleksibelt",
-    detailHeroImage: "assets/img/service/service1-img4.jpg",
+    detailHeroImage: "/assets/img/service/service1-img4.jpg",
     detailIntro:
       "Vi tilbyr pålitelig og erfarent renholdspersonell som kan steppe inn på kort varsel og sikre rene, trygge og hygieniske lokaler. Med fokus på kvalitet, effektivitet og kontinuitet leverer vi renholdstjenester til både korte og langvarige behov.",
 

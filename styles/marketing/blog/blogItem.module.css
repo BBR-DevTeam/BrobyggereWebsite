@@ -81,6 +81,7 @@
   height: 16px;
   object-fit: contain;
   flex: 0 0 16px;
+  overflow-clip-margin: unset;
 }
 
 /* Top group layout */

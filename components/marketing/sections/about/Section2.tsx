@@ -30,7 +30,7 @@ export default function Section2() {
               <div className={`mission-box ${styles.missionBox}`}>
                 <div className={styles.iconWrap}>
                   <img
-                    src="assets/img/icons/mission-icon1.png"
+                    src="/assets/img/icons/mission-icon1.png"
                     alt="Kvalitet"
                   />
                 </div>
@@ -59,7 +59,7 @@ export default function Section2() {
               <div className={`mission-box ${styles.missionBox}`}>
                 <div className={styles.iconWrap}>
                   <img
-                    src="assets/img/icons/mission-icon2.png"
+                    src="/assets/img/icons/mission-icon2.png"
                     alt="Pålitelighet"
                   />
                 </div>
@@ -87,7 +87,7 @@ export default function Section2() {
               <div className={`mission-box ${styles.missionBox}`}>
                 <div className={styles.iconWrap}>
                   <img
-                    src="assets/img/icons/mission-icon3.png"
+                    src="/assets/img/icons/mission-icon3.png"
                     alt="Fleksibilitet"
                   />
                 </div>

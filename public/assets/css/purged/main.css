@@ -1356,9 +1356,10 @@ body.body {
 .faq-all-area .accordion {
   --bs-accordion-color: #000;
   --bs-accordion-bg: #fff;
-  --bs-accordion-transition: color 0.15s ease-in-out,
-    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out, border-radius 0.15s ease;
+  --bs-accordion-transition:
+    color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    border-radius 0.15s ease;
   --bs-accordion-border-color: #dee2e600;
   --bs-accordion-border-width: 1px;
   --bs-accordion-border-radius: 0.375rem;
@@ -1790,7 +1791,6 @@ body.body {
  PRELOADER AREA CSS
 ::::::::::::::::::::::::::
 */
-
 
 .loading {
   height: 100px;
@@ -2383,6 +2383,7 @@ body.body {
 
 .blog-details-box .image img {
   width: 100%;
+  overflow-clip-margin: unset;
 }
 .blog-details-box .users {
   padding-top: 28px;
@@ -2396,6 +2397,7 @@ body.body {
 .blog-details-box .users li img {
   margin-top: -5px;
   margin-right: 3px;
+  overflow-clip-margin: unset;
 }
 .blog-details-box .users li img.author {
   margin-right: 4px;

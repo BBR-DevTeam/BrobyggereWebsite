@@ -4,7 +4,7 @@ import { useState } from "react";
 import ModalVideo from "react-modal-video";
 import "react-modal-video/css/modal-video.css";
 import blogData from "../../../../utils/marketing/blog.json";
-import styles from "../../../../styles/marketing/blog-details/blogDetail.module.css";
+import styles from "@/styles/marketing/blog-details/blogDetail.module.css";
 
 interface Section1Props {
   blogId: number;
@@ -27,7 +27,7 @@ type Blog = {
 };
 
 function normalizeContent(
-  content: Blog["content"]
+  content: Blog["content"],
 ): ContentBlock[] | undefined {
   if (!content) return undefined;
 

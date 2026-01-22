@@ -12,7 +12,7 @@ export default function Section2() {
               <div className="" data-aos="zoom-in-up" data-aos-duration={700}>
                 <div className="icon-box">
                   <div className="icon">
-                    <img src="assets/img/icons/choose1-icon1.png" alt="" />
+                    <img src="/assets/img/icons/choose1-icon1.png" alt="" />
                   </div>
                   <div className="heading1">
                     <h3>
@@ -27,7 +27,7 @@ export default function Section2() {
               <div className="" data-aos="zoom-in-up" data-aos-duration={900}>
                 <div className="icon-box">
                   <div className="icon">
-                    <img src="assets/img/icons/choose1-icon2.png" alt="" />
+                    <img src="/assets/img/icons/choose1-icon2.png" alt="" />
                   </div>
                   <div className="heading1">
                     <h3>
@@ -42,7 +42,7 @@ export default function Section2() {
               <div className="" data-aos="zoom-in-up" data-aos-duration={1200}>
                 <div className="icon-box icon-box2">
                   <div className="icon">
-                    <img src="assets/img/icons/choose1-icon3.png" alt="" />
+                    <img src="/assets/img/icons/choose1-icon3.png" alt="" />
                   </div>
                   <div className="heading1">
                     <h3>
@@ -59,7 +59,7 @@ export default function Section2() {
               <div
                 className={`image reveal overlay-anim ${styles.chooseImageWrapper}`}
               >
-                <img src="assets/img/others/choose1-img.jpg" alt="" />
+                <img src="/assets/img/others/choose1-img.jpg" alt="" />
               </div>
             </div>
 

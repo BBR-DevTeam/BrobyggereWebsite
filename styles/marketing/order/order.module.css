@@ -144,13 +144,15 @@
   height: 48px;
   border-radius: 12px;
   border: 1px solid #e6e7e9;
-  padding: 0 14px 0 62px;
+  padding: 0 52px 0 62px; /* extra right padding for caret/button */
   background: #fff;
   color: #525863;
   font-family: var(--f-ff-font-1);
   font-size: var(--f-fs-font-fs16);
   outline: none;
-  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+  transition:
+    box-shadow 0.16s ease,
+    border-color 0.16s ease;
 }
 
 .select {
@@ -165,6 +167,101 @@
 
 .input::placeholder {
   color: #9aa0aa;
+}
+
+/* Dropdown arrow indicator (select) */
+.selectCaret {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  color: #7a8190;
+  background: rgba(8, 17, 32, 0.04);
+  border: 1px solid rgba(8, 17, 32, 0.08);
+}
+
+/* Time input + dropdown button */
+.timeInput {
+  letter-spacing: 0.2px;
+}
+
+.rightButton {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(8, 17, 32, 0.1);
+  background: rgba(8, 17, 32, 0.04);
+  color: #6f7785;
+  cursor: pointer;
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.rightButton:hover {
+  background: rgba(8, 17, 32, 0.06);
+  border-color: rgba(8, 17, 32, 0.14);
+}
+
+.rightButton:active {
+  transform: translateY(-50%) scale(0.98);
+}
+
+.timeDropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 50;
+  border-radius: 12px;
+  border: 1px solid rgba(8, 17, 32, 0.1);
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(8, 17, 32, 0.12);
+  padding: 8px;
+
+  max-height: 220px;
+  overflow: auto;
+}
+
+.timeOption {
+  width: 100%;
+  text-align: left;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  font-family: var(--f-ff-font-1);
+  font-size: 14px;
+  color: #525863;
+}
+
+.timeOption:hover {
+  background: rgba(58, 141, 255, 0.1);
+}
+
+.timeOptionActive {
+  background: rgba(58, 141, 255, 0.14);
+  color: #2b5fb9;
+  font-weight: var(--f-fw-semibold);
 }
 
 /* Textarea */
@@ -201,7 +298,9 @@
   font-size: var(--f-fs-font-fs16);
   outline: none;
   resize: vertical;
-  transition: box-shadow 0.16s ease, border-color 0.16s ease;
+  transition:
+    box-shadow 0.16s ease,
+    border-color 0.16s ease;
 }
 
 .textarea:focus {
@@ -217,7 +316,7 @@
   line-height: 1.35;
 }
 
-/* === Make theme-btn1 work nicely inside this module === */
+/* theme button helpers */
 .themeBtnFix {
   display: inline-flex;
   align-items: center;
@@ -285,11 +384,10 @@
 
   .left {
     padding-right: 0;
-    margin-top: 24px; /* gap between form and the buttons/text block */
+    margin-top: 24px;
   }
 }
 
-/* Mobile: match Stillinger/Kontakt title sizing */
 @media (max-width: 991px) {
   .mobileHeader .title {
     font-size: 34px !important;

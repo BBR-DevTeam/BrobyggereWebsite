@@ -17,7 +17,7 @@ export default function Section5() {
                 className={`work-img reveal overlay-anim ${styles.workImageWrapper}`}
               >
                 <img
-                  src="assets/img/work/work1-image.png"
+                  src="/assets/img/work/work1-image.png"
                   alt="Brobyggere App"
                   className={styles.mockupImage}
                 />
@@ -29,7 +29,7 @@ export default function Section5() {
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="assets/img/store/appstore.png"
+                      src="/assets/img/store/appstore.png"
                       alt="Last ned på App Store"
                     />
                   </a>
@@ -40,7 +40,7 @@ export default function Section5() {
                     rel="noopener noreferrer"
                   >
                     <img
-                      src="assets/img/store/googleplay.png"
+                      src="/assets/img/store/googleplay.png"
                       alt="Last ned på Google Play"
                     />
                   </a>
@@ -77,7 +77,7 @@ export default function Section5() {
                 <div data-aos="fade-left" data-aos-duration={900}>
                   <div className="work1-box">
                     <div className="icon">
-                      <img src="assets/img/icons/work1-icon1.png" alt="" />
+                      <img src="/assets/img/icons/work1-icon1.png" alt="" />
                     </div>
                     <div className="heading1">
                       <h4>
@@ -97,7 +97,7 @@ export default function Section5() {
                 <div data-aos="fade-left" data-aos-duration={700}>
                   <div className="work1-box">
                     <div className="icon">
-                      <img src="assets/img/icons/work1-icon2.png" alt="" />
+                      <img src="/assets/img/icons/work1-icon2.png" alt="" />
                     </div>
                     <div className="heading1">
                       <h4>
@@ -117,7 +117,7 @@ export default function Section5() {
                 <div data-aos="fade-left" data-aos-duration={1100}>
                   <div className="work1-box">
                     <div className="icon">
-                      <img src="assets/img/icons/work1-icon3.png" alt="" />
+                      <img src="/assets/img/icons/work1-icon3.png" alt="" />
                     </div>
                     <div className="heading1">
                       <h4>

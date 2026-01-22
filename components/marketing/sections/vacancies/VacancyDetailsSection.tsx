@@ -1,3 +1,6 @@
+// VacancyDetailsSection.tsx (FULL UPDATED) — fixes 400 by ensuring token is sent,
+// blocks submit if token missing, and shows exact server error (so you can debug fast)
+
 "use client";
 
 import React, { FormEvent, useMemo, useState } from "react";
@@ -17,6 +20,8 @@ import {
   regionLabel,
   areaLabel,
 } from "@/utils/marketing/vacanciesData";
+import { useFormspark } from "@formspark/use-formspark";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 type Props = {
   slug: string;
@@ -29,13 +34,57 @@ type FormState = {
   address: string;
   cvFile: File | null;
   otherFiles: File[];
+  website: string; // honeypot
+  turnstileToken: string; // ✅ Turnstile token
 };
+
+type FormErrors = Partial<Record<keyof FormState, string>>;
+
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
+function isValidPhone(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  return digits.length >= 7 && digits.length <= 15;
+}
+
+// Must match your API route limits (app/api/vacancy-upload/route.ts)
+const MAX_CV_BYTES = 10 * 1024 * 1024; // 10MB
+const MAX_OTHER_BYTES = 10 * 1024 * 1024; // 10MB each
+const MAX_OTHER_FILES = 5;
+
+const CV_ALLOWED = new Set([
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+]);
+
+const OTHER_ALLOWED = new Set([...CV_ALLOWED, "image/jpeg", "image/png"]);
+
+function fileTypeOk(file: File, allowed: Set<string>) {
+  return allowed.has(file.type);
+}
 
 export default function VacancyDetailsSection({ slug }: Props) {
   const vacancy = useMemo(
     () => vacanciesData.find((v) => v.slug === slug),
     [slug],
   );
+
+  const formId = process.env.NEXT_PUBLIC_FORMSPARK_VACANCY_FORM_ID;
+  if (!formId) {
+    throw new Error(
+      "Missing NEXT_PUBLIC_FORMSPARK_VACANCY_FORM_ID in .env.local",
+    );
+  }
+
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  if (!turnstileSiteKey) {
+    throw new Error("Missing NEXT_PUBLIC_TURNSTILE_SITE_KEY in .env.local");
+  }
+
+  const [submitToFormspark, submittingToFormspark] = useFormspark({ formId });
 
   const [formData, setFormData] = useState<FormState>({
     name: "",
@@ -44,34 +93,225 @@ export default function VacancyDetailsSection({ slug }: Props) {
     address: "",
     cvFile: null,
     otherFiles: [],
+    website: "",
+    turnstileToken: "",
   });
+
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState<string>("");
+  const [uploading, setUploading] = useState(false);
+
+  const busy = uploading || submittingToFormspark;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
   const handleCvChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0] ?? null;
     setFormData((prev) => ({ ...prev, cvFile: file }));
+    setErrors((prev) => ({ ...prev, cvFile: undefined }));
   };
 
   const handleOtherDocsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files ?? []);
     setFormData((prev) => ({ ...prev, otherFiles: files.slice(0, 5) }));
+    setErrors((prev) => ({ ...prev, otherFiles: undefined }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  function validate(v: FormState): FormErrors {
+    const next: FormErrors = {};
 
-    console.log("Apply vacancy:", {
-      slug,
-      ...formData,
-      cvFileName: formData.cvFile?.name,
-      otherFileNames: formData.otherFiles.map((f) => f.name),
+    // Honeypot: if filled, likely bot
+    if (v.website.trim()) {
+      next.website = "Ugyldig innsending.";
+      return next;
+    }
+
+    // ✅ Must have a captcha token
+    if (!v.turnstileToken.trim()) {
+      next.turnstileToken = "Bekreft at du ikke er en robot.";
+    }
+
+    const name = v.name.trim();
+    const email = v.email.trim();
+    const phone = v.phone.trim();
+    const address = v.address.trim();
+
+    // name: required, 2–80
+    if (!name) next.name = "Navn er påkrevd.";
+    else if (name.length < 2) next.name = "Navn må være minst 2 tegn.";
+    else if (name.length > 80) next.name = "Navn kan maks være 80 tegn.";
+
+    // email: required + valid
+    if (!email) next.email = "E-post er påkrevd.";
+    else if (!isValidEmail(email)) next.email = "Skriv inn en gyldig e-post.";
+
+    // phone: required + valid
+    if (!phone) next.phone = "Telefon er påkrevd.";
+    else if (!isValidPhone(phone))
+      next.phone = "Skriv inn et gyldig telefonnummer.";
+
+    // address: required, 5–120
+    if (!address) next.address = "Adresse er påkrevd.";
+    else if (address.length < 5) next.address = "Adresse må være minst 5 tegn.";
+    else if (address.length > 120)
+      next.address = "Adresse kan maks være 120 tegn.";
+
+    // cvFile: required + type + size
+    if (!v.cvFile) next.cvFile = "CV er påkrevd.";
+    else {
+      if (!fileTypeOk(v.cvFile, CV_ALLOWED)) {
+        next.cvFile = "CV må være PDF eller DOC/DOCX.";
+      } else if (v.cvFile.size > MAX_CV_BYTES) {
+        next.cvFile = "CV er for stor (maks 10MB).";
+      }
+    }
+
+    // otherFiles: optional, max 5, allowed types + size
+    if (v.otherFiles.length > MAX_OTHER_FILES) {
+      next.otherFiles = "For mange vedlegg (maks 5).";
+    } else {
+      for (const f of v.otherFiles) {
+        if (!fileTypeOk(f, OTHER_ALLOWED)) {
+          next.otherFiles = "Vedlegg må være PDF/DOC eller bilder (JPG/PNG).";
+          break;
+        }
+        if (f.size > MAX_OTHER_BYTES) {
+          next.otherFiles = "Et vedlegg er for stort (maks 10MB per fil).";
+          break;
+        }
+      }
+    }
+
+    return next;
+  }
+
+  async function uploadFiles() {
+    if (!formData.cvFile) throw new Error("Missing CV");
+
+    // Extra guard (prevents pointless 400s)
+    if (!formData.turnstileToken.trim()) {
+      throw new Error("Bekreft at du ikke er en robot.");
+    }
+
+    const fd = new FormData();
+    fd.append("slug", slug);
+    fd.append("turnstileToken", formData.turnstileToken); // ✅ IMPORTANT
+    fd.append("cv", formData.cvFile);
+
+    for (const f of formData.otherFiles) {
+      fd.append("others", f);
+    }
+
+    const res = await fetch("/api/vacancy-upload", {
+      method: "POST",
+      body: fd,
     });
 
-    // Later: send to API route / email / CRM etc.
+    const json = await res.json().catch(() => null);
+
+    // ✅ Show real backend error (instead of generic "Upload failed")
+    if (!res.ok || !json?.ok) {
+      throw new Error(json?.error || `Upload failed (${res.status})`);
+    }
+
+    const cvUrl = json.cv?.downloadUrl;
+    const otherUrls = json.others?.map((x: any) => x.downloadUrl);
+
+    if (!cvUrl) throw new Error("Upload failed: missing CV URL");
+    return { cvUrl, otherUrls };
+  }
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (busy) return;
+
+    setStatus("idle");
+    setStatusMessage("");
+
+    const nextErrors = validate(formData);
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      setStatus("error");
+      setStatusMessage("Sjekk feltene markert i skjemaet.");
+      return;
+    }
+
+    if (!vacancy) {
+      setStatus("error");
+      setStatusMessage("Stilling ikke funnet.");
+      return;
+    }
+
+    try {
+      setUploading(true);
+
+      // Upload to Firebase Storage via server route
+      const { cvUrl, otherUrls } = await uploadFiles();
+
+      // Vacancy metadata for admins
+      const region = regionLabel[vacancy.region];
+      const areas = vacancy.areas.map((a) => areaLabel[a]);
+
+      await submitToFormspark({
+        // Applicant
+        name: formData.name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        phone: formData.phone.trim(),
+        address: formData.address.trim(),
+
+        // Files
+        cvUrl,
+        otherUrls,
+
+        // Context
+        page: "Vacancy",
+        source: "VacancyDetails",
+        vacancySlug: vacancy.slug,
+        vacancyTitle: vacancy.title,
+        vacancyRegion: region,
+        vacancyAreas: areas.join(", "),
+      });
+
+      setStatus("success");
+      setStatusMessage(
+        "Takk! Søknaden er sendt. Vi tar kontakt så snart vi kan.",
+      );
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        address: "",
+        cvFile: null,
+        otherFiles: [],
+        website: "",
+        turnstileToken: "", // ✅ reset token
+      });
+      setErrors({});
+    } catch (err) {
+      console.error(err);
+
+      const msg = err instanceof Error ? err.message : "";
+
+      // If captcha failed/expired, reset token so user must solve again
+      if (msg.toLowerCase().includes("captcha")) {
+        setFormData((prev) => ({ ...prev, turnstileToken: "" }));
+      }
+
+      setStatus("error");
+      setStatusMessage(
+        msg ||
+          "Noe gikk galt ved sending. Prøv igjen om litt, eller kontakt oss direkte.",
+      );
+    } finally {
+      setUploading(false);
+    }
   };
 
   if (!vacancy) {
@@ -89,7 +329,6 @@ export default function VacancyDetailsSection({ slug }: Props) {
     );
   }
 
-  // ✅ NEW: region + areas (after vacancy exists)
   const region = regionLabel[vacancy.region];
   const areas = vacancy.areas.map((a) => areaLabel[a]);
 
@@ -112,15 +351,12 @@ export default function VacancyDetailsSection({ slug }: Props) {
                 <p className={styles.breadcrumb}>Ledige stillinger</p>
                 <h1 className={styles.title}>{vacancy.title}</h1>
 
-                {/* ✅ NEW: region + subregions */}
                 <div className={styles.metaBar}>
-                  {/* Strong parent pill */}
                   <span className={styles.metaPill}>
                     <FiMapPinSmall />
                     {region}
                   </span>
 
-                  {/* Softer child pills */}
                   {areas.map((a) => (
                     <span
                       key={a}
@@ -140,7 +376,6 @@ export default function VacancyDetailsSection({ slug }: Props) {
 
               {vacancy.details.map((section, idx) => (
                 <div key={idx} className={styles.section}>
-                  {/* Allow empty title blocks in your data without rendering a blank heading */}
                   {section.title?.trim() ? (
                     <h3 className={styles.sectionTitle}>{section.title}</h3>
                   ) : null}
@@ -182,7 +417,32 @@ export default function VacancyDetailsSection({ slug }: Props) {
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className={styles.form}>
+              <form onSubmit={handleSubmit} className={styles.form} noValidate>
+                {/* Honeypot field (hidden) */}
+                <div
+                  style={{
+                    position: "absolute",
+                    left: "-10000px",
+                    top: "auto",
+                    width: "1px",
+                    height: "1px",
+                    overflow: "hidden",
+                  }}
+                  aria-hidden="true"
+                >
+                  <label>
+                    Website
+                    <input
+                      type="text"
+                      name="website"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formData.website}
+                      onChange={handleChange}
+                    />
+                  </label>
+                </div>
+
                 <div className={styles.field}>
                   <span className={styles.fieldIcon}>
                     <FiUser />
@@ -193,10 +453,15 @@ export default function VacancyDetailsSection({ slug }: Props) {
                     placeholder="Navn *"
                     value={formData.name}
                     onChange={handleChange}
-                    required
                     aria-label="Navn"
+                    aria-invalid={!!errors.name}
+                    maxLength={80}
+                    autoComplete="name"
                   />
                 </div>
+                {errors.name && (
+                  <small style={{ display: "block" }}>{errors.name}</small>
+                )}
 
                 <div className={styles.field}>
                   <span className={styles.fieldIcon}>
@@ -209,10 +474,14 @@ export default function VacancyDetailsSection({ slug }: Props) {
                     placeholder="E-post *"
                     value={formData.email}
                     onChange={handleChange}
-                    required
                     aria-label="E-post"
+                    aria-invalid={!!errors.email}
+                    autoComplete="email"
                   />
                 </div>
+                {errors.email && (
+                  <small style={{ display: "block" }}>{errors.email}</small>
+                )}
 
                 <div className={styles.field}>
                   <span className={styles.fieldIcon}>
@@ -225,10 +494,14 @@ export default function VacancyDetailsSection({ slug }: Props) {
                     value={formData.phone}
                     onChange={handleChange}
                     inputMode="tel"
-                    required
                     aria-label="Telefon"
+                    aria-invalid={!!errors.phone}
+                    autoComplete="tel"
                   />
                 </div>
+                {errors.phone && (
+                  <small style={{ display: "block" }}>{errors.phone}</small>
+                )}
 
                 <div className={styles.field}>
                   <span className={styles.fieldIcon}>
@@ -240,10 +513,15 @@ export default function VacancyDetailsSection({ slug }: Props) {
                     placeholder="Adresse * (gate, postnr, sted)"
                     value={formData.address}
                     onChange={handleChange}
-                    required
                     aria-label="Adresse"
+                    aria-invalid={!!errors.address}
+                    maxLength={120}
+                    autoComplete="street-address"
                   />
                 </div>
+                {errors.address && (
+                  <small style={{ display: "block" }}>{errors.address}</small>
+                )}
 
                 {/* CV */}
                 <div className={styles.fileGroup}>
@@ -257,7 +535,6 @@ export default function VacancyDetailsSection({ slug }: Props) {
                       className={styles.hiddenFileInput}
                       type="file"
                       onChange={handleCvChange}
-                      required
                       accept=".pdf,.doc,.docx"
                     />
 
@@ -274,6 +551,10 @@ export default function VacancyDetailsSection({ slug }: Props) {
                     <div className={styles.fileHint}>PDF / DOC / DOCX</div>
                     <div className={styles.fileSubHint}>Obligatorisk</div>
                   </div>
+
+                  {errors.cvFile && (
+                    <small style={{ display: "block" }}>{errors.cvFile}</small>
+                  )}
                 </div>
 
                 {/* Other docs */}
@@ -321,13 +602,52 @@ export default function VacancyDetailsSection({ slug }: Props) {
                       ))}
                     </div>
                   )}
+
+                  {errors.otherFiles && (
+                    <small style={{ display: "block" }}>
+                      {errors.otherFiles}
+                    </small>
+                  )}
                 </div>
+
+                {/* ✅ Turnstile */}
+                <div style={{ marginTop: 10 }}>
+                  <Turnstile
+                    siteKey={turnstileSiteKey}
+                    onSuccess={(token: string) =>
+                      setFormData((prev) => ({
+                        ...prev,
+                        turnstileToken: token,
+                      }))
+                    }
+                    onExpire={() =>
+                      setFormData((prev) => ({ ...prev, turnstileToken: "" }))
+                    }
+                    onError={() =>
+                      setFormData((prev) => ({ ...prev, turnstileToken: "" }))
+                    }
+                  />
+
+                  {errors.turnstileToken && (
+                    <small style={{ display: "block" }}>
+                      {errors.turnstileToken}
+                    </small>
+                  )}
+                </div>
+
+                {/* Status */}
+                {status !== "idle" && (
+                  <div style={{ marginTop: 8 }}>
+                    <small style={{ display: "block" }}>{statusMessage}</small>
+                  </div>
+                )}
 
                 <button
                   type="submit"
                   className={`theme-btn1 ${styles.themeBtnFix} ${styles.full}`}
+                  disabled={busy}
                 >
-                  Send søknad
+                  {busy ? "Sender..." : "Send søknad"}
                   <span>
                     <FiArrowRight />
                   </span>

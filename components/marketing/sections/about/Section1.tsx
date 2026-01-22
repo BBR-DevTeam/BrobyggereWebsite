@@ -15,7 +15,7 @@ export default function Section1() {
                 <div className="row">
                   <div className="col-lg-6">
                     <div className="image overlay-anim">
-                      <img src="assets/img/about/about3-img1.jpg" alt="" />
+                      <img src="/assets/img/about/about3-img1.jpg" alt="" />
                     </div>
 
                     <div className="conter-box conter-box1">
@@ -35,7 +35,7 @@ export default function Section1() {
                     </div>
 
                     <div className="image overlay-anim">
-                      <img src="assets/img/about/about3-img2.png" alt="" />
+                      <img src="/assets/img/about/about3-img2.png" alt="" />
                     </div>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export default function Section1() {
                   <div>
                     {/* ✅ replaced template "icon" class */}
                     <div className={styles.freeIcon}>
-                      <img src="assets/img/icons/about3-icon1.png" alt="" />
+                      <img src="/assets/img/icons/about3-icon1.png" alt="" />
                     </div>
                   </div>
                   <div className="heading1">
@@ -85,7 +85,7 @@ export default function Section1() {
                   <div>
                     {/* ✅ replaced template "icon" class */}
                     <div className={styles.freeIcon}>
-                      <img src="assets/img/icons/about3-icon2.png" alt="" />
+                      <img src="/assets/img/icons/about3-icon2.png" alt="" />
                     </div>
                   </div>
                   <div className="heading1">
