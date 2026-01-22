@@ -100,7 +100,7 @@ export default function Section9() {
           <div className="col-lg-6">
             <BlogCard
               href="/blog-details/1"
-              imageSrc="/assets/img/blog/blog2-img1.jpg"
+              imageSrc="/assets/img/blog/blog2-img1.JPG"
               date="18 August 2025"
               author="Rachel Bårdsen"
               title="Brobyggere er nå sertifisert for kvalitet, trygghet og miljø"
