@@ -40,7 +40,10 @@
   color: var(--vtc-text-heading-text-1);
   background: transparent;
 
-  transition: background 180ms ease, color 180ms ease, transform 180ms ease,
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
     box-shadow 180ms ease;
 }
 
@@ -94,7 +97,9 @@
   font-size: 26px;
   line-height: 1;
 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .primary {
@@ -102,6 +107,14 @@
   color: var(--brand-primary);
   border: 1px solid rgba(58, 141, 255, 0.18);
   box-shadow: 0 10px 18px rgba(58, 141, 255, 0.14);
+}
+
+/* ✅ Opening hours text (match the link styling but not clickable) */
+.hoursText {
+  display: inline-block;
+  font-family: inherit;
+  font-weight: var(--f-fw-semibold);
+  color: var(--vtc-text-heading-text-1);
 }
 
 /* hover lift */
@@ -161,6 +174,12 @@
     word-break: break-word; /* long email/address won't overflow */
   }
 
+  /* ✅ Opening hours text on mobile */
+  .hoursText {
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+  }
+
   /* ✅ smaller icon circles on mobile */
   .iconCircle {
     width: 54px;
@@ -206,6 +225,10 @@
     font-size: 16px !important;
   }
 
+  .hoursText {
+    font-size: 16px !important;
+  }
+
   .contactRoot :global(.single-input textarea) {
     min-height: 120px;
   }
@@ -215,4 +238,12 @@
   .contactRoot {
     padding-top: 200px;
   }
+}
+
+/* Make opening hours look exactly like the other value links,
+   but behave like plain text (no click). */
+.staticValue {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
 }

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import styles from "@/styles/marketing/contact/contact.module.css";
-import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
+import { FiPhone, FiMail, FiMapPin, FiClock } from "react-icons/fi";
 import { useFormspark } from "@formspark/use-formspark";
 
 type CityKey = "vestlandet" | "oslo" | "rogaland";
@@ -319,6 +319,29 @@ export default function Section1() {
                         </div>
                       </div>
                     )}
+
+                  {/* ✅ Opening hours (ALL cities) */}
+                  <div>
+                    <div className="contact1-box">
+                      <div className={`${styles.iconCircle} ${styles.primary}`}>
+                        <FiClock />
+                      </div>
+
+                      <div className="heading">
+                        <p>Åpningstider</p>
+
+                        {/* Use <a> so it gets EXACT same template styling as phone/email */}
+                        <a
+                          href="#"
+                          className={styles.staticValue}
+                          onClick={(e) => e.preventDefault()}
+                          aria-label="Åpningstider"
+                        >
+                          06:00 – 22:00
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
