@@ -264,7 +264,7 @@ export const services: Service[] = [
     subtitle: "Bemanning innen helse og omsorg",
     description:
       "Fagpersonell og assistenter til helse- og omsorgstjenester ved behov",
-    image: "/assets/img/service/service1-img3.jpg",
+    image: "/assets/img/service/service1-img3.JPG",
     iconClass: "fa-solid fa-heart-pulse",
 
     detailTitle: "Bemanning til helse og omsorg – trygt, raskt og fleksibelt",
