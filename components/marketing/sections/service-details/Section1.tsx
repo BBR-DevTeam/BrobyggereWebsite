@@ -145,8 +145,7 @@ export default function Section1({ service }: ServiceDetailsSection1Props) {
                           aria-expanded="false"
                           aria-controls="flush-collapseThree"
                         >
-                          Hvordan sikrer dere god match og relasjoner i
-                          barnehagen?
+                          Hvordan sikrer dere god match?
                         </button>
                       </h2>
                       <div
@@ -250,13 +249,32 @@ export default function Section1({ service }: ServiceDetailsSection1Props) {
                     </h3>
 
                     <p className={sidebarStyles.helpText}>
-                      Vi er tilgjengelig på:{" "}
+                      Vestlandet:{" "}
                       <Link
                         href="tel:+4747968163"
                         className={sidebarStyles.helpPhone}
                       >
-                        479 68 163
+                        +47 479 68 163
                       </Link>
+                      <br />
+                      <br />
+                      Akershus/Oslo:{" "}
+                      <Link
+                        href="tel:+4747968163"
+                        className={sidebarStyles.helpPhone}
+                      >
+                        +47 479 62 683
+                      </Link>
+                      <br />
+                      <br />
+                      Rogaland:{"  "}
+                      <Link
+                        href="tel:+4747968163"
+                        className={sidebarStyles.helpPhone}
+                      >
+                        +47 972 78 547
+                      </Link>
+                      <br />
                       <br />
                       <span className={sidebarStyles.helpHours}>
                         Kl. 06.00 - 22.00

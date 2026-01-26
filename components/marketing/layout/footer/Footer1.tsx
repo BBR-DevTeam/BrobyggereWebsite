@@ -45,7 +45,7 @@ export default function Footer() {
                     <Link href="/order">Bestill Vikar</Link>
                   </li>
                   <li>
-                    <Link href="/privacy-policy">Personvernseklæring</Link>
+                    <Link href="/privacy-policy-web">Personvernseklæring</Link>
                   </li>
                   <li>
                     <Link href="/privacy-policy-app">
@@ -206,7 +206,7 @@ export default function Footer() {
               <div className="col-md-12">
                 <div className="coppyright">
                   <p>
-                    © 2026 - Brobyggere Bemannings- og Rekruitteringstjeneste
+                    © 2026 - Brobyggere bemannings- og rekrutteringstjeneste AS
                   </p>
                 </div>
               </div>

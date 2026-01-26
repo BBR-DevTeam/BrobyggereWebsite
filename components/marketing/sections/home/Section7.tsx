@@ -192,9 +192,7 @@ export default function Section7() {
 
                 <p data-aos="fade-right" data-aos-duration={900}>
                   Vi hjelper deg med å finne riktige bemanningsløsninger for
-                  dine behov. Enten du er en barnehage eller skole som trenger
-                  kvalifiserte vikarer, eller en jobbsøker på jakt etter nye
-                  muligheter.
+                  dine behov. Trenger du kvalifiserte vikarer, ta kontakt!
                 </p>
 
                 <div className="" data-aos="fade-right" data-aos-duration={800}>

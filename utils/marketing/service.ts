@@ -44,14 +44,14 @@ export const services: Service[] = [
     detailTitle: "Bemanning til skoler – trygt, raskt og fleksibelt",
     detailHeroImage: "/assets/img/service/service1-img2.jpg",
     detailIntro:
-      "Når hverdagen krever ekstra ressurser, leverer vi kompetent personell til grunnskole og videregående skole. Vi sørger for god flyt i undervisningen og trygghet i skolemiljøet – enten dere trenger hjelp for én dag, flere uker eller lengre perioder.",
+      "Når hverdagen krever ekstra ressurser, leverer vi kompetent personell til grunnskoler og videregående skoler. Vi sørger for god flyt i undervisningen og trygghet i skolemiljøet – enten dere trenger hjelp for én dag, flere uker eller lengre perioder.",
 
     detailSections: [
       {
         type: "text",
         title: "KVALITET OG OPPLÆRING",
         paragraphs: [
-          "Vi gjør alt vi kan for å kvalitetssikre personellet vårt slik at skoleeiere – og ikke minst vikarene selv – kan føle seg trygge på at oppdraget blir riktig utført. Våre vikarer får opplæring og forberedelse før oppstart, slik at de står stødig i rollen og raskt kan tilpasse seg skolens rutiner og forventninger.",
+          "Vi gjør alt vi kan for å kvalitetssikre personellet vårt slik at ledere – og ikke minst vikarene selv – kan føle seg trygge på at oppdraget blir riktig utført. Våre vikarer får opplæring og forberedelse før oppstart, slik at de står stødig i rollen og raskt kan tilpasse seg skolens rutiner og forventninger.",
           "Alle våre vikarer er håndplukket basert på faglig kompetanse, erfaring og evne til å fungere godt i skolemiljø. Når du bestiller vikar gjennom oss, får du dyktige og pålitelige mennesker som stiller opp når du trenger det.",
         ],
       },
@@ -61,7 +61,7 @@ export const services: Service[] = [
         title: "TILGJENGELIGHET",
         paragraphs: [
           "Med erfaring fra bransjen vet vi hvor avgjørende tilgjengelighet og fleksibilitet er for skolens hverdag. Derfor jobber vi målrettet for å være en samarbeidspartner du kan stole på – også når behovet oppstår på kort varsel.",
-          "Vi tilpasser oss skolens behov, timeplaner og preferanser, og jobber raskt for å finne riktig person til riktig oppdrag. Vårt fokus på fleksibilitet og tilgjengelighet gjør at vi kan løse bemanningsutfordringer effektivt og smidig.",
+          "Vi tilpasser oss skolens behov, timeplaner og preferanser, og jobber raskt for å finne riktig vikarer til riktig oppdrag til riktig oppdrag. Vårt fokus på fleksibilitet og tilgjengelighet gjør at vi kan løse bemanningsutfordringer effektivt og smidig.",
         ],
       },
 
@@ -115,7 +115,7 @@ export const services: Service[] = [
         title: "",
         items: [
           "Rask respons når behovet oppstår (5 til 10 min)",
-          "Riktig match mellom oppdrag og person (kompetanse, språk, erfaring og personlighet)",
+          "Riktig match mellom oppdrag og vikar (kompetanse, språk, erfaring og personlighet)",
           "Tydelig kommunikasjon før oppstart og underveis",
           "Forutsigbarhet for skoleledelse, lærere og elever",
         ],
@@ -151,8 +151,8 @@ export const services: Service[] = [
         type: "text",
         title: "TRYGGHET",
         paragraphs: [
-          "Vi vet hvor viktig trygghet er i barnehagehverdagen – både for barn, foreldre og ansatte.Derfor er vi stolte av å være en pålitelig samarbeidspartner som setter omsorg, stabilitet og forutsigbarhet i sentrum.",
-          "Våre vikarer blir grundig fulgt opp og får nødvendig opplæring, slik at de føler seg trygge i rollen og kan møte barna med ro, varme og profesjonalitet. Målet vårt er at både barnehageeiere og medarbeidere skal føle seg ivaretatt i samarbeidet med oss.",
+          "Vi vet hvor viktig trygghet er i barnehagehverdagen – både for barn, foreldre og ansatte. Derfor er vi stolte av å være en pålitelig samarbeidspartner som setter omsorg, stabilitet og forutsigbarhet i sentrum.",
+          "Våre vikarer blir grundig fulgt opp og får nødvendig opplæring, slik at de føler seg trygge i rollen og kan møte barna med ro, varme og profesjonalitet. Målet vårt er at både barnehagestyrere og medarbeidere skal føle seg ivaretatt i samarbeidet med oss.",
         ],
       },
       {
@@ -232,7 +232,7 @@ export const services: Service[] = [
         type: "text",
         title: "SLIK JOBBER VI",
         paragraphs: [
-          "Vi er opptatt av at skolene får en løsning som fungerer i praksis. Derfor legger vi vekt på:",
+          "Vi er opptatt av at barnehagene får en løsning som fungerer i praksis. Derfor legger vi vekt på:",
         ],
       },
 
@@ -243,7 +243,7 @@ export const services: Service[] = [
           "Rask respons når behovet oppstår (5 til 10 min)",
           "Riktig match mellom oppdrag og person (kompetanse, språk, erfaring og personlighet)",
           "Tydelig kommunikasjon før oppstart og underveis",
-          "Forutsigbarhet for skoleledelse, lærere og elever",
+          "Forutsigbarhet for barnehagestyrere, pedagogiske ledere og vikarer",
         ],
       },
 
@@ -251,7 +251,7 @@ export const services: Service[] = [
         type: "text",
         title: "",
         paragraphs: [
-          "Vårt mål er å gjøre bemanning enkelt, trygt og effektivt – slik at dere kan fokusere på det viktigste: elevenes læring og trivsel.",
+          "Vårt mål er å gjøre bemanning enkelt, trygt og effektivt – slik at dere kan fokusere på det viktigste: barns læring, utvikling og trivsel.",
         ],
       },
     ],
@@ -263,12 +263,12 @@ export const services: Service[] = [
     title: "Helse og omsorg",
     subtitle: "Bemanning innen helse og omsorg",
     description:
-      "Fagpersonell og assistenter til helse- og omsorgstjenester ved behov",
+      "Sykepleiere, leger og helsefagarbeidere til helse- og omsorgstjenester ved behov.",
     image: "/assets/img/service/service1-img3.JPG",
     iconClass: "fa-solid fa-heart-pulse",
 
     detailTitle: "Bemanning til helse og omsorg – trygt, raskt og fleksibelt",
-    detailHeroImage: "/assets/img/service/service1-img3.jpg",
+    detailHeroImage: "/assets/img/service/service1-img3.JPG",
     detailIntro:
       "Vi tilbyr kvalifisert personell som kan steppe inn på kort varsel og sikre god drift i helse- og omsorgstjenester. Med fokus på trygghet, kvalitet og kontinuitet leverer vi vikarer til både korte og langvarige behov.",
 
@@ -277,7 +277,7 @@ export const services: Service[] = [
         type: "text",
         title: "TRYGGHET",
         paragraphs: [
-          "Vi vet hvor avgjørende trygghet er i helse- og omsorgssektoren – både for brukere, pårørende og ansatte.Derfor er vi stolte av å være en pålitelig samarbeidspartner som setter omsorg, profesjonalitet og respekt i sentrum.",
+          "Vi vet hvor avgjørende trygghet er i helse- og omsorgssektoren – både for brukere, pårørende og ansatte. Derfor er vi stolte av å være en pålitelig samarbeidspartner som setter omsorg, profesjonalitet og respekt i sentrum.",
           "Våre vikarer blir grundig kvalitetssikret og fulgt opp før og under oppdrag, slik at de føler seg trygge i rollen og kan møte brukerne med ro, empati og faglig trygghet. Målet vårt er at både oppdragsgivere og medarbeidere skal føle seg ivaretatt i samarbeidet med oss.",
         ],
       },
@@ -372,15 +372,6 @@ export const services: Service[] = [
           "Rask respons når behovet oppstår (5 til 10 min)",
           "Riktig match mellom oppdrag og person (kompetanse, språk, erfaring og personlighet)",
           "Tydelig kommunikasjon før oppstart og underveis",
-          "Forutsigbarhet for skoleledelse, lærere og elever",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: [
-          "Vårt mål er å gjøre bemanning enkelt, trygt og effektivt – slik at dere kan fokusere på det viktigste: elevenes læring og trivsel.",
         ],
       },
     ],
@@ -483,15 +474,6 @@ export const services: Service[] = [
           "Rask respons når behovet oppstår (5 til 10 min)",
           "Riktig match mellom oppdrag og person (kompetanse, språk, erfaring og personlighet)",
           "Tydelig kommunikasjon før oppstart og underveis",
-          "Forutsigbarhet for skoleledelse, lærere og elever",
-        ],
-      },
-
-      {
-        type: "text",
-        title: "",
-        paragraphs: [
-          "Vårt mål er å gjøre bemanning enkelt, trygt og effektivt – slik at dere kan fokusere på det viktigste: elevenes læring og trivsel.",
         ],
       },
     ],

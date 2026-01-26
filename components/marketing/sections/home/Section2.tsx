@@ -66,18 +66,19 @@ export default function Section2() {
             <div className="col-lg-5">
               <div className="heading1 choose1-heading">
                 <h2 className={`text-anime-style-3 ${styles.sectionTitle}`}>
-                  <span className={styles.titleMain}>TRYGG BEMANNING</span>
+                  <span className={styles.titleMain}>Trygg bemanning</span>
                   <span className={styles.titleSub}>
-                    Når Dere Trenger Det Som Mest
+                    Når kontinuitet og kvalitet er avgjørende
                   </span>
                 </h2>
 
                 <div className="space16" />
 
                 <p data-aos="fade-left" data-aos-duration={900}>
-                  Vi kjenner behovene i barnehager og skoler, og leverer
-                  kvalifiserte vikarer som skaper trygghet, kontinuitet og
-                  kvalitet i hverdagen.
+                  Vi leverer kvalifisert bemanning til virksomheter som trenger
+                  pålitelige løsninger – raskt, fleksibelt og effektivt. Med
+                  fokus på kvalitet, trygghet og kontinuitet sørger vi for at
+                  driften går som planlagt, selv når behovene endrer seg.
                 </p>
 
                 <div className="space10" />
@@ -104,7 +105,7 @@ export default function Section2() {
                         <span>
                           <i className="fa-solid fa-check" />
                         </span>
-                        Kvalitetssikrede vikarer
+                        Kvalitetssikrede ressurser
                       </li>
                     </ul>
                   </div>
@@ -115,7 +116,7 @@ export default function Section2() {
                         <span>
                           <i className="fa-solid fa-check" />
                         </span>
-                        Brukervennlig funksjoner
+                        Brukervennlige systemer
                       </li>
                     </ul>
                   </div>

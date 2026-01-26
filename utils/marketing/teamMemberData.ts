@@ -58,4 +58,11 @@ export const teamMembers: TeamMemberProps[] = [
     aosDuration: 1300,
     email: "jesper@brobyggere.com",
   },
+  {
+    name: "Erica Beate Rønne Jordal",
+    role: "Koordinator",
+    imageSrc: "/assets/img/team/Erica.png",
+    aosDuration: 1300,
+    email: "koordinator@brobyggere.com",
+  },
 ];
