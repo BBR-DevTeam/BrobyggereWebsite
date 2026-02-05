@@ -46,6 +46,7 @@ export async function POST(req: Request) {
       vacancySlug,
       cvUrl,
       createdAt: new Date().toISOString(),
+      status: "unhandled",
       source: "formspark-webhook",
       formType: "vacancy",
     });

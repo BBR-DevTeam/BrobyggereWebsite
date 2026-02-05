@@ -39,6 +39,7 @@ export async function POST(req: Request) {
       email,
       orgName,
       createdAt: new Date().toISOString(),
+      status: "unhandled",
       source: "formspark-webhook",
       formType: "order",
     });
