@@ -1,5 +1,6 @@
 import { cert, getApps, initializeApp } from "firebase-admin/app";
 import { getStorage } from "firebase-admin/storage";
+import { getFirestore } from "firebase-admin/firestore";
 
 function getEnv(name: string) {
   const v = process.env[name];
@@ -30,3 +31,6 @@ export const adminApp =
 
 export const adminStorage = getStorage(adminApp);
 export const adminBucket = adminStorage.bucket();
+
+// ✅ Firestore (for contact form webhook writes)
+export const adminDb = getFirestore(adminApp);

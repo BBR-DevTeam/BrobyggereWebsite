@@ -10,7 +10,7 @@ export const teamMembers: TeamMemberProps[] = [
     email: "yousefzai@brobyggere.com",
   },
   {
-    name: "Mustafa A. Jabar",
+    name: "Mostafa A. Jabar",
     role: "Leder",
     imageSrc: "/assets/img/team/mostafaj.jpeg",
     aosDuration: 800,

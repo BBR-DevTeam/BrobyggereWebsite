@@ -13,7 +13,7 @@
     "@marsidev/react-turnstile": "^1.4.1",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.3",
-    "firebase-admin": "^13.6.0",
+    "firebase-admin": "^13.6.1",
     "gsap": "^3.12.7",
     "isotope-layout": "^3.0.6",
     "next": "^15.3.1",
