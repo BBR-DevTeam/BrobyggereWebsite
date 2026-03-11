@@ -482,11 +482,11 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/celine.jpeg",
-      name: "Celine April Rosnes Ramberg",
+      image: "/assets/img/team/Thea.JPG",
+      name: "Thea Gunnarskog",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "celine@brobyggere.com",
+      email: "thea@brobyggere.com",
     },
   },
 
@@ -565,11 +565,11 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/celine.jpeg",
-      name: "Celine April Rosnes Ramberg",
+      image: "/assets/img/team/Thea.JPG",
+      name: "Thea Gunnarskog",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "celine@brobyggere.com",
+      email: "thea@brobyggere.com",
     },
   },
 
@@ -646,11 +646,11 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/celine.jpeg",
-      name: "Celine April Rosnes Ramberg",
+      image: "/assets/img/team/Thea.JPG",
+      name: "Thea Gunnarskog",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "celine@brobyggere.com",
+      email: "thea@brobyggere.com",
     },
   },
 
