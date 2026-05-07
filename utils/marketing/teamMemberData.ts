@@ -24,12 +24,20 @@ export const teamMembers: TeamMemberProps[] = [
     email: "rachel@brobyggere.com",
   },
   {
+    name: "Emma Karin Holm",
+    role: "HR-konsulent Bergen",
+    imageSrc: "assets/img/team/emma.jpeg",
+    aosDuration: 1000,
+    email: "emma@brobyggere.com",
+  },
+  {
     name: "Eline Håstø Borgenvik",
     role: "HR-konsulent Stavanger / Sandnes",
     imageSrc: "assets/img/team/eline.jpeg",
     aosDuration: 1000,
     email: "eline@brobyggere.com",
   },
+
   {
     name: "Thea Gunnarskog",
     role: "HR-konsulent Oslo / Lillestrøm",
@@ -45,13 +53,7 @@ export const teamMembers: TeamMemberProps[] = [
     aosDuration: 1200,
     email: "moien@brobyggere.com",
   },
-  {
-    name: "Jehad Babawat",
-    role: "Systemutvikler",
-    imageSrc: "/assets/img/team/jehad.jpeg",
-    aosDuration: 1300,
-    email: "j.babawat@brobyggere.com",
-  },
+
   {
     name: "Jesper Bøe Ellingsen",
     role: "Koordinator",
