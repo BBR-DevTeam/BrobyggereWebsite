@@ -20,7 +20,7 @@ export default function Section1() {
 
                     <div className="conter-box conter-box1">
                       <h3>
-                        <span className="counter">12 000</span>+
+                        <span className="counter">20 000</span>+
                       </h3>
                       <p>Utførte vakter</p>
                     </div>
@@ -29,7 +29,7 @@ export default function Section1() {
                   <div className="col-lg-6">
                     <div className="conter-box conter-box2">
                       <h3>
-                        <span className="counter">600</span>+
+                        <span className="counter">800</span>+
                       </h3>
                       <p>Erfarne medarbeidere</p>
                     </div>

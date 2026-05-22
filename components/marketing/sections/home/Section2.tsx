@@ -16,7 +16,7 @@ export default function Section2() {
                   </div>
                   <div className="heading1">
                     <h3>
-                      <span className="counter">249+</span>
+                      <span className="counter">280+</span>
                     </h3>
                     <div className="space10" />
                     <p>Fornøyde Kunder</p>
@@ -31,7 +31,7 @@ export default function Section2() {
                   </div>
                   <div className="heading1">
                     <h3>
-                      <span className="counter">600+</span>
+                      <span className="counter">800+</span>
                     </h3>
                     <div className="space10" />
                     <p>Erfarne Vikarer</p>
@@ -46,7 +46,7 @@ export default function Section2() {
                   </div>
                   <div className="heading1">
                     <h3>
-                      <span className="counter">12 000+</span>
+                      <span className="counter">20 000+</span>
                     </h3>
                     <div className="space10" />
                     <p>Utførte Vakter</p>
