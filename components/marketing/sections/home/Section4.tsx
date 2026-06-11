@@ -74,13 +74,7 @@ export default function Section4({
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
-                <SwiperSlide className={styles.slideItem}>
-                  <img
-                    src="/assets/img/logo/slider-logo3.png"
-                    alt="recrute"
-                    className={styles.logoImage}
-                  />
-                </SwiperSlide>
+
                 <SwiperSlide className={styles.slideItem}>
                   <img
                     src="/assets/img/logo/slider-logo4.jpg"
@@ -123,13 +117,7 @@ export default function Section4({
                     className={styles.logoImage}
                   />
                 </SwiperSlide>
-                <SwiperSlide className={styles.slideItem}>
-                  <img
-                    src="/assets/img/logo/slider-logo3.png"
-                    alt="recrute"
-                    className={styles.logoImage}
-                  />
-                </SwiperSlide>
+
                 <SwiperSlide className={styles.slideItem}>
                   <img
                     src="/assets/img/logo/slider-logo4.jpg"
