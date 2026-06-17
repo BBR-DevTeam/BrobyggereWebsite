@@ -669,3 +669,152 @@
     object-fit: contain; /* ✅ show full image, no crop */
   }
 }
+
+/* Strong mobile fix for vacancy details page */
+@media (max-width: 575px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .left,
+  .right,
+  .leftSheet,
+  .formCard,
+  .contactCard {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .leftSheet,
+  .formCard,
+  .contactCard {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 1.25;
+    word-break: break-word;
+  }
+
+  .subTitle,
+  .text,
+  .list {
+    font-size: 14px;
+    line-height: 1.7;
+    word-break: break-word;
+  }
+
+  .hero {
+    height: auto;
+    max-height: none;
+  }
+
+  .heroImg {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .metaBar {
+    gap: 8px;
+  }
+
+  .metaPill {
+    max-width: 100%;
+    font-size: 12px;
+    letter-spacing: 0;
+    white-space: normal;
+  }
+
+  .formTitle {
+    font-size: 22px;
+    line-height: 1.25;
+  }
+
+  .formSub {
+    font-size: 14px;
+  }
+
+  .fieldIcon {
+    left: 10px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .input {
+    height: 50px;
+    padding-left: 54px;
+    font-size: 15px;
+    min-width: 0;
+  }
+
+  .fileRow {
+    height: auto;
+    min-height: 52px;
+    padding: 10px 12px 10px 54px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .fileButton {
+    height: 34px;
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  .fileName {
+    flex-basis: 100%;
+    font-size: 14px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .fileMeta {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .filePill {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .contactRow {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .contactAvatar {
+    width: 82px;
+    height: 82px;
+    flex: 0 0 auto;
+  }
+
+  .contactInfo {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .contactLink span {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .themeBtnFix {
+    width: 100%;
+    min-width: 0;
+    white-space: normal;
+  }
+}
+
+.grid {
+  margin-top: 40px;
+}

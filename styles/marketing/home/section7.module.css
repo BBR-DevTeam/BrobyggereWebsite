@@ -2,3 +2,46 @@
 .contactEmailBox {
   margin-bottom: 28px;
 }
+
+@media (max-width: 575px) {
+  .section7Wrapper :global(.heading1-w) {
+    padding-right: 0;
+  }
+
+  .section7Wrapper :global(.contact1-box) {
+    padding: 18px 16px;
+    align-items: flex-start;
+  }
+
+  .section7Wrapper :global(.contact1-box .icon) {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    line-height: 58px;
+    margin-right: 12px;
+  }
+
+  .section7Wrapper :global(.contact1-box .icon img) {
+    max-width: 26px;
+  }
+
+  .section7Wrapper :global(.contact1-box .heading) {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .section7Wrapper :global(.contact1-box .heading p) {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .section7Wrapper :global(.contact1-box .heading a) {
+    display: block;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.35;
+    padding-top: 8px;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}

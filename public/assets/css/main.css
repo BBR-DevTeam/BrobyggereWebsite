@@ -313,7 +313,7 @@ body.body {
 }
 
 .sphome {
-  padding-top: 70px;
+  padding-top: 120px;
 }
 
 .sp2 {
@@ -23350,4 +23350,15 @@ li.has-dropdown1 span {
 .service1-box .hover-area .icon i {
   font-size: 28px;
   color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .sphome {
+    padding-top: 0px;
+  }
+
+  .spabout {
+    padding-top: 130px;
+    padding-bottom: 50px;
+  }
 }
