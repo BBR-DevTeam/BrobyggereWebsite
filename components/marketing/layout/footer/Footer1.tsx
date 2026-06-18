@@ -29,6 +29,7 @@ export default function Footer() {
                     >
                       Brobyggere bemannings- og rekrutteringstjeneste
                     </p>
+                    <p className={styles.orgNumber}>Org.nr: 830 818 162</p>
                   </div>
                 </div>
 

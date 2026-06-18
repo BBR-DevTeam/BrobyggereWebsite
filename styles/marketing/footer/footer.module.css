@@ -82,3 +82,12 @@
   font-size: 20px;
   opacity: 0.95;
 }
+
+.orgNumber {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  letter-spacing: 0.2px;
+}

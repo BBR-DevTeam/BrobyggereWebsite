@@ -14,12 +14,12 @@ const schoolFaqs = [
   {
     question: "Hvilke typer personell leverer dere til skoler?",
     answer:
-      "Brobyggere leverer blant annet lærere, faglærere, spesialpedagoger, miljøarbeidere, miljøterapeuter, skoleassistenter, barne- og ungdomsarbeidere, SFO-ansatte, fagarbeidere, administrativt personell, ledere og mellomledere.",
+      "Brobyggere leverer blant annet lærere, faglærere, spesialpedagoger, miljøarbeidere, miljøterapeuter, skoleassistenter, barne- og ungdomsarbeidere og AKS/SFO-personell.",
   },
   {
     question: "Leverer dere personell til både korte og lange oppdrag?",
     answer:
-      "Ja. Vi leverer personell til dagsvikariater, ukesvikariater, langtidsvikariater, prosjektbaserte oppdrag, midlertidige ansettelser og rekruttering til faste stillinger.",
+      "Ja. Vi leverer personell til akutt behov, dags-, uke-, og langtidsvikariater og prosjektbaserte oppdrag.",
   },
   {
     question: "Hvilke områder dekker dere?",
@@ -29,7 +29,7 @@ const schoolFaqs = [
   {
     question: "Har Brobyggere erfaring med offentlige avtaler?",
     answer:
-      "Ja. Brobyggere har erfaring med offentlige innkjøp og leveranser til kommunal sektor. Vi har rammeavtale med Sandnes kommune og leverer personell til både skole og barnehage. I tillegg er vi en del av samkjøpsavtalen til Oslo kommune.",
+      "Ja. Brobyggere har erfaring med offentlige innkjøp og leveranser til kommunal sektor, blant annet er vi en del av samkjøpsavtalen til Oslo kommune.",
   },
   {
     question: "Hvorfor velger skoler Brobyggere som bemanningspartner?",
@@ -165,7 +165,7 @@ export default function Section3() {
         <div className={styles.header}>
           <h2>Ofte stilte spørsmål</h2>
           <p>
-            Finn svar på vanlige spørsmål om skolebemanning, barnehagebemanning,
+            Finn svar på vanlige spørsmål om bemanning til barnehage og skole,
             akutte behov, langtidsvikariater og rekruttering gjennom Brobyggere.
           </p>
         </div>
