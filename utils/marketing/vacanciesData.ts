@@ -214,11 +214,11 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/rachel.jpeg",
-      name: "Rachel Bårdsen",
+      image: "/assets/img/team/stine.webp",
+      name: "Stine Soltvedt",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "rachel@brobyggere.com",
+      email: "stine@brobyggere.com",
     },
   },
 
@@ -298,11 +298,11 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/rachel.jpeg",
-      name: "Rachel Bårdsen",
+      image: "/assets/img/team/stine.webp",
+      name: "Stine Soltvedt",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "rachel@brobyggere.com",
+      email: "stine@brobyggere.com",
     },
   },
 
@@ -380,11 +380,11 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/rachel.jpeg",
-      name: "Rachel Bårdsen",
+      image: "/assets/img/team/stine.webp",
+      name: "Stine Soltvedt",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "rachel@brobyggere.com",
+      email: "stine@brobyggere.com",
     },
   },
 
@@ -482,11 +482,11 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/Thea.JPG",
-      name: "Thea Gunnarskog",
+      image: "/assets/img/team/kamilla.webp",
+      name: "Kamilla Rønnekleiv",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "thea@brobyggere.com",
+      email: "kamilla@brobyggere.com",
     },
   },
 
@@ -565,11 +565,11 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/Thea.JPG",
-      name: "Thea Gunnarskog",
+      image: "/assets/img/team/kamilla.webp",
+      name: "Kamilla Rønnekleiv",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "thea@brobyggere.com",
+      email: "kamilla@brobyggere.com",
     },
   },
 
@@ -646,11 +646,11 @@ export const vacanciesData: Vacancy[] = [
 
     // ✅ NEW
     contactPerson: {
-      image: "/assets/img/team/Thea.JPG",
-      name: "Thea Gunnarskog",
+      image: "/assets/img/team/kamilla.webp",
+      name: "Kamilla Rønnekleiv",
       title: "HR-konsulent",
       phone: "+47 479 68 163",
-      email: "thea@brobyggere.com",
+      email: "kamilla@brobyggere.com",
     },
   },
 
